@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
+import { useSpring, animated } from 'react-spring'
+import './mode.css'
 
 const Mode = ( {setStage} ) => {
+  const props = useSpring({opacity: 1, from: {opacity: 0}})
 
   return (
-    <div>
+    <animated.div style={props} className="mode-page">
       <p>this is the Mode page</p>
       <p onClick={() => setStage("photo")}>Go to Photo Page</p>
-    </div>
+    </animated.div>
   )
 }
 

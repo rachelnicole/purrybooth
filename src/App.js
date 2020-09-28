@@ -9,6 +9,7 @@ import Share from './share/Share'
 
 const App = () => {
   const [stage, setStage] = React.useState("landing")
+
   return (
     <div>
       <h1>Photothing</h1>

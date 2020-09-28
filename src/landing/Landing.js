@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
+import { useSpring, animated } from 'react-spring'
+import './landing.css'
 
 const Landing = ( {setStage} ) => {
+  const props = useSpring({opacity: 1, from: {opacity: 0}})
 
   return (
-    <div>
+    <animated.div style={props} className="landing-page">
       <p>this is the landing page</p>
       <p onClick={() => setStage("layout")}>Go to Layout Page</p>
-    </div>
+    </animated.div>
   )
 }
 
