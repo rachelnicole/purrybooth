@@ -4,7 +4,10 @@ import Webcam from "react-webcam";
 
 import './photo.css'
 
-let imgSrc;
+const videoConstraints = {
+  width: 600,
+  height: 600,
+};
 
 const Photo = ( {setStage, photoTakenEncoded} ) => {
   
@@ -28,6 +31,7 @@ const Photo = ( {setStage, photoTakenEncoded} ) => {
       <Webcam
         audio={false}
         ref={webcamRef}
+        videoConstraints={videoConstraints}
         screenshotFormat="image/jpeg"
       />
       <button onClick={capture}>Capture photo</button>
