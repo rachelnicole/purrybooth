@@ -1,23 +1,23 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import Webcam from "react-webcam";
 
 import './photo.css'
 
-const videoConstraints = {
-  width: 800,
-  height: 800,
-  facingMode: "user"
-};
+let imgSrc;
 
-const Photo = ( {setStage} ) => {
-  const props = useSpring({opacity: 1, from: {opacity: 0}})
+const Photo = ( {setStage, photoTakenEncoded} ) => {
+  
+  // this is the react-spring controls for fading in on load
+  const props = useSpring({opacity: 1, from: {opacity: 0}});
+
   const webcamRef = React.useRef(null);
-  const [imgSrc, setImgSrc] = React.useState("photoSrc");
+  const [imgSrc, setImgSrc] = React.useState(null);
 
   const capture = React.useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
+    photoTakenEncoded(imageSrc);
   }, [webcamRef, setImgSrc]);
  
   return (
@@ -27,10 +27,8 @@ const Photo = ( {setStage} ) => {
       <p onClick={() => setStage("decorate")}>Go to Decorate Page</p>
       <Webcam
         audio={false}
-        height={600}
         ref={webcamRef}
         screenshotFormat="image/jpeg"
-        width={600}
       />
       <button onClick={capture}>Capture photo</button>
       {imgSrc && (

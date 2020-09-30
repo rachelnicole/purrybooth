@@ -8,7 +8,8 @@ import Share from './share/Share'
 
 
 const App = () => {
-  const [stage, setStage] = React.useState("landing")
+  const [stage, setStage] = React.useState("landing"),
+        [photoTaken, photoTakenEncoded] = React.useState(null);
 
   return (
     <div>
@@ -16,9 +17,9 @@ const App = () => {
       {stage === "landing" && <Landing {...{ setStage }}/>}
       {stage === "layout" && <Layout {...{ setStage }}/>}
       {stage === "mode" && <Mode {...{ setStage }}/>}
-      {stage === "photo" && <Photo {...{ setStage }}/>}
-      {stage === "decorate" && <Decorate {...{ setStage }}/>}
-      {stage === "share" && <Share {...{ setStage }}/>}
+      {stage === "photo" && <Photo {...{ setStage }} {...{ photoTakenEncoded }} />}
+      {stage === "decorate" && <Decorate {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }}/>}
+      {stage === "share" && <Share {...{ setStage }} />}
     </div>
   )}
   
