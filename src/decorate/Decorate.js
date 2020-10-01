@@ -11,10 +11,8 @@ const Decorate = ( {setStage, photoTaken, photoTakenEncoded}) => {
     <animated.div style={props} className="decorate-page">
       <p>this is the Decorate page</p>
       <p onClick={() => setStage("share")}>Go to Share Page</p>
-      <img
-          src={photoTaken}
-        />
-    <Canvas></Canvas>
+
+    <Canvas {...{photoTaken}}></Canvas>
     </animated.div>
   )
 }

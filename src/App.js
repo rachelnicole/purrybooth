@@ -1,4 +1,4 @@
-import React, { Component, lazy, useState } from 'react'
+import React from 'react'
 import Landing from './landing/Landing'
 import Layout from './layout/Layout'
 import Mode from './mode/Mode'

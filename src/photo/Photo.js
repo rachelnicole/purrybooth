@@ -37,7 +37,7 @@ const Photo = ( {setStage, photoTakenEncoded} ) => {
       <button onClick={capture}>Capture photo</button>
       {imgSrc && (
         <img
-          src={imgSrc}
+          src={imgSrc} alt="photobooth snapshot"
         />
       )}
     </animated.div>

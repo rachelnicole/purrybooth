@@ -1,5 +1,4 @@
 import  React , {useState} from 'react';
-import img_src from './daisies.jpg';
 import wasmWorker from 'wasm-worker';
 
 class Canvas extends React.Component {
@@ -30,7 +29,7 @@ class Canvas extends React.Component {
       ctx.drawImage(img, 0, 0);
 
     }
-    img.src = img_src;
+    img.src = this.props.photoTaken;
   }
 
   loadWasm = async () => {
@@ -63,6 +62,63 @@ class Canvas extends React.Component {
 
     // Filter the image
     photon.alter_channel(image, channel_index, 50);
+
+    // Replace the current canvas' ImageData with the new image's ImageData.
+    photon.putImageData(canvas1, ctx, image);
+
+  }
+
+  filterPhoto = async (filterName) => {
+    const canvas1 = this.refs.canvas;
+    const ctx = canvas1.getContext("2d");
+    
+    ctx.drawImage(this.img, 0, 0);
+
+    let photon = this.wasm;
+
+    // Convert the canvas and context to a PhotonImage
+    let image = photon.open_image(canvas1, ctx);
+
+    // Filter the image
+    photon.filter(image, filterName);
+
+    // Replace the current canvas' ImageData with the new image's ImageData.
+    photon.putImageData(canvas1, ctx, image);
+
+  }
+
+  greyScale = async () => {
+    const canvas1 = this.refs.canvas;
+    const ctx = canvas1.getContext("2d");
+    
+    ctx.drawImage(this.img, 0, 0);
+
+    let photon = this.wasm;
+
+    // Convert the canvas and context to a PhotonImage
+    let image = photon.open_image(canvas1, ctx);
+
+    // Filter the image
+    photon.grayscale(image);
+
+    // Replace the current canvas' ImageData with the new image's ImageData.
+    photon.putImageData(canvas1, ctx, image);
+
+  }
+
+  threeDee = async () => {
+    const canvas1 = this.refs.canvas;
+    const ctx = canvas1.getContext("2d");
+    
+    ctx.drawImage(this.img, 0, 0);
+
+    let photon = this.wasm;
+
+    // Convert the canvas and context to a PhotonImage
+    let image = photon.open_image(canvas1, ctx);
+
+    // Filter the image
+    photon.offset_red(image, 30)
 
     // Replace the current canvas' ImageData with the new image's ImageData.
     photon.putImageData(canvas1, ctx, image);
@@ -105,6 +161,16 @@ class Canvas extends React.Component {
               <li id="alter_red" onClick={() => this.alterChannel(0)}>Increase Red Channel</li>
               <li id="alter_green" onClick={() => this.alterChannel(1)}>Increase Green Channel</li>
               <li id="alter_blue" onClick={() => this.alterChannel(2)}>Increase Blue Channel</li>
+              <li id="alter_greyscale" onClick={() => this.greyScale()}>GreyScale</li>
+              <li id="alter_threedee" onClick={() => this.threeDee()}>3D Glasses</li>
+              <li id="alter_filter_oceanic" onClick={() => this.filterPhoto('oceanic')}>Oceanic</li>
+              <li id="alter_filter_islands" onClick={() => this.filterPhoto('islands')}>Islands</li>
+              <li id="alter_filter_marine" onClick={() => this.filterPhoto('marine')}>Marine</li>
+              <li id="alter_filter_seagreen" onClick={() => this.filterPhoto('seagreen')}>Seagreen</li>
+              <li id="alter_filter_flagblue" onClick={() => this.filterPhoto('flagblue')}>Flag Blue</li>
+              <li id="alter_filter_liquid" onClick={() => this.filterPhoto('liquid')}>Liquid</li>
+
+              
 
               <li id="alter_blue" onClick={this.effectPipeline}>Inc Channel + Threshold</li>
 
