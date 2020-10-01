@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import './decorate.css'
+import Canvas from "../canvas/Canvas"
+
 
 const Decorate = ( {setStage, photoTaken, photoTakenEncoded}) => {
   const props = useSpring({opacity: 1, from: {opacity: 0}})
@@ -12,6 +14,7 @@ const Decorate = ( {setStage, photoTaken, photoTakenEncoded}) => {
       <img
           src={photoTaken}
         />
+    <Canvas></Canvas>
     </animated.div>
   )
 }
