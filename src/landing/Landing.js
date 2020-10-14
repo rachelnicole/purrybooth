@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
-import './landing.css'
 
 const Landing = ( {setStage} ) => {
   const props = useSpring({opacity: 1, from: {opacity: 0}})

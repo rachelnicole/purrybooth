@@ -1,0 +1,25 @@
+@import './decorate/decorate.scss';
+@import './landing/landing.scss';
+@import './layout/layout.scss';
+@import './mode/mode.scss';
+@import './photo/photo.scss';
+@import './share/share.scss';
+@import './upload/upload.scss';
+
+* { 
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.main-container {
+  border: 2px solid;
+  border-bottom-color: #535353;
+  border-right-color: #535353;
+  border-left-color: #dbdbdb;
+  border-top-color: #dbdbdb;
+  background-color: #bfbfbf;
+  max-width: 800px;
+  font-size: 13px;
+  padding: 2px;
+  margin: 0 auto;
+}

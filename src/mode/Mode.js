@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
-import './mode.css'
 
 const Mode = ( {setStage} ) => {
   const props = useSpring({opacity: 1, from: {opacity: 0}})

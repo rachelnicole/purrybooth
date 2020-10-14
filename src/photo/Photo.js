@@ -2,8 +2,6 @@ import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import Webcam from "react-webcam";
 
-import './photo.css'
-
 const videoConstraints = {
   width: 600,
   height: 600,
