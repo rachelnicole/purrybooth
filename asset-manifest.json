@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/purrybooth/static/css/main.a3c33fd7.chunk.css",
+    "main.js": "/purrybooth/static/js/main.d5b768f1.chunk.js",
+    "main.js.map": "/purrybooth/static/js/main.d5b768f1.chunk.js.map",
+    "runtime~main.js": "/purrybooth/static/js/runtime~main.20a0a570.js",
+    "runtime~main.js.map": "/purrybooth/static/js/runtime~main.20a0a570.js.map",
+    "static/css/2.2ce93ba3.chunk.css": "/purrybooth/static/css/2.2ce93ba3.chunk.css",
+    "static/js/2.dc1cee39.chunk.js": "/purrybooth/static/js/2.dc1cee39.chunk.js",
+    "static/js/2.dc1cee39.chunk.js.map": "/purrybooth/static/js/2.dc1cee39.chunk.js.map",
+    "static/js/3.e9847dea.chunk.js": "/purrybooth/static/js/3.e9847dea.chunk.js",
+    "a808611a6f1a99285896.module.wasm": "/purrybooth/a808611a6f1a99285896.module.wasm",
+    "static/js/3.e9847dea.chunk.js.map": "/purrybooth/static/js/3.e9847dea.chunk.js.map",
+    "index.html": "/purrybooth/index.html",
+    "precache-manifest.c947e6848dc371c906e9247cd7721e74.js": "/purrybooth/precache-manifest.c947e6848dc371c906e9247cd7721e74.js",
+    "service-worker.js": "/purrybooth/service-worker.js",
+    "static/css/2.2ce93ba3.chunk.css.map": "/purrybooth/static/css/2.2ce93ba3.chunk.css.map",
+    "static/css/main.a3c33fd7.chunk.css.map": "/purrybooth/static/css/main.a3c33fd7.chunk.css.map",
+    "static/media/UploadIcon.svg": "/purrybooth/static/media/UploadIcon.1cedb6e9.svg"
+  }
+}
