@@ -1,17 +1,31 @@
-* { 
-  box-sizing: border-box;
-  margin: 0;
+@import './assets/windows95';
+
+@font-face {
+  font-family: 'w95';
+  src: url('./assets/w95fa-webfont.woff2') format('woff2'),
+       url('./assets/w95fa-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
 
-.main-container {
-  border: 2px solid;
-  border-bottom-color: #535353;
-  border-right-color: #535353;
-  border-left-color: #dbdbdb;
-  border-top-color: #dbdbdb;
-  background-color: #bfbfbf;
-  max-width: 800px;
-  font-size: 13px;
-  padding: 2px;
-  margin: 0 auto;
+html {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'w95';
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100vmax;
+  background: rgb(0,0,0);
+  background: -moz-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(92,38,134,1) 35%, rgba(255,22,144,1) 100%);
+  background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(92,38,134,1) 35%, rgba(255,22,144,1) 100%);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(92,38,134,1) 35%, rgba(255,22,144,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#ff1690",GradientType=1);
 }

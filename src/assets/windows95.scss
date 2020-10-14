@@ -1,0 +1,108 @@
+/* got this from https://codepen.io/CSWApps/pen/YyerKb and will build off it */
+
+.main-container {
+  border: 2px solid;
+  border-bottom-color: #535353;
+  border-right-color: #535353;
+  border-left-color: #dbdbdb;
+  border-top-color: #dbdbdb;
+  background-color: #bfbfbf;
+  max-width: 600px;
+  font-size: 13px;
+  padding: 2px;
+  ul.toolbar {
+    list-style: none;
+    padding: 2px 0;
+    margin: 0;
+    li {
+      display: inline-block;
+      padding: 0 5px;
+    }
+  }
+  .container-inner {
+    border: 2px solid;
+    border-bottom-color: #c7c7c7;
+    border-right-color: #c7c7c7;
+    border-left-color: #808080;
+    border-top-color: #808080;
+    background-color: #fff;
+    padding: 10px;
+    ul.icons {
+      list-style: none;
+      padding: 2px 0;
+      margin: 0;
+      li {
+        display: inline-block;
+        padding: 0 5px;
+      }
+    }
+  }
+  .statusbar {
+    .left, .right {
+      border: 1px solid;
+      border-color: #888 #dadada #dadada #888;
+      display: inline-block;
+      padding: 0px 5px;
+      font-size: 11px;
+    }
+    .left {
+      width: 33%;
+    }
+    .right {
+      width: 66%;
+    }
+  }
+}
+.title {
+  background-color: #808080;
+  padding: 2px 4px 3px 4px;
+  position: relative;
+  h1 {
+    font-weight: bold;
+    color: #bcbcbc;
+    font-size: 13px;
+    margin: 0;
+  }
+  button {
+    border: 2px solid;
+    border-bottom-color: #444;
+    border-right-color: #444;
+    border-left-color: #a6a6a6;
+    border-top-color: #a6a6a6;
+    background-color: #bfbfbf;
+    position: absolute;
+    font-size: 9px;
+    line-height: 0;
+    padding: 1px;
+    height: 15px;
+    width: 15px;
+    top: 2px;
+  }
+  button.minimize {
+    right: 34px;
+  }
+  button.expand {
+    right: 18px;
+  }
+  button.times {
+    right: 2px;
+  }
+}
+.icon-my-computer {}
+.icon-minimize {}
+.icon-expand {}
+.icon-close {}
+.icon-inbox {}
+.icon-trash {}
+.icon-floppy {}
+.icon-disk {}
+.icon-control-panel {}
+.icon-programs {}
+.icon-documents {}
+.icon-settings {}
+.icon-find {}
+.icon-help {}
+.icon-run {}
+.icon-shut-down {}
+.icon-start {}
+.icon-sound {}
