@@ -6,7 +6,7 @@ const Layout = ( {setStage}) => {
 
   return (
     <animated.div style={props} className="layout-page main-container">
-    <div class="title">
+      <div class="title">
         <div class="pull-right">
           {/* Commented out for later in case I want to use buttons, but it doesn't seem accessible or reasonable at the current moment<button class="minimize"><span class="fa fa-minus">-</span></button>
           <button class="expand"><span class="fa fa-square-o"></span></button>
