@@ -125,6 +125,5 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-yarn.lock
 .gitignore
 package-lock.json
