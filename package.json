@@ -21,13 +21,10 @@
     "react-webcam": "^5.2.0",
     "wasm-worker": "^0.4.0"
   },
-  "homepage": "http://rachelnicole.github.io/purrybooth",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "test": "react-app-rewired test"
   },
   "eslintConfig": {
     "extends": "react-app"
