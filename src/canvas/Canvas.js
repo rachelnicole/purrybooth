@@ -150,10 +150,10 @@ class Canvas extends React.Component {
   
   render() {
     return(
-      <div class="default">
+      <div className="default">
 
-        <div class="sidebar">
-            <h3 class="logo">Photon</h3>
+        <div className="sidebar">
+            <h3 className="logo">Photon</h3>
 
             <ul>
               <h4>Channels</h4>
@@ -184,15 +184,15 @@ class Canvas extends React.Component {
           </div>
 
           
-          <div class="main">
-            <div class="main_content">
+          <div className="main">
+            <div className="main_content">
    
-              <section class="content">
+              <section className="content">
                   <h2>Image</h2>
                   <canvas ref="canvas" />
               </section>
 
-              <section class="benchmarks">
+              <section className="benchmarks">
                 <div id="time"></div>
                 <div id="code"></div>
               </section>

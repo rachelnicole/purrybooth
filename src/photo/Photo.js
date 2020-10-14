@@ -17,11 +17,11 @@ const Photo = ( {setStage, photoTakenEncoded} ) => {
   const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
 
-  const capture = React.useCallback((photoTakenEncoded) => {
+  const capture = React.useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
     photoTakenEncoded(imageSrc);
-  }, [webcamRef, setImgSrc]);
+  }, [webcamRef, setImgSrc, photoTakenEncoded]);
  
   return (
     <animated.div style={props} className="photo-page main-container">

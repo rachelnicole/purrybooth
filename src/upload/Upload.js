@@ -5,14 +5,15 @@ import ImageUploader from "react-images-upload";
 const Upload = ( {setStage, photoTakenEncoded} ) => {
   const props = useSpring({opacity: 1, from: {opacity: 0}});
 
-  const imageRef = React.useRef(null);
-  const [imgSrc, setImgSrc] = React.useState(null);
 
-  const onDrop = React.useCallback((pictureFile, picture) => {
-    console.log(picture);
-    setImgSrc(picture);
-    photoTakenEncoded(picture);
-  }, [imageRef, setImgSrc]);
+  const [imgSrc, setImgSrc] = React.useState(null);
+  
+
+  const onDrop = React.useCallback((picture, pictures) => {
+    console.log(pictures);
+    setImgSrc(pictures);
+    photoTakenEncoded(pictures);
+  }, [photoTakenEncoded]);
 
   return (
     <animated.div style={props} className="upload-page main-container">
