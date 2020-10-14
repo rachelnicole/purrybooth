@@ -6,9 +6,10 @@ import Photo from './photo/Photo'
 import Decorate from './decorate/Decorate'
 import Share from './share/Share'
 import Upload from './upload/Upload'
-
+import './app.scss';
 
 const App = () => {
+
   const [stage, setStage] = React.useState("landing"),
         [photoTaken, photoTakenEncoded] = React.useState(null);
 
