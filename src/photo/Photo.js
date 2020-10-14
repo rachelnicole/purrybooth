@@ -17,14 +17,14 @@ const Photo = ( {setStage, photoTakenEncoded} ) => {
   const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
 
-  const capture = React.useCallback(() => {
+  const capture = React.useCallback((photoTakenEncoded) => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
     photoTakenEncoded(imageSrc);
   }, [webcamRef, setImgSrc]);
  
   return (
-    <animated.div style={props} className="photo-page">
+    <animated.div style={props} className="photo-page main-container">
       <p>this is the Photo page</p>
       
       <p onClick={() => setStage("decorate")}>Go to Decorate Page</p>

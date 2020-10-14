@@ -8,7 +8,7 @@ const Decorate = ( {setStage, photoTaken, photoTakenEncoded}) => {
   const props = useSpring({opacity: 1, from: {opacity: 0}})
 
   return (
-    <animated.div style={props} className="decorate-page">
+    <animated.div style={props} className="decorate-page main-container">
       <p>this is the Decorate page</p>
       <p onClick={() => setStage("share")}>Go to Share Page</p>
 

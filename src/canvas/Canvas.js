@@ -1,5 +1,4 @@
-import  React , {useState} from 'react';
-import wasmWorker from 'wasm-worker';
+import  React from 'react';
 
 class Canvas extends React.Component {
   constructor(props) {
