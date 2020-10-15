@@ -1,6 +1,7 @@
 /* got this from https://codepen.io/CSWApps/pen/YyerKb and will build off it */
 
-.main-container {
+.main-container,
+.preview-container {
   border: 2px solid;
   border-bottom-color: #535353;
   border-right-color: #535353;
@@ -63,30 +64,6 @@
     font-size: 13px;
     margin: 0;
   }
-  button {
-    border: 2px solid;
-    border-bottom-color: #444;
-    border-right-color: #444;
-    border-left-color: #a6a6a6;
-    border-top-color: #a6a6a6;
-    background-color: #bfbfbf;
-    position: absolute;
-    font-size: 9px;
-    line-height: 0;
-    padding: 1px;
-    height: 15px;
-    width: 15px;
-    top: 2px;
-  }
-  button.minimize {
-    right: 34px;
-  }
-  button.expand {
-    right: 18px;
-  }
-  button.times {
-    right: 2px;
-  }
 }
 
 .mock-link {
@@ -95,21 +72,57 @@
   text-decoration: underline;
 }
 
-.icon-my-computer {}
-.icon-minimize {}
-.icon-expand {}
-.icon-close {}
-.icon-inbox {}
-.icon-trash {}
-.icon-floppy {}
-.icon-disk {}
-.icon-control-panel {}
-.icon-programs {}
-.icon-documents {}
-.icon-settings {}
-.icon-find {}
-.icon-help {}
-.icon-run {}
-.icon-shut-down {}
-.icon-start {}
-.icon-sound {}
+/* button styles from https://codepen.io/wiledal/pen/ngJsy */
+$gray: #c0c0c0;
+$gray-dark: #808080;
+$gray-light: #dfdfdf;
+$blue: #000080;
+
+@mixin borders {
+  background: $gray !important;
+  border-top: 1px solid $gray-light !important;
+  border-left: 1px solid $gray-light !important;
+  border-right: 1px solid #000 !important;
+  border-bottom: 1px solid #000 !important;
+  border-radius: 0px  !important;
+  box-shadow: inset -1px -1px 0 0 $gray-dark, inset 1px 1px 0 0px #fff !important;
+  padding: 2px !important;
+}
+
+@mixin inset-border {
+  border-top: 1px solid $gray-dark !important;
+  border-left: 1px solid $gray-dark !important;
+  
+  border-right: 1px solid #fff !important;
+  border-bottom: 1px solid #fff !important;
+}
+
+button {
+  @include borders;
+  
+  display: inline-block !important;
+  color: black  !important;
+  box-shadow: inset -1px -1px 0 0 $gray-dark, inset 1px 1px 0 0px $gray-light !important;
+  border-top: 1px solid #fff !important;
+  border-left: 1px solid #fff !important;
+  font-family: 'w95' !important;
+  padding: 0 10px 0 10px !important;
+  height: 24px !important;
+  
+  &:active {
+    //background: $gray-dark;
+    
+    box-shadow: inset 1px 1px 0 0 #000, inset -1px -1px 0 0px $gray-light !important;
+    border-bottom: 1px solid #fff !important;
+    border-right: 1px solid #fff !important;
+    border-top: 1px solid $gray-dark !important;
+    border-left: 1px solid $gray-dark !important;
+  
+  }
+}
+
+/* override the ugly file uploader styling */ 
+.fileContainer {
+  background: none !important;
+  box-shadow: none !important;
+}

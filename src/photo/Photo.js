@@ -50,7 +50,10 @@ const Photo = ({ stage, setStage, photoTakenEncoded }) => {
         <button onClick={capture}>Capture photo</button>
         {imgSrc && (
           <img
-            src={imgSrc} alt="photobooth snapshot"
+            className="photoPreview"
+            src={imgSrc} 
+            alt="photobooth snapshot"
+            photoPreview
           />
         )}
       </div>

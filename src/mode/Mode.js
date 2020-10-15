@@ -22,9 +22,23 @@ const Mode = ( { stage, setStage } ) => {
       </ul>
       <div class="container-inner">
         <p>this is the Mode page</p>
-        <p className="mock-link" onClick={() => setStage("upload")}>I want to Upload Photo</p>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => setStage("upload")}
+          role="button"
+        >
+          Upload Photo
+        </button>
 
-        <p className="mock-link" onClick={() => setStage("photo")}>I want to use my Camera</p>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => setStage("photo")}
+          role="button"
+        >
+          Use Webcam
+        </button>
       </div>
       <div class="statusbar">
         <div class="left">3 object(s)</div>

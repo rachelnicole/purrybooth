@@ -1,4 +1,4 @@
-import  React from 'react';
+import React from 'react';
 
 class Canvas extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class Canvas extends React.Component {
       canvas.width = img.width;
       canvas.height = img.height;
       const ctx = canvas.getContext("2d");
-      
+
       ctx.drawImage(img, 0, 0);
 
     }
@@ -47,11 +47,11 @@ class Canvas extends React.Component {
     }
 
   }
-  
+
   alterChannel = async (channel_index) => {
     const canvas1 = this.refs.canvas;
     const ctx = canvas1.getContext("2d");
-    
+
     ctx.drawImage(this.img, 0, 0);
 
     let photon = this.wasm;
@@ -70,7 +70,7 @@ class Canvas extends React.Component {
   filterPhoto = async (filterName) => {
     const canvas1 = this.refs.canvas;
     const ctx = canvas1.getContext("2d");
-    
+
     ctx.drawImage(this.img, 0, 0);
 
     let photon = this.wasm;
@@ -89,7 +89,7 @@ class Canvas extends React.Component {
   greyScale = async () => {
     const canvas1 = this.refs.canvas;
     const ctx = canvas1.getContext("2d");
-    
+
     ctx.drawImage(this.img, 0, 0);
 
     let photon = this.wasm;
@@ -108,7 +108,7 @@ class Canvas extends React.Component {
   threeDee = async () => {
     const canvas1 = this.refs.canvas;
     const ctx = canvas1.getContext("2d");
-    
+
     ctx.drawImage(this.img, 0, 0);
 
     let photon = this.wasm;
@@ -124,10 +124,10 @@ class Canvas extends React.Component {
 
   }
 
-  effectPipeline = async() => {
+  effectPipeline = async () => {
     const canvas1 = this.refs.canvas;
     const ctx = canvas1.getContext("2d");
-    
+
     ctx.drawImage(this.img, 0, 0);
 
     let photon = this.wasm;
@@ -147,60 +147,44 @@ class Canvas extends React.Component {
     // photon.canvas_wasm_only(canvas1, ctx);
     console.timeEnd("PHOTON_CONSTR");
   }
-  
+
   render() {
-    return(
-      <div className="default">
+    return (
+      <div className="decorateCanvas">
 
         <div className="sidebar">
-            <h3 className="logo">Photon</h3>
+          <ul>
+            <h4>Channels</h4>
+            <li id="alter_red" onClick={() => this.alterChannel(0)}>Increase Red Channel</li>
+            <li id="alter_green" onClick={() => this.alterChannel(1)}>Increase Green Channel</li>
+            <li id="alter_blue" onClick={() => this.alterChannel(2)}>Increase Blue Channel</li>
+            <li id="alter_greyscale" onClick={() => this.greyScale()}>GreyScale</li>
+            <li id="alter_threedee" onClick={() => this.threeDee()}>3D Glasses</li>
+            <li id="alter_blue" onClick={this.effectPipeline}>Inc Channel + Threshold</li>
 
-            <ul>
-              <h4>Channels</h4>
-              <li id="alter_red" onClick={() => this.alterChannel(0)}>Increase Red Channel</li>
-              <li id="alter_green" onClick={() => this.alterChannel(1)}>Increase Green Channel</li>
-              <li id="alter_blue" onClick={() => this.alterChannel(2)}>Increase Blue Channel</li>
-              <li id="alter_greyscale" onClick={() => this.greyScale()}>GreyScale</li>
-              <li id="alter_threedee" onClick={() => this.threeDee()}>3D Glasses</li>
-              <li id="alter_blue" onClick={this.effectPipeline}>Inc Channel + Threshold</li>
+            <li id="alter_filter_oceanic" onClick={() => this.filterPhoto('oceanic')}>Oceanic</li>
+            <li id="alter_filter_islands" onClick={() => this.filterPhoto('islands')}>Islands</li>
+            <li id="alter_filter_marine" onClick={() => this.filterPhoto('marine')}>Marine</li>
+            <li id="alter_filter_seagreen" onClick={() => this.filterPhoto('seagreen')}>Seagreen</li>
+            <li id="alter_filter_flagblue" onClick={() => this.filterPhoto('flagblue')}>Flag Blue</li>
+            <li id="alter_filter_liquid" onClick={() => this.filterPhoto('liquid')}>Liquid</li>
+            <li id="alter_filter_diamante" onClick={() => this.filterPhoto('diamante')}>Diamante</li>
+            <li id="alter_filter_radio" onClick={() => this.filterPhoto('radio')}>Radio</li>
+            <li id="alter_filter_twenties" onClick={() => this.filterPhoto('twenties')}>Twenties</li>
+            <li id="alter_filter_rosetint" onClick={() => this.filterPhoto('rosetint')}>Rosetint</li>
+            <li id="alter_filter_mauve" onClick={() => this.filterPhoto('mauve')}>Mauve</li>
+            <li id="alter_filter_bluechrome" onClick={() => this.filterPhoto('bluechrome')}>Blue Monochrome</li>
+            <li id="alter_filter_vintage" onClick={() => this.filterPhoto('vintage')}>Vintage</li>
+            <li id="alter_filter_perfume" onClick={() => this.filterPhoto('perfume')}>Perfume</li>
+            <li id="alter_filter_serenity" onClick={() => this.filterPhoto('serenity')}>Serenity</li>
 
-              <li id="alter_filter_oceanic" onClick={() => this.filterPhoto('oceanic')}>Oceanic</li>
-              <li id="alter_filter_islands" onClick={() => this.filterPhoto('islands')}>Islands</li>
-              <li id="alter_filter_marine" onClick={() => this.filterPhoto('marine')}>Marine</li>
-              <li id="alter_filter_seagreen" onClick={() => this.filterPhoto('seagreen')}>Seagreen</li>
-              <li id="alter_filter_flagblue" onClick={() => this.filterPhoto('flagblue')}>Flag Blue</li>
-              <li id="alter_filter_liquid" onClick={() => this.filterPhoto('liquid')}>Liquid</li>
-              <li id="alter_filter_diamante" onClick={() => this.filterPhoto('diamante')}>Diamante</li>
-              <li id="alter_filter_radio" onClick={() => this.filterPhoto('radio')}>Radio</li>
-              <li id="alter_filter_twenties" onClick={() => this.filterPhoto('twenties')}>Twenties</li>
-              <li id="alter_filter_rosetint" onClick={() => this.filterPhoto('rosetint')}>Rosetint</li>
-              <li id="alter_filter_mauve" onClick={() => this.filterPhoto('mauve')}>Mauve</li>
-              <li id="alter_filter_bluechrome" onClick={() => this.filterPhoto('bluechrome')}>Blue Monochrome</li>
-              <li id="alter_filter_vintage" onClick={() => this.filterPhoto('vintage')}>Vintage</li>
-              <li id="alter_filter_perfume" onClick={() => this.filterPhoto('perfume')}>Perfume</li>
-              <li id="alter_filter_serenity" onClick={() => this.filterPhoto('serenity')}>Serenity</li>
+          </ul>
+        </div>
+        <section className="content">
+          <h2>Image</h2>
+          <canvas ref="canvas" />
+        </section>
 
-            </ul>     
-          </div>
-
-          
-          <div className="main">
-            <div className="main_content">
-   
-              <section className="content">
-                  <h2>Image</h2>
-                  <canvas ref="canvas" />
-              </section>
-
-              <section className="benchmarks">
-                <div id="time"></div>
-                <div id="code"></div>
-              </section>
-          
-          </div>
-          
-          </div>
-          
       </div>
     )
   }

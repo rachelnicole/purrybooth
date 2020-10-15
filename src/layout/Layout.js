@@ -12,7 +12,7 @@ const Layout = ( {stage, setStage}) => {
           <button class="expand"><span class="fa fa-square-o"></span></button>
           <button class="times"><span class="fa fa-times">x</span></button> */}
         </div>
-        <h1><div class="icon-my-computer"></div> {stage}</h1>
+        <h1><div class="icon-my-computer"></div> {stage}　プリクラ</h1>
       </div>
       <ul class="toolbar">
         <li><u>F</u>ile</li>
@@ -21,8 +21,15 @@ const Layout = ( {stage, setStage}) => {
         <li><u>H</u>elp</li>
       </ul>
       <div class="container-inner">
-        <p>this is the layout page</p>
-        <p className="mock-link" onClick={() => setStage("mode")}>Go to Mode Page</p>
+        <p>Let's Share:</p>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => setStage("share")}
+          role="button"
+        >
+          Let's Get Started
+        </button>
       </div>
       <div class="statusbar">
         <div class="left">3 object(s)</div>

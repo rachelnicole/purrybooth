@@ -24,9 +24,9 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
       </ul>
       <div class="container-inner">
         <p>this is the Decorate page</p>
-        <p className="mock-link" onClick={() => setStage("share")}>Go to Share Page</p>
+        <p className="mock-link" onClick={() => setStage("layout")}>Go to Layout Page</p>
 
-        <Canvas {...{photoTaken}}></Canvas>
+        <Canvas {...{photoTaken}} className="photoPreview"></Canvas>
       </div>
       <div class="statusbar">
         <div class="left">3 object(s)</div>

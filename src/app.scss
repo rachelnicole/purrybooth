@@ -12,13 +12,13 @@
 html {
   box-sizing: border-box;
   margin: 0;
-  font-family: 'w95';
 }
 
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+  outline: none;
 }
 
 body {
@@ -28,4 +28,12 @@ body {
   background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(92,38,134,1) 35%, rgba(255,22,144,1) 100%);
   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(92,38,134,1) 35%, rgba(255,22,144,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#ff1690",GradientType=1);
+  font-family: 'w95';
+}
+
+
+/* temp css */ 
+
+img.photoPreview {
+  width: 100%;
 }
