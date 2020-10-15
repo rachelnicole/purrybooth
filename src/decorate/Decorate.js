@@ -29,7 +29,14 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
       </div>
       <div className="container-inner">
         <p>Add some filters to your photo:</p>
-        <p className="mock-link" onClick={() => setStage("layout")}>Go to Layout Page</p>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => {
+          setStage("share")
+          }}>
+          Let's Share!
+        </button>
         {photoTaken && (
           <img
             src={photoTaken} 

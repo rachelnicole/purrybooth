@@ -36,10 +36,15 @@ const Filter = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
       </div>
       <div className="container-inner">
         <p>Add some filters to your photo:</p>
-        <p className="mock-link" onClick={() => {
+        <button
+          type="button"
+          className="btn"
+          onClick={() => {
           setStage("decorate")
           updateState()
-          }}>Go to Decorate Page</p>
+          }}>
+          Let's Decorate!
+        </button>
 
         <Canvas {...{photoTaken}} className="photoPreview"></Canvas>
       </div>

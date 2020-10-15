@@ -23,7 +23,7 @@ const Share = ( {stage, setStage} ) => {
       <div className="ie-bar">
         <div className="label">Address:</div>
         <div className="combo">
-          <input spellcheck="false" value="http://itsasecret"></input>
+          <input readOnly value="http://itsasecret"></input>
         </div>
       </div>
       <div className="container-inner">
