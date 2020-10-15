@@ -32,7 +32,6 @@ const Mode = ( { stage, setStage } ) => {
           type="button"
           className="btn"
           onClick={() => setStage("upload")}
-          role="button"
         >
           Upload Photo
         </button>
@@ -41,7 +40,6 @@ const Mode = ( { stage, setStage } ) => {
           type="button"
           className="btn"
           onClick={() => setStage("photo")}
-          role="button"
         >
           Use Webcam
         </button>

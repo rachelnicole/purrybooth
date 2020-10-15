@@ -32,7 +32,6 @@ const Layout = ( {stage, setStage}) => {
           type="button"
           className="btn"
           onClick={() => setStage("share")}
-          role="button"
         >
           Let's Get Started
         </button>

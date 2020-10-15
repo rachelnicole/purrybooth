@@ -46,7 +46,7 @@ const Photo = ({ stage, setStage, photoTakenEncoded }) => {
       <div class="container-inner">
         <p>this is the Photo page</p>
 
-        <p className="mock-link" onClick={() => setStage("decorate")}>Go to Decorate Page</p>
+        <p className="mock-link" onClick={() => setStage("filter")}>Go to Filter Page</p>
         <Webcam
           audio={false}
           ref={webcamRef}

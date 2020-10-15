@@ -1,8 +1,9 @@
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
+import Canvas from "../canvas/Canvas"
 
 
-const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
+const Filter = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
   const props = useSpring({opacity: 1, from: {opacity: 0}})
 
   return (
@@ -29,14 +30,9 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
       </div>
       <div class="container-inner">
         <p>Add some filters to your photo:</p>
-        <p className="mock-link" onClick={() => setStage("layout")}>Go to Layout Page</p>
-        {photoTakenEncoded && (
-          <img
-            src={photoTakenEncoded} 
-            alt="photobooth snapshot"
-            className="photoPreview"
-          />
-        )}
+        <p className="mock-link" onClick={() => setStage("decorate")}>Go to Decorate Page</p>
+
+        <Canvas {...{photoTaken}} className="photoPreview"></Canvas>
       </div>
       <div class="statusbar">
         <div class="left">3 object(s)</div>
@@ -46,4 +42,4 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
   )
 }
 
-export default Decorate
+export default Filter

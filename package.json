@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^7.1.2",
     "canvas": "^2.6.1",
     "dotenv": "^8.2.0",
+    "fabric": "^4.2.0",
     "get-orientation": "^1.1.2",
     "material-ui": "^0.20.2",
     "node-sass": "^4.14.1",

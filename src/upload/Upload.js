@@ -55,10 +55,9 @@ const Upload = ({ stage, setStage, photoTakenEncoded }) => {
         <button
           type="button"
           className="btn"
-          onClick={() => setStage("decorate")}
-          role="button"
+          onClick={() => setStage("filter")}
         >
-          Decorate Photo
+          Filter Photo
         </button>
       </div>
       <div className="statusbar">
