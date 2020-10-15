@@ -22,7 +22,7 @@ const Landing = ( {stage, setStage} ) => {
       </ul>
       <div className="container-inner">
         <p>this is the landing page</p>
-        <p onClick={() => setStage("layout")}>Go to Layout Page</p>
+        <p className="mock-link" onClick={() => setStage("layout")}>Go to Layout Page</p>
       </div>
       <div className="statusbar">
         <div className="left">3 object(s)</div>

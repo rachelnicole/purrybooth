@@ -24,7 +24,7 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
       </ul>
       <div class="container-inner">
         <p>this is the Decorate page</p>
-        <p onClick={() => setStage("share")}>Go to Share Page</p>
+        <p className="mock-link" onClick={() => setStage("share")}>Go to Share Page</p>
 
         <Canvas {...{photoTaken}}></Canvas>
       </div>

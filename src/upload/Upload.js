@@ -44,7 +44,7 @@ const Upload = ({ stage, setStage, photoTakenEncoded }) => {
           imgExtension={[".jpg", ".gif", ".png", ".gif"]}
           maxFileSize={5242880}
         />
-        <p onClick={() => setStage("decorate")}>Go to Decorate Page</p>
+        <p className="mock-link" onClick={() => setStage("decorate")}>Go to Decorate Page</p>
       </div>
       <div class="statusbar">
         <div class="left">3 object(s)</div>

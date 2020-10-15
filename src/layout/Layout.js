@@ -22,7 +22,7 @@ const Layout = ( {stage, setStage}) => {
       </ul>
       <div class="container-inner">
         <p>this is the layout page</p>
-        <p onClick={() => setStage("mode")}>Go to Mode Page</p>
+        <p className="mock-link" onClick={() => setStage("mode")}>Go to Mode Page</p>
       </div>
       <div class="statusbar">
         <div class="left">3 object(s)</div>
