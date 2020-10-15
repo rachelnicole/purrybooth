@@ -12,7 +12,7 @@ const Mode = ( { stage, setStage } ) => {
           <button class="expand"><span class="fa fa-square-o"></span></button>
           <button class="times"><span class="fa fa-times">x</span></button> */}
         </div>
-        <h1><div className="icon-my-computer"></div> {stage}</h1>
+        <h1><div className="icon-my-computer"></div> {stage}　プリクラ</h1>
       </div>
       <ul className="toolbar">
         <li><u>F</u>ile</li>
