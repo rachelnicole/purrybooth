@@ -14,7 +14,7 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
           <button class="expand"><span class="fa fa-square-o"></span></button>
           <button class="times"><span class="fa fa-times">x</span></button> */}
         </div>
-        <h1><div class="icon-my-computer"></div> {stage}</h1>
+        <h1><div class="icon-my-computer"></div> {stage} プリクラ</h1>
       </div>
       <ul class="toolbar">
         <li><u>F</u>ile</li>
@@ -22,8 +22,14 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
         <li><u>V</u>iew</li>
         <li><u>H</u>elp</li>
       </ul>
+      <div className="ie-bar">
+        <div className="label">Address:</div>
+        <div className="combo">
+          <input spellcheck="false" value="http://itsasecret"></input>
+        </div>
+      </div>
       <div class="container-inner">
-        <p>this is the Decorate page</p>
+        <p>Add some filters to your photo:</p>
         <p className="mock-link" onClick={() => setStage("layout")}>Go to Layout Page</p>
 
         <Canvas {...{photoTaken}} className="photoPreview"></Canvas>

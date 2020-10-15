@@ -37,6 +37,12 @@ const Photo = ({ stage, setStage, photoTakenEncoded }) => {
         <li><u>V</u>iew</li>
         <li><u>H</u>elp</li>
       </ul>
+      <div className="ie-bar">
+        <div className="label">Address:</div>
+        <div className="combo">
+          <input spellcheck="false" value="http://itsasecret"></input>
+        </div>
+      </div>
       <div class="container-inner">
         <p>this is the Photo page</p>
 

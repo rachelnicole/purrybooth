@@ -20,6 +20,12 @@ const Share = ( {stage, setStage} ) => {
         <li><u>V</u>iew</li>
         <li><u>H</u>elp</li>
       </ul>
+      <div className="ie-bar">
+        <div className="label">Address:</div>
+        <div className="combo">
+          <input spellcheck="false" value="http://itsasecret"></input>
+        </div>
+      </div>
       <div className="container-inner">
         <p>this is the share page</p>
         <p>the end</p>

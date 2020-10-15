@@ -152,7 +152,6 @@ class Canvas extends React.Component {
     return (
       <div className="decorateCanvas">
         <section className="content">
-          <h2>Image</h2>
           <canvas ref="canvas" className="decorateCanvas" />
         </section>
         <ul>
