@@ -121,6 +121,7 @@ class Canvas extends React.Component {
 
     // Replace the current canvas' ImageData with the new image's ImageData.
     photon.putImageData(canvas1, ctx, image);
+    console.log(image);
 
   }
 
@@ -152,7 +153,7 @@ class Canvas extends React.Component {
     return (
       <div className="decorateCanvas">
         <section className="content">
-          <canvas ref="canvas" className="decorateCanvas" />
+          <canvas ref="canvas" className="decorateCanvas" id="canvas"/>
         </section>
         <ul>
           <h4>Channels</h4>
