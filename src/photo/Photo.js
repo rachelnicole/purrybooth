@@ -7,7 +7,7 @@ const videoConstraints = {
   height: 600,
 };
 
-const Photo = ({ setStage, photoTakenEncoded }) => {
+const Photo = ({ stage, setStage, photoTakenEncoded }) => {
 
   // this is the react-spring controls for fading in on load
   const props = useSpring({ opacity: 1, from: { opacity: 0 } });
@@ -29,7 +29,7 @@ const Photo = ({ setStage, photoTakenEncoded }) => {
           <button class="expand"><span class="fa fa-square-o"></span></button>
           <button class="times"><span class="fa fa-times">x</span></button> */}
         </div>
-        <h1><div class="icon-my-computer"></div> My Computer</h1>
+        <h1><div class="icon-my-computer"></div> {stage}</h1>
       </div>
       <ul class="toolbar">
         <li><u>F</u>ile</li>

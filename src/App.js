@@ -15,14 +15,13 @@ const App = () => {
 
   return (
     <div>
-      <h1>Photothing</h1>
-      {stage === "landing" && <Landing {...{ setStage }}/>}
-      {stage === "layout" && <Layout {...{ setStage }}/>}
-      {stage === "mode" && <Mode {...{ setStage }}/>}
-      {stage === "upload" && <Upload {...{ setStage }} {...{ photoTakenEncoded }}/>}
-      {stage === "photo" && <Photo {...{ setStage }} {...{ photoTakenEncoded }} />}
-      {stage === "decorate" && <Decorate {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }}/>}
-      {stage === "share" && <Share {...{ setStage }} />}
+      {stage === "landing" && <Landing {...{ setStage }} { ...{stage} }/>}
+      {stage === "layout" && <Layout {...{ setStage }} { ...{stage} }/>}
+      {stage === "mode" && <Mode {...{ setStage }} { ...{stage} }/>}
+      {stage === "upload" && <Upload {...{ setStage }} {...{ photoTakenEncoded }} { ...{stage} }/>}
+      {stage === "photo" && <Photo {...{ setStage }} {...{ photoTakenEncoded }} { ...{stage} } />}
+      {stage === "decorate" && <Decorate {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} { ...{stage} }/>}
+      {stage === "share" && <Share {...{ setStage }} { ...{stage} } />}
     </div>
   )}
   
