@@ -4,8 +4,8 @@ import { datadogRum } from '@datadog/browser-rum'
 import App from './App'
 
 datadogRum.init({
-  applicationId: process.env.APP_ID,
-  clientToken: process.env.CLIENT_TOKEN,
+  applicationId: process.env.REACT_APP_APP_ID,
+  clientToken: process.env.REACT_APP_CLIENT_TOKEN,
   site: 'datadoghq.com',
 //  service: 'my-web-application',
 //  env: 'production',
