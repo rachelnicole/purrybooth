@@ -11,7 +11,7 @@ import './app.scss';
 
 const App = () => {
 
-  const [stage, setStage] = React.useState("landing"),
+  const [stage, setStage] = React.useState("decorate"),
         [photoTaken, photoTakenEncoded] = React.useState(null);
 
   return (
