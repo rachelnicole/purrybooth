@@ -1,9 +1,19 @@
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
+import { fabric } from "fabric"
 
 
 const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
-  const props = useSpring({opacity: 1, from: {opacity: 0}})
+  const props = useSpring({opacity: 1, from: {opacity: 0}}),
+        canvas = new fabric.Canvas('decorateCanvas'),
+        imgElement = document.getElementById('photoBoothImage'),
+        imgInstance = new fabric.Image(imgElement, {
+          left:0,
+          top: 0
+        });
+
+  canvas.add(imgInstance);
+
 
   return (
     <animated.div style={props} className="decorate-page main-container">
@@ -37,13 +47,16 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
           }}>
           Let's Share!
         </button>
+        <div id="decorateCanvas">
         {photoTaken && (
           <img
             src={photoTaken} 
             alt="photobooth snapshot"
             className="photoPreview"
+            id="photoBoothImage"
           />
         )}
+        </div>
       </div>
       <div className="statusbar">
         <div className="left">3 object(s)</div>
