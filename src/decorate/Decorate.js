@@ -13,29 +13,9 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
   React.useEffect(() => {
     const canvas = new fabric.Canvas("my-fabric-canvas");
 
-    const rect = new fabric.Rect({
-      width: 50,
-      height: 50,
-      fill: "blue",
-      angle: 10,
-      top: 20,
-      left: 20
-    });
-    const textbox = new fabric.Textbox("Click on the Rectangle to move it.", {
-      fontSize: 20,
-      left: 50,
-      top: 100,
-      width: 200
-    });
-    
-
     fabric.Image.fromURL(decorateImage, function(oImg) {
       canvas.add(oImg);
     });
-    
-
-    canvas.add(textbox);
-    canvas.add(rect);
 
     // UseEffect's cleanup function
     return () => {
@@ -111,6 +91,11 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
           <img 
           className="decoration" 
           src="images/panda_ears.png"
+          onClick={e => setDecorateImage(e.target.src)}
+          ></img>
+          <img 
+          className="decoration" 
+          src="images/cat-ears.png"
           onClick={e => setDecorateImage(e.target.src)}
           ></img>
           
