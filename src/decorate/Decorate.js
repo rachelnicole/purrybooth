@@ -2,18 +2,43 @@ import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import { fabric } from "fabric"
 
+// this was very helpful in figuring out how to get fabric in react https://codesandbox.io/s/react-fabric-example-87hh4
+
 
 const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
-  const props = useSpring({opacity: 1, from: {opacity: 0}}),
-        canvas = new fabric.Canvas('decorateCanvas'),
-        imgElement = document.getElementById('photoBoothImage'),
-        imgInstance = new fabric.Image(imgElement, {
-          left:0,
-          top: 0
-        });
+  const props = useSpring({opacity: 1, from: {opacity: 0}});
 
-  canvas.add(imgInstance);
+  React.useEffect(() => {
+    const canvas = new fabric.Canvas("my-fabric-canvas");
 
+    const rect = new fabric.Rect({
+      width: 50,
+      height: 50,
+      fill: "blue",
+      angle: 10,
+      top: 20,
+      left: 20
+    });
+    const textbox = new fabric.Textbox("Click on the Rectangle to move it.", {
+      fontSize: 20,
+      left: 50,
+      top: 100,
+      width: 200
+    });
+
+    fabric.Image.fromURL(photoTaken, function(oImg) {
+      canvas.add(oImg);
+    });
+    
+
+    canvas.add(textbox);
+    canvas.add(rect);
+
+    // UseEffect's cleanup function
+    return () => {
+      canvas.dispose();
+    };
+  }, []);
 
   return (
     <animated.div style={props} className="decorate-page main-container">
@@ -48,14 +73,7 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
           Let's Share!
         </button>
         <div id="decorateCanvas">
-        {photoTaken && (
-          <img
-            src={photoTaken} 
-            alt="photobooth snapshot"
-            className="photoPreview"
-            id="photoBoothImage"
-          />
-        )}
+          <canvas id="my-fabric-canvas" width="500" height="500" />
         </div>
       </div>
       <div className="statusbar">
