@@ -5,26 +5,32 @@ import { fabric } from "fabric"
 // this was very helpful in figuring out how to get fabric in react https://codesandbox.io/s/react-fabric-example-87hh4
 
 
-const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
-  const props = useSpring({opacity: 1, from: {opacity: 0}});
+const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, ...props}) => {
+  // I would suggest against calling a variable "props", that's sort of reserved.
+  const opacity = useSpring({opacity: 1, from: {opacity: 0}});
+  // Also note my use of "...props" above. Now there is a variable called props which is
+  //   an object that contains anything we didn't destructure above.
+  // ex. if you had called this component thusly: <Decorate stage={something} setStage={somethingElse} herp="derp" hoop="doop" />
+  //   `props` would equal { herp: 'derp', hoop: 'doop' }
   
-  const [decorateImage, setDecorateImage] = React.useState(null);
-
+  // Set up a persistent canvas
+  const [canvas, setCanvas] = React.useState(undefined)
   React.useEffect(() => {
-    const canvas = new fabric.Canvas("my-fabric-canvas");
+    setCanvas(new fabric.Canvas("my-fabric-canvas"));
+    // Get it out of memory when this component is unmounted
+    return () => canvas.dispose();
+  }, [])
 
-    fabric.Image.fromURL(decorateImage, function(oImg) {
-      canvas.add(oImg);
-    });
-
-    // UseEffect's cleanup function
-    return () => {
-      canvas.dispose();
-    };
-  }, [decorateImage, setDecorateImage]);
+  // These two functions are equivalent, just sharing how to arrow-syntax for fun
+  const decorateImage = (url) => fabric.Image.fromURL(url, (oImg) => canvas.add(oImg));
+  // function decorateImage (url) {
+  //   fabric.Image.fromURL(url, function(oImg) {
+  //     canvas.add(oImg);
+  //   });
+  // }
 
   return (
-    <animated.div style={props} className="decorate-page">
+    <animated.div style={opacity} className="decorate-page">
       <div className="main-container">
         <div className="title">
           <div className="pull-right">
@@ -91,12 +97,12 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
           <img 
           className="decoration" 
           src="images/panda_ears.png"
-          onClick={e => setDecorateImage(e.target.src)}
+          onClick={e => decorateImage(e.target.src)}
           ></img>
           <img 
           className="decoration" 
           src="images/cat-ears.png"
-          onClick={e => setDecorateImage(e.target.src)}
+          onClick={e => decorateImage(e.target.src)}
           ></img>
           
           
