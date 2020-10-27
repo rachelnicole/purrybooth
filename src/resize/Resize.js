@@ -3,17 +3,18 @@ import ReactDOM from 'react-dom'
 import Cropper from 'react-easy-crop'
 import Slider from '@material-ui/core/Slider';
 import { useSpring, animated } from 'react-spring'
+import getCroppedImg from './cropImage'
 import './crop.css'
 
 
 const Resize = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
   const props = useSpring({opacity: 1, from: {opacity: 0}})
-
   const [crop, setCrop] = useState({ x: 0, y: 0 })
   const [initialCroppedAreaPixels, setInitialCroppedAreaPixels] = useState(
     undefined
   )
   const [zoom, setZoom] = useState(1)
+  const [croppedImage, setCroppedImage] = useState(null)
 
   useEffect(() => {
     const croppedAreaPixels = JSON.parse(
@@ -22,20 +23,33 @@ const Resize = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
     setInitialCroppedAreaPixels(croppedAreaPixels)
   }, [])
 
+  const showCroppedImage = useCallback(async (croppedAreaPixels) => {
+    try {
+      const croppedImage = await getCroppedImg(
+        photoTaken,
+        croppedAreaPixels
+      )
+      console.log('donee', { croppedImage })
+      setCroppedImage(croppedImage)
+    } catch (e) {
+      console.error(e)
+    }
+  }, [])
+
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
     console.log(croppedArea, croppedAreaPixels)
+    showCroppedImage(croppedAreaPixels)
     window.localStorage.setItem(
       'croppedAreaPixels',
       JSON.stringify(croppedAreaPixels)
     )
   }, [])
- 
 
-  // const updateState = () => {
-  //   const filteredImage = document.getElementById('canvas'),
-  //         dataURL = filteredImage.toDataURL();
-  //   photoTakenEncoded(dataURL);
-  // } 
+
+
+ const updateState = () => {
+   photoTakenEncoded(croppedImage);
+ } 
 
   return (
     <animated.div style={props} className="decorate-page main-container">
@@ -60,12 +74,13 @@ const Resize = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
         </div>
       </div>
       <div className="container-inner">
-        <p>Add some filters to your photo:</p>
+        <p>Position your image how you'd like into this square:</p>
         <button
           type="button"
           className="btn"
           onClick={() => {
           setStage("filter")
+          updateState()
           }}>
           Let's Add Some Filters!
         </button>

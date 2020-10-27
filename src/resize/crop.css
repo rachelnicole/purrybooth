@@ -1,7 +1,7 @@
 .reactEasyCrop_Container {
   position: relative;
   max-width: 800px;
-  height: 600px;
+  height: 450px;
   top: 0;
   left: 0;
   right: 0;
@@ -29,7 +29,7 @@
   left: 0;
   top: 0;
   /* transform: translate(-50%, -50%); */
-  border: 5px dashed rgba(0, 0, 0, 0.5);
+  border: 1px dashed rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   box-shadow: 0 0 0 9999em;
   color: #fff;

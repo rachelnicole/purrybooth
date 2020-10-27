@@ -15,6 +15,7 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, ...props}) =
   
   // Set up a persistent canvas
   const [canvas, setCanvas] = React.useState(undefined)
+  
   React.useEffect(() => {
     setCanvas(new fabric.Canvas("my-fabric-canvas"));
     // Get it out of memory when this component is unmounted
