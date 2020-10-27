@@ -49,9 +49,9 @@ const Photo = ({ stage, setStage, photoTakenEncoded }) => {
         <button
           type="button"
           className="btn"
-          onClick={() => setStage("resize")}
+          onClick={() => setStage("filter")}
         >
-          Resize Photo
+          Filter Photo
         </button>
 
         <Webcam
@@ -66,7 +66,6 @@ const Photo = ({ stage, setStage, photoTakenEncoded }) => {
             className="photoPreview"
             src={imgSrc} 
             alt="photobooth snapshot"
-            photoPreview
           />
         )}
       </div>

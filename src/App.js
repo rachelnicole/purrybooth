@@ -11,7 +11,7 @@ import './app.scss';
 
 const App = () => {
 
-  const [stage, setStage] = React.useState("photo"),
+  const [stage, setStage] = React.useState("upload"),
         [photoTaken, photoTakenEncoded] = React.useState(null);
 
   return (

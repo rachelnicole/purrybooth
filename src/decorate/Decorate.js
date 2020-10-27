@@ -14,22 +14,30 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, ...props}) =
   //   `props` would equal { herp: 'derp', hoop: 'doop' }
   
   // Set up a persistent canvas
-  const [canvas, setCanvas] = React.useState(undefined)
-  
+  let canvas;
+
   React.useEffect(() => {
-    setCanvas(new fabric.Canvas("my-fabric-canvas"));
-    var imgElement = document.getElementById('photoPreview');
-    var imgInstance = new fabric.Image(imgElement, {
-      left: 0,
-      top: 0,
-      opacity: 0.85
-    });
+      canvas = new fabric.Canvas("my-fabric-canvas");
+  }, []);
 
-    canvas.add(imgInstance);
-    // Get it out of memory when this component is unmounted
-    return () => canvas.dispose();
-  }, [])
 
+   const addBackground = (photoTaken) => 
+     fabric.Image.fromURL(photoTaken, (oImg) => 
+     canvas.setBackgroundImage(oImg, canvas.renderAll.bind(canvas), {
+        // Optionally add an opacity lvl to the image
+        backgroundImageOpacity: 0.5,
+        // should the image be resized to fit the container?
+        backgroundImageStretch: false
+    })
+   );
+
+   addBackground(photoTaken)
+
+  const testingCrap = (url) => 
+    fabric.Image.fromURL(url, (oImg) => 
+    canvas.add(oImg)
+  );
+  
   // These two functions are equivalent, just sharing how to arrow-syntax for fun
   const decorateImage = (url) => 
     fabric.Image.fromURL(url, (oImg) => 
@@ -66,7 +74,7 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, ...props}) =
           </div>
         </div>
         <div className="container-inner">
-          <p>Add some filters to your photo:</p>
+          <p>Let's Decorate:</p>
           <button
             type="button"
             className="btn"
@@ -110,14 +118,21 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, ...props}) =
           <img 
           className="decoration" 
           src="images/panda_ears.png"
+          alt="panda bear ears"
           onClick={e => decorateImage(e.target.src)}
           ></img>
           <img 
           className="decoration" 
           src="images/cat-ears.png"
+          alt="cat ears"
           onClick={e => decorateImage(e.target.src)}
           ></img>
-          
+          <img 
+          className="decoration" 
+          src={photoTaken}
+          alt="cat ears"
+          onClick={e => decorateImage(e.target.src)}
+          ></img>
           
         </div>
         <div className="statusbar">
@@ -125,14 +140,6 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, ...props}) =
           <div className="right">&nbsp;</div>
         </div>
       </div>
-      {photoTaken && (
-          <img
-            id="photoPreview"
-            src={photoTaken} 
-            alt="photobooth snapshot"
-            photoPreview
-          />
-        )}
     </animated.div>
   )
 }

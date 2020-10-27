@@ -39,9 +39,11 @@ const Filter = ( {stage, setStage, photoTaken, photoTakenEncoded}) => {
         <button
           type="button"
           className="btn"
-          onClick={() => setStage("filter")}
-        >
-          Lets Add a Filter
+          onClick={() => {
+          setStage("decorate")
+          updateState()
+          }}>
+          Let's Decorate!
         </button>
 
         <Canvas {...{photoTaken}} className="photoPreview"></Canvas>
