@@ -43,6 +43,10 @@ video {
 .decorate-page .main-container {
   float: left;
 }
+.decorate-page.main-container {
+  max-width: 100%;
+}
+
 img.decoration {
   width: 100px;
 }

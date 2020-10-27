@@ -3,8 +3,8 @@ import { useSpring, animated } from 'react-spring'
 import Webcam from "react-webcam";
 
 const videoConstraints = {
-  width: 600,
-  height: 600,
+  width: 1000,
+  height: 1000,
 };
 
 const Photo = ({ stage, setStage, photoTakenEncoded }) => {

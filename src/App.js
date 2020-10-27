@@ -3,6 +3,7 @@ import Landing from './landing/Landing'
 import Layout from './layout/Layout'
 import Mode from './mode/Mode'
 import Photo from './photo/Photo'
+import Resize from './resize/Resize'
 import Filter from './filter/Filter'
 import Decorate from './decorate/Decorate'
 import Share from './share/Share'
@@ -11,7 +12,7 @@ import './app.scss';
 
 const App = () => {
 
-  const [stage, setStage] = React.useState("decorate"),
+  const [stage, setStage] = React.useState("upload"),
         [photoTaken, photoTakenEncoded] = React.useState(null);
 
   return (
@@ -21,6 +22,7 @@ const App = () => {
       {stage === "mode" && <Mode {...{ setStage }} { ...{stage} }/>}
       {stage === "upload" && <Upload {...{ setStage }} {...{ photoTakenEncoded }} { ...{stage} }/>}
       {stage === "photo" && <Photo {...{ setStage }} {...{ photoTakenEncoded }} { ...{stage} } />}
+      {stage === "resize" && <Resize {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} { ...{stage} }/>}
       {stage === "filter" && <Filter {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} { ...{stage} }/>}
       {stage === "decorate" && <Decorate {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} { ...{stage} }/>}
       {stage === "share" && <Share {...{ setStage }} { ...{stage} } />}
