@@ -49,9 +49,9 @@ const Photo = ({ stage, setStage, photoTakenEncoded }) => {
         <button
           type="button"
           className="btn"
-          onClick={() => setStage("filter")}
+          onClick={() => setStage("resize")}
         >
-          Filter Photo
+          Resize Photo
         </button>
 
         <Webcam

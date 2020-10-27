@@ -18,12 +18,24 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, ...props}) =
   
   React.useEffect(() => {
     setCanvas(new fabric.Canvas("my-fabric-canvas"));
+    var imgElement = document.getElementById('photoPreview');
+    var imgInstance = new fabric.Image(imgElement, {
+      left: 0,
+      top: 0,
+      opacity: 0.85
+    });
+
+    canvas.add(imgInstance);
     // Get it out of memory when this component is unmounted
     return () => canvas.dispose();
   }, [])
 
   // These two functions are equivalent, just sharing how to arrow-syntax for fun
-  const decorateImage = (url) => fabric.Image.fromURL(url, (oImg) => canvas.add(oImg));
+  const decorateImage = (url) => 
+    fabric.Image.fromURL(url, (oImg) => 
+    canvas.add(oImg)
+  );
+
   // function decorateImage (url) {
   //   fabric.Image.fromURL(url, function(oImg) {
   //     canvas.add(oImg);
@@ -113,6 +125,14 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, ...props}) =
           <div className="right">&nbsp;</div>
         </div>
       </div>
+      {photoTaken && (
+          <img
+            id="photoPreview"
+            src={photoTaken} 
+            alt="photobooth snapshot"
+            photoPreview
+          />
+        )}
     </animated.div>
   )
 }

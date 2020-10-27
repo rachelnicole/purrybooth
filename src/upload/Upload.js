@@ -55,9 +55,9 @@ const Upload = ({ stage, setStage, photoTakenEncoded }) => {
         <button
           type="button"
           className="btn"
-          onClick={() => setStage("resize")}
+          onClick={() => setStage("filter")}
         >
-          Resize Photo
+          Lets Add a Filter
         </button>
       </div>
       <div className="statusbar">
