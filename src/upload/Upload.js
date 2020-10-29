@@ -2,7 +2,7 @@ import React from "react";
 import { useSpring, animated } from 'react-spring'
 import ImageUploader from "react-images-upload";
 
-const Upload = ({ stage, setStage, photoTakenEncoded }) => {
+const Upload = ({ stage, setStage, photoTakenEncoded, setAspectRatio }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } });
 
 
@@ -10,10 +10,20 @@ const Upload = ({ stage, setStage, photoTakenEncoded }) => {
 
 
   const onDrop = React.useCallback((picture, pictures) => {
-    console.log(pictures);
     setImgSrc(pictures);
     photoTakenEncoded(pictures);
   }, [photoTakenEncoded]);
+
+  const calculateImage = () => {
+    const imageUploaded = document.querySelector('.photoPreview');
+
+    const image = {
+        width: imageUploaded.naturalWidth,
+        height: imageUploaded.naturalHeight
+    };
+    setAspectRatio(image);
+  }
+
 
   return (
     <animated.div style={props} className="upload-page main-container">
@@ -55,7 +65,10 @@ const Upload = ({ stage, setStage, photoTakenEncoded }) => {
         <button
           type="button"
           className="btn"
-          onClick={() => setStage("filter")}
+          onClick={() => {
+            setStage("filter")
+            calculateImage()
+            }}
         >
           Lets Add a Filter
         </button>

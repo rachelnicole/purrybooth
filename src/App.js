@@ -12,17 +12,18 @@ import './app.scss';
 const App = () => {
 
   const [stage, setStage] = React.useState("upload"),
-        [photoTaken, photoTakenEncoded] = React.useState(null);
+        [photoTaken, photoTakenEncoded] = React.useState(null),
+        [aspectRatio, setAspectRatio] = React.useState(null);
 
   return (
     <div>
       {stage === "landing" && <Landing {...{ setStage }} { ...{stage} }/>}
       {stage === "layout" && <Layout {...{ setStage }} { ...{stage} }/>}
       {stage === "mode" && <Mode {...{ setStage }} { ...{stage} }/>}
-      {stage === "upload" && <Upload {...{ setStage }} {...{ photoTakenEncoded }} { ...{stage} }/>}
+      {stage === "upload" && <Upload {...{ setStage }} {...{ photoTakenEncoded }} {...{ setAspectRatio }} { ...{stage} }/>}
       {stage === "photo" && <Photo {...{ setStage }} {...{ photoTakenEncoded }} { ...{stage} } />}
       {stage === "filter" && <Filter {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} { ...{stage} }/>}
-      {stage === "decorate" && <Decorate {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} { ...{stage} }/>}
+      {stage === "decorate" && <Decorate {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} {...{ aspectRatio }} { ...{stage} }/>}
       {stage === "share" && <Share {...{ setStage }} { ...{stage} } />}
     </div>
   )}

@@ -5,7 +5,7 @@ import { fabric } from "fabric"
 // this was very helpful in figuring out how to get fabric in react https://codesandbox.io/s/react-fabric-example-87hh4
 
 
-const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, ...props}) => {
+const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, aspectRatio, ...props}) => {
   // I would suggest against calling a variable "props", that's sort of reserved.
   const opacity = useSpring({opacity: 1, from: {opacity: 0}});
   // Also note my use of "...props" above. Now there is a variable called props which is
@@ -18,6 +18,11 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, ...props}) =
 
   React.useEffect(() => {
       canvas = new fabric.Canvas("my-fabric-canvas");
+      canvas.setDimensions({
+        width: aspectRatio.width,
+        height: aspectRatio.height
+       });
+      console.log(aspectRatio)
   }, []);
 
 
@@ -27,7 +32,9 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, ...props}) =
         // Optionally add an opacity lvl to the image
         backgroundImageOpacity: 0.5,
         // should the image be resized to fit the container?
-        backgroundImageStretch: false
+        backgroundImageStretch: false,
+        scaleX: canvas.width / oImg.width,
+        scaleY: canvas.height / oImg.height
     })
    );
 
@@ -129,8 +136,14 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, ...props}) =
           ></img>
           <img 
           className="decoration" 
-          src={photoTaken}
-          alt="cat ears"
+          src="images/sparkles.png"
+          alt="sparkles"
+          onClick={e => decorateImage(e.target.src)}
+          ></img>
+          <img 
+          className="decoration" 
+          src="images/devil.png"
+          alt="devil horns"
           onClick={e => decorateImage(e.target.src)}
           ></img>
           
