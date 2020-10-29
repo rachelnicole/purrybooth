@@ -39,11 +39,6 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, aspectRatio,
    );
 
    addBackground(photoTaken)
-
-  const testingCrap = (url) => 
-    fabric.Image.fromURL(url, (oImg) => 
-    canvas.add(oImg)
-  );
   
   // These two functions are equivalent, just sharing how to arrow-syntax for fun
   const decorateImage = (url) => 
