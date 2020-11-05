@@ -2,7 +2,7 @@ import React from "react";
 import { useSpring, animated } from 'react-spring'
 import ImageUploader from "react-images-upload";
 
-const Upload = ({ stage, setStage, photoTakenEncoded, setAspectRatio }) => {
+const Upload = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } });
 
 
@@ -21,7 +21,7 @@ const Upload = ({ stage, setStage, photoTakenEncoded, setAspectRatio }) => {
         width: imageUploaded.naturalWidth,
         height: imageUploaded.naturalHeight
     };
-    setAspectRatio(image);
+    setDimensions(image);
   }
 
 

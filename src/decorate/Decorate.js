@@ -2,55 +2,58 @@ import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import { fabric } from "fabric"
 
-// this was very helpful in figuring out how to get fabric in react https://codesandbox.io/s/react-fabric-example-87hh4
+const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }) => {
 
+  const opacity = useSpring({ opacity: 1, from: { opacity: 0 } });
 
-const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, aspectRatio, ...props}) => {
-  // I would suggest against calling a variable "props", that's sort of reserved.
-  const opacity = useSpring({opacity: 1, from: {opacity: 0}});
-  // Also note my use of "...props" above. Now there is a variable called props which is
-  //   an object that contains anything we didn't destructure above.
-  // ex. if you had called this component thusly: <Decorate stage={something} setStage={somethingElse} herp="derp" hoop="doop" />
-  //   `props` would equal { herp: 'derp', hoop: 'doop' }
-  
   // Set up a persistent canvas
   let canvas;
 
+  const updateState = () => {
+    canvas.discardActiveObject();    
+    const filteredImage = document.getElementById('my-fabric-canvas'),
+      dataURL = filteredImage.toDataURL();
+    photoTakenEncoded(dataURL);
+  }
+
   React.useEffect(() => {
-      canvas = new fabric.Canvas("my-fabric-canvas");
-      canvas.setDimensions({
-        width: aspectRatio.width,
-        height: aspectRatio.height
-       });
-      console.log(aspectRatio)
-  }, []);
+    canvas = new fabric.Canvas("my-fabric-canvas");
+    canvas.setDimensions({
+      width: dimensions.width,
+      height: dimensions.height
+    });
+    console.log(dimensions)
+  }, [canvas]);
 
 
-   const addBackground = (photoTaken) => 
-     fabric.Image.fromURL(photoTaken, (oImg) => 
-     canvas.setBackgroundImage(oImg, canvas.renderAll.bind(canvas), {
+  const addBackground = (photoTaken) =>
+    fabric.Image.fromURL(photoTaken, (oImg) =>
+      canvas.setBackgroundImage(oImg, canvas.renderAll.bind(canvas), {
         // Optionally add an opacity lvl to the image
         backgroundImageOpacity: 0.5,
         // should the image be resized to fit the container?
         backgroundImageStretch: false,
         scaleX: canvas.width / oImg.width,
         scaleY: canvas.height / oImg.height
-    })
-   );
+      })
+    );
 
-   addBackground(photoTaken)
-  
+  const removeItem = () => {
+    let object = canvas.getActiveObject();
+    if (!object){
+      alert('Please select the element to remove');
+      return '';
+    }
+    canvas.remove(object);
+  }
+
+  addBackground(photoTaken)
+
   // These two functions are equivalent, just sharing how to arrow-syntax for fun
-  const decorateImage = (url) => 
-    fabric.Image.fromURL(url, (oImg) => 
-    canvas.add(oImg)
-  );
-
-  // function decorateImage (url) {
-  //   fabric.Image.fromURL(url, function(oImg) {
-  //     canvas.add(oImg);
-  //   });
-  // }
+  const decorateImage = (url) =>
+    fabric.Image.fromURL(url, (oImg) =>
+      canvas.add(oImg)
+    );
 
   return (
     <animated.div style={opacity} className="decorate-page">
@@ -81,7 +84,8 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, aspectRatio,
             type="button"
             className="btn"
             onClick={() => {
-            setStage("share")
+              setStage("share")
+              updateState()
             }}>
             Let's Share!
           </button>
@@ -117,31 +121,39 @@ const Decorate = ( {stage, setStage, photoTaken, photoTakenEncoded, aspectRatio,
         </div>
         <div className="container-inner decoration-container">
           <p>Let's decorate:</p>
-          <img 
-          className="decoration" 
-          src="images/panda_ears.png"
-          alt="panda bear ears"
-          onClick={e => decorateImage(e.target.src)}
+          <button
+            type="button"
+            className="btn"
+            onClick={() => {
+              removeItem()
+            }}>
+            Remove Active Object
+          </button>
+          <img
+            className="decoration"
+            src="images/panda_ears.png"
+            alt="panda bear ears"
+            onClick={e => decorateImage(e.target.src)}
           ></img>
-          <img 
-          className="decoration" 
-          src="images/cat-ears.png"
-          alt="cat ears"
-          onClick={e => decorateImage(e.target.src)}
+          <img
+            className="decoration"
+            src="images/cat-ears.png"
+            alt="cat ears"
+            onClick={e => decorateImage(e.target.src)}
           ></img>
-          <img 
-          className="decoration" 
-          src="images/sparkles.png"
-          alt="sparkles"
-          onClick={e => decorateImage(e.target.src)}
+          <img
+            className="decoration"
+            src="images/sparkles.png"
+            alt="sparkles"
+            onClick={e => decorateImage(e.target.src)}
           ></img>
-          <img 
-          className="decoration" 
-          src="images/devil.png"
-          alt="devil horns"
-          onClick={e => decorateImage(e.target.src)}
+          <img
+            className="decoration"
+            src="images/devil.png"
+            alt="devil horns"
+            onClick={e => decorateImage(e.target.src)}
           ></img>
-          
+
         </div>
         <div className="statusbar">
           <div className="left">3 object(s)</div>

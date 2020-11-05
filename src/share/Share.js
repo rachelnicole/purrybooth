@@ -1,7 +1,7 @@
 import React  from 'react'
 import { useSpring, animated } from 'react-spring'
 
-const Share = ( {stage, setStage} ) => {
+const Share = ( {stage, setStage, photoTaken} ) => {
   const props = useSpring({opacity: 1, from: {opacity: 0}})
 
   return (
@@ -29,6 +29,13 @@ const Share = ( {stage, setStage} ) => {
       <div className="container-inner">
         <p>this is the share page</p>
         <p>the end</p>
+        {photoTaken && (
+          <img
+            src={photoTaken} 
+            alt="photobooth snapshot"
+            className="photoPreview"
+          />
+        )}
         
       </div>
       <div className="statusbar">

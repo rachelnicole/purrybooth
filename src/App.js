@@ -13,18 +13,18 @@ const App = () => {
 
   const [stage, setStage] = React.useState("upload"),
         [photoTaken, photoTakenEncoded] = React.useState(null),
-        [aspectRatio, setAspectRatio] = React.useState(null);
+        [dimensions, setDimensions] = React.useState(null);
 
   return (
     <div>
       {stage === "landing" && <Landing {...{ setStage }} { ...{stage} }/>}
       {stage === "layout" && <Layout {...{ setStage }} { ...{stage} }/>}
       {stage === "mode" && <Mode {...{ setStage }} { ...{stage} }/>}
-      {stage === "upload" && <Upload {...{ setStage }} {...{ photoTakenEncoded }} {...{ setAspectRatio }} { ...{stage} }/>}
+      {stage === "upload" && <Upload {...{ setStage }} {...{ photoTakenEncoded }} {...{ setDimensions }} { ...{stage} }/>}
       {stage === "photo" && <Photo {...{ setStage }} {...{ photoTakenEncoded }} { ...{stage} } />}
       {stage === "filter" && <Filter {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} { ...{stage} }/>}
-      {stage === "decorate" && <Decorate {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} {...{ aspectRatio }} { ...{stage} }/>}
-      {stage === "share" && <Share {...{ setStage }} { ...{stage} } />}
+      {stage === "decorate" && <Decorate {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} {...{ dimensions }} { ...{stage} }/>}
+      {stage === "share" && <Share {...{ setStage }} {...{ photoTaken }} { ...{stage} } />}
     </div>
   )}
   

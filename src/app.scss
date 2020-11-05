@@ -42,11 +42,16 @@ video {
 
 .decorate-page .main-container {
   float: left;
+  width: 800px;
 }
-.decorate-page.main-container {
-  max-width: 600px;
+.main-container {
+  max-width: 800px;
 }
 
 img.decoration {
   width: 100px;
+}
+
+.main-container.secondary.window {
+  width: 250px;
 }
