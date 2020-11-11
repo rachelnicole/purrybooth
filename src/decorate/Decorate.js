@@ -29,6 +29,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
   React.useEffect(() => {
     canvas = new fabric.Canvas("my-fabric-canvas");
+    canvas.enableRetinaScaling = false;
     canvas.setDimensions({
       width: dimensions.width,
       height: dimensions.height
