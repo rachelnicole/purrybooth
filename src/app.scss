@@ -55,3 +55,13 @@ img.decoration {
 .main-container.secondary.window {
   width: 250px;
 }
+
+/* canvas scale hack */
+
+.canvas-container {
+  width: 100% !important;
+}
+
+canvas#my-fabric-canvas, canvas.upper-canvas {
+  width: 100% !important;
+}

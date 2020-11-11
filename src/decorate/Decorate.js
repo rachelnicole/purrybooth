@@ -38,7 +38,8 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
   }, [canvas]);
 
 
-  const addBackground = (photoTaken) =>
+  const addBackground = (photoTaken) => {
+    console.log(photoTaken)
     fabric.Image.fromURL(photoTaken, (oImg) =>
       canvas.setBackgroundImage(oImg, canvas.renderAll.bind(canvas), {
         // should the image be resized to fit the container?
@@ -46,7 +47,9 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
         scaleX: canvas.width / oImg.width,
         scaleY: canvas.height / oImg.height
       })
-    );
+    )
+  }
+    
 
   const removeItem = () => {
     let object = canvas.getActiveObject();
