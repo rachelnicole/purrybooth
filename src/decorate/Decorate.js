@@ -41,8 +41,6 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
   const addBackground = (photoTaken) =>
     fabric.Image.fromURL(photoTaken, (oImg) =>
       canvas.setBackgroundImage(oImg, canvas.renderAll.bind(canvas), {
-        // Optionally add an opacity lvl to the image
-        backgroundImageOpacity: 0.5,
         // should the image be resized to fit the container?
         backgroundImageStretch: false,
         scaleX: canvas.width / oImg.width,
