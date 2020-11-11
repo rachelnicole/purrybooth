@@ -59,7 +59,7 @@ const Upload = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
           withIcon={false}
           onChange={onDrop}
           singleImage={true}
-          imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+          imgExtension={[".jpg", ".gif", ".png", ".gif", ".jpeg"]}
           maxFileSize={5242880}
         />
         <button

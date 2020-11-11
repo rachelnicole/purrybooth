@@ -9,11 +9,22 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
   // Set up a persistent canvas
   let canvas;
 
+  const clearCanvas = () => {
+
+    canvas.discardActiveObject().renderAll();
+    
+    updateState();
+    
+  }
+
   const updateState = () => {
-    canvas.discardActiveObject();    
     const filteredImage = document.getElementById('my-fabric-canvas'),
-      dataURL = filteredImage.toDataURL();
+    dataURL = filteredImage.toDataURL();
+
     photoTakenEncoded(dataURL);
+
+    setStage("share");
+
   }
 
   React.useEffect(() => {
@@ -40,11 +51,12 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
   const removeItem = () => {
     let object = canvas.getActiveObject();
-    if (!object){
-      alert('Please select the element to remove');
-      return '';
-    }
-    canvas.remove(object);
+    let remove = canvas.discardActiveObject();
+    // if (!object){
+    //   alert('Please select the element to remove');
+    //   return '';
+    // }
+    canvas.discardActiveObject()
   }
 
   addBackground(photoTaken)
@@ -84,8 +96,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
             type="button"
             className="btn"
             onClick={() => {
-              setStage("share")
-              updateState()
+              clearCanvas()
             }}>
             Let's Share!
           </button>
