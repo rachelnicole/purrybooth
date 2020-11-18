@@ -40,12 +40,12 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
   const addBackground = (photoTaken) => {
     console.log(photoTaken)
-    fabric.Image.fromURL(photoTaken, (oImg) =>
-      canvas.setBackgroundImage(oImg, canvas.renderAll.bind(canvas), {
+    fabric.Image.fromURL(photoTaken, (photoTaken) =>
+      canvas.setBackgroundImage(photoTaken, canvas.renderAll.bind(canvas), {
         // should the image be resized to fit the container?
         backgroundImageStretch: false,
-        scaleX: canvas.width / oImg.width,
-        scaleY: canvas.height / oImg.height
+        scaleX: canvas.width / photoTaken.width,
+        scaleY: canvas.height / photoTaken.height
       })
     )
   }
