@@ -40,7 +40,8 @@ video {
   width: 100%;
 }
 
-.decorate-page .main-container {
+.decorate-page .main-container,
+.photo-page .main-container {
   float: left;
   width: 800px;
 }
@@ -57,11 +58,3 @@ img.decoration {
 }
 
 /* canvas scale hack */
-
-.canvas-container {
-  width: 100% !important;
-}
-
-canvas#my-fabric-canvas, canvas.upper-canvas {
-  width: 100% !important;
-}

@@ -155,14 +155,16 @@ class Canvas extends React.Component {
         <section className="content">
           <canvas ref="canvas" className="decorateCanvas" id="canvas"/>
         </section>
+        <select>
+          <option value="grapefruit">Grapefruit</option>
+          <option value="lime">Lime</option>
+          <option selected value="coconut">Coconut</option>
+          <option value="mango">Mango</option>
+        </select>
         <ul>
           <h4>Channels</h4>
-          <li id="alter_red" onClick={() => this.alterChannel(0)}>Increase Red Channel</li>
-          <li id="alter_green" onClick={() => this.alterChannel(1)}>Increase Green Channel</li>
-          <li id="alter_blue" onClick={() => this.alterChannel(2)}>Increase Blue Channel</li>
           <li id="alter_greyscale" onClick={() => this.greyScale()}>GreyScale</li>
           <li id="alter_threedee" onClick={() => this.threeDee()}>3D Glasses</li>
-          <li id="alter_blue" onClick={this.effectPipeline}>Inc Channel + Threshold</li>
           <li id="alter_filter_oceanic" onClick={() => this.filterPhoto('oceanic')}>Oceanic</li>
           <li id="alter_filter_islands" onClick={() => this.filterPhoto('islands')}>Islands</li>
           <li id="alter_filter_marine" onClick={() => this.filterPhoto('marine')}>Marine</li>

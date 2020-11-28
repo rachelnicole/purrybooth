@@ -30,9 +30,20 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
   React.useEffect(() => {
     canvas = new fabric.Canvas("my-fabric-canvas");
     canvas.enableRetinaScaling = false;
+
+    // This blog post helped me solve how to keep the aspect ratio of the canvas the same as the image https://prcode.co.uk/2018/04/20/keeping-an-images-ratio-on-resize-in-javascript/
+
+    let widthOnePercent = dimensions.width / 100,
+    heightOnePercent = dimensions.height / 100,
+    imageCurrentWidth = document.getElementById('decorateCanvas').clientWidth,
+    imageCurrentPercent = imageCurrentWidth / widthOnePercent,
+    imageNewHeight = heightOnePercent * imageCurrentPercent;
+
+    console.log(imageCurrentWidth);
+
     canvas.setDimensions({
-      width: dimensions.width,
-      height: dimensions.height
+      width: imageCurrentWidth,
+      height: imageNewHeight
     });
     console.log(dimensions)
   }, [canvas]);
@@ -45,20 +56,9 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
         // should the image be resized to fit the container?
         backgroundImageStretch: false,
         scaleX: canvas.width / photoTaken.width,
-        scaleY: canvas.height / photoTaken.height
+        scaleY: canvas.height / photoTaken.height 
       })
     )
-  }
-    
-
-  const removeItem = () => {
-    let object = canvas.getActiveObject();
-    let remove = canvas.discardActiveObject();
-    // if (!object){
-    //   alert('Please select the element to remove');
-    //   return '';
-    // }
-    canvas.discardActiveObject()
   }
 
   addBackground(photoTaken)
@@ -134,14 +134,6 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
         </div>
         <div className="container-inner decoration-container">
           <p>Let's decorate:</p>
-          <button
-            type="button"
-            className="btn"
-            onClick={() => {
-              removeItem()
-            }}>
-            Remove Active Object
-          </button>
           <img
             className="decoration"
             src="images/panda_ears.png"
