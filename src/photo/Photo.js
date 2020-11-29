@@ -7,7 +7,7 @@ const videoConstraints = {
   height: 1000,
 };
 
-const Photo = ({ stage, setStage, photoTakenEncoded }) => {
+const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
 
   // this is the react-spring controls for fading in on load
   const props = useSpring({ opacity: 1, from: { opacity: 0 } });
@@ -20,6 +20,16 @@ const Photo = ({ stage, setStage, photoTakenEncoded }) => {
     setImgSrc(imageSrc);
     photoTakenEncoded(imageSrc);
   }, [webcamRef, setImgSrc, photoTakenEncoded]);
+
+  const calculateImage = () => {
+    const imageUploaded = document.querySelector('.photoPreview');
+
+    const image = {
+        width: imageUploaded.naturalWidth,
+        height: imageUploaded.naturalHeight
+    };
+    setDimensions(image);
+  }
 
   return (
     <animated.div style={props} className="photo-page">
@@ -81,7 +91,13 @@ const Photo = ({ stage, setStage, photoTakenEncoded }) => {
             <input readOnly value="http://itsasecret"></input>
           </div>
         </div>
-        <div className="container-inner decoration-container">
+        <div className="container-inner webcam-container">
+        <img
+              className="purrybooth-logo"
+              src="images/logo.png"
+              alt="purrybooth-logo"
+            />
+          
           {imgSrc && (
             <img
               className="photoPreview"
@@ -89,14 +105,21 @@ const Photo = ({ stage, setStage, photoTakenEncoded }) => {
               alt="photobooth snapshot"
             />
           )}
-          <p>When you're happy with your photo, go ahead and go to the filter page.</p>
+          {imgSrc &&
+        <div className="photo-added">
+        <p>When you're happy with your photo, go ahead and go to the filter page.</p>
           <button
             type="button"
             className="btn"
-            onClick={() => setStage("filter")}
+            onClick={() => {
+            setStage("filter")
+            calculateImage()
+            }}
           >
-            Filter Photo 
+            Filters » 
         </button>
+        </div>
+      }
 
         </div>
         <div className="statusbar">

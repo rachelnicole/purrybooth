@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import { fabric } from "fabric"
+import decorations from './images'
 
 const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }) => {
 
@@ -8,6 +9,9 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
   // Set up a persistent canvas
   let canvas;
+
+
+
 
   const clearCanvas = () => {
 
@@ -46,6 +50,8 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
       height: imageNewHeight
     });
     console.log(dimensions)
+
+    
   }, [canvas]);
 
 
@@ -133,31 +139,27 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
           </div>
         </div>
         <div className="container-inner decoration-container">
+        <img
+              className="purrybooth-logo"
+              src="images/logo.png"
+              alt="purrybooth-logo"
+            />
           <p>Let's decorate:</p>
-          <img
-            className="decoration"
-            src="images/panda_ears.png"
-            alt="panda bear ears"
-            onClick={e => decorateImage(e.target.src)}
-          ></img>
-          <img
-            className="decoration"
-            src="images/cat-ears.png"
-            alt="cat ears"
-            onClick={e => decorateImage(e.target.src)}
-          ></img>
-          <img
-            className="decoration"
-            src="images/sparkles.png"
-            alt="sparkles"
-            onClick={e => decorateImage(e.target.src)}
-          ></img>
-          <img
-            className="decoration"
-            src="images/devil.png"
-            alt="devil horns"
-            onClick={e => decorateImage(e.target.src)}
-          ></img>
+          <div id="decoration-container">
+          {decorations.map((decoration, i) => {
+      console.log("Entered");
+      let decorationUrl = 'images/' + decoration + '.png',
+          decorationAlt = decoration.replace(/-/g, ' ');
+      return (
+      <img
+      className="decoration"
+      src={decorationUrl}
+      alt={decorationAlt}
+      onClick={e => decorateImage(e.target.src)}
+    ></img>
+    )})}
+          </div>
+          
 
         </div>
         <div className="statusbar">

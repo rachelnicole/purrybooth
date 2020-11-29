@@ -40,8 +40,7 @@ video {
   width: 100%;
 }
 
-.decorate-page .main-container,
-.photo-page .main-container {
+.main-container {
   float: left;
   width: 800px;
 }
@@ -54,7 +53,26 @@ img.decoration {
 }
 
 .main-container.secondary.window {
+  width: auto;
+  margin-left: 10px;
+}
+
+img.purrybooth-logo {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.container-inner.webcam-container, .container-inner.upload-container {
   width: 250px;
 }
 
-/* canvas scale hack */
+div#decoration-container {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(3, .75fr);
+  align-items: center;
+}

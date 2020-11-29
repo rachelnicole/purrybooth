@@ -1,0 +1,19 @@
+module.exports = [
+  "angel-halo",
+  "angry-eyebrows",
+  "bright-pink-blush",
+  "cat-ears",
+  "dark-pink-heart",
+  "devil",
+  "freckles",
+  "light-pink-heart",
+  "o-eyes",
+  "panda_ears",
+  "pink-blush",
+  "pink-bow",
+  "red-hearts",
+  "salmon-heart",
+  "sparkles",
+  "w-lips",
+  "x-eyes"
+]

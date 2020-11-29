@@ -8,11 +8,29 @@ class Canvas extends React.Component {
       loadedWasm: false,
       isLoaded: false,
       wasm: null,
-      img: null
+      img: null,
+      filter: null
     };
   }
   componentDidMount() {
     this.loadWasm();
+  }
+
+  componentDidUpdate() {
+    console.log(this.props.filter)
+
+    if (this.props.filter === 'greyscale') {
+      this.greyScale()
+    }
+    else if (this.props.filter === 'threedee') {
+      this.threeDee()
+    } 
+    else if (this.props.filter === 'none') {
+      this.drawOriginalImage();
+    }
+    else {
+      this.filterPhoto(this.props.filter)
+    }
   }
 
   drawOriginalImage = async () => {
@@ -155,33 +173,6 @@ class Canvas extends React.Component {
         <section className="content">
           <canvas ref="canvas" className="decorateCanvas" id="canvas"/>
         </section>
-        <select>
-          <option value="grapefruit">Grapefruit</option>
-          <option value="lime">Lime</option>
-          <option selected value="coconut">Coconut</option>
-          <option value="mango">Mango</option>
-        </select>
-        <ul>
-          <h4>Channels</h4>
-          <li id="alter_greyscale" onClick={() => this.greyScale()}>GreyScale</li>
-          <li id="alter_threedee" onClick={() => this.threeDee()}>3D Glasses</li>
-          <li id="alter_filter_oceanic" onClick={() => this.filterPhoto('oceanic')}>Oceanic</li>
-          <li id="alter_filter_islands" onClick={() => this.filterPhoto('islands')}>Islands</li>
-          <li id="alter_filter_marine" onClick={() => this.filterPhoto('marine')}>Marine</li>
-          <li id="alter_filter_seagreen" onClick={() => this.filterPhoto('seagreen')}>Seagreen</li>
-          <li id="alter_filter_flagblue" onClick={() => this.filterPhoto('flagblue')}>Flag Blue</li>
-          <li id="alter_filter_liquid" onClick={() => this.filterPhoto('liquid')}>Liquid</li>
-          <li id="alter_filter_diamante" onClick={() => this.filterPhoto('diamante')}>Diamante</li>
-          <li id="alter_filter_radio" onClick={() => this.filterPhoto('radio')}>Radio</li>
-          <li id="alter_filter_twenties" onClick={() => this.filterPhoto('twenties')}>Twenties</li>
-          <li id="alter_filter_rosetint" onClick={() => this.filterPhoto('rosetint')}>Rosetint</li>
-          <li id="alter_filter_mauve" onClick={() => this.filterPhoto('mauve')}>Mauve</li>
-          <li id="alter_filter_bluechrome" onClick={() => this.filterPhoto('bluechrome')}>Blue Monochrome</li>
-          <li id="alter_filter_vintage" onClick={() => this.filterPhoto('vintage')}>Vintage</li>
-          <li id="alter_filter_perfume" onClick={() => this.filterPhoto('perfume')}>Perfume</li>
-          <li id="alter_filter_serenity" onClick={() => this.filterPhoto('serenity')}>Serenity</li>
-
-        </ul>
       </div>
     )
   }

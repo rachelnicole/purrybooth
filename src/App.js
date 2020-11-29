@@ -13,7 +13,8 @@ const App = () => {
 
   const [stage, setStage] = React.useState("landing"),
         [photoTaken, photoTakenEncoded] = React.useState(null),
-        [dimensions, setDimensions] = React.useState(null);
+        [dimensions, setDimensions] = React.useState(null),
+        [filter, setFilter] = React.useState(null);
 
   return (
     <div>
@@ -21,8 +22,8 @@ const App = () => {
       {stage === "layout" && <Layout {...{ setStage }} { ...{stage} }/>}
       {stage === "mode" && <Mode {...{ setStage }} { ...{stage} }/>}
       {stage === "upload" && <Upload {...{ setStage }} {...{ photoTakenEncoded }} {...{ setDimensions }} { ...{stage} }/>}
-      {stage === "photo" && <Photo {...{ setStage }} {...{ photoTakenEncoded }} { ...{stage} } />}
-      {stage === "filter" && <Filter {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} { ...{stage} }/>}
+      {stage === "photo" && <Photo {...{ setStage }} {...{ photoTakenEncoded }} { ...{stage} } {...{ setDimensions }}/>}
+      {stage === "filter" && <Filter {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} { ...{stage} } {...{ setFilter }} {...{ filter }}/>}
       {stage === "decorate" && <Decorate {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} {...{ dimensions }} { ...{stage} }/>}
       {stage === "share" && <Share {...{ setStage }} {...{ photoTaken }} { ...{stage} } />}
     </div>
