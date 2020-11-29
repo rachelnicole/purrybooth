@@ -1,6 +1,5 @@
 import React from 'react'
 import Landing from './landing/Landing'
-import Layout from './layout/Layout'
 import Mode from './mode/Mode'
 import Photo from './photo/Photo'
 import Filter from './filter/Filter'
@@ -19,7 +18,6 @@ const App = () => {
   return (
     <div>
       {stage === "landing" && <Landing {...{ setStage }} { ...{stage} }/>}
-      {stage === "layout" && <Layout {...{ setStage }} { ...{stage} }/>}
       {stage === "mode" && <Mode {...{ setStage }} { ...{stage} }/>}
       {stage === "upload" && <Upload {...{ setStage }} {...{ photoTakenEncoded }} {...{ setDimensions }} { ...{stage} }/>}
       {stage === "photo" && <Photo {...{ setStage }} {...{ photoTakenEncoded }} { ...{stage} } {...{ setDimensions }}/>}
