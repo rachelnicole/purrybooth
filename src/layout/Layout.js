@@ -23,7 +23,7 @@ const Layout = ( {stage, setStage}) => {
       <div className="ie-bar">
         <div className="label">Address:</div>
         <div className="combo">
-          <input spellcheck="false" value="http://itsasecret"></input>
+          <input spellcheck="false" value="http://purrybooth.com"></input>
         </div>
       </div>
       <div class="container-inner">

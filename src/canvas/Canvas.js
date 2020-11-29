@@ -22,7 +22,7 @@ class Canvas extends React.Component {
     if (this.props.filter === 'greyscale') {
       this.greyScale()
     }
-    else if (this.props.filter === 'threedee') {
+    else if (this.props.filter === 'threeDee') {
       this.threeDee()
     } 
     else if (this.props.filter === 'none') {

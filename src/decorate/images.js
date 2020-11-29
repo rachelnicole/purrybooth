@@ -1,4 +1,8 @@
 module.exports = [
+  "third-eye",
+  "pearrot",
+  "septum-ring",
+  "lip-bite",
   "angel-halo",
   "angry-eyebrows",
   "bright-pink-blush",

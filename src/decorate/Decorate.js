@@ -16,14 +16,14 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
   const clearCanvas = () => {
 
     canvas.discardActiveObject().renderAll();
-    
+
     updateState();
-    
+
   }
 
   const updateState = () => {
     const filteredImage = document.getElementById('my-fabric-canvas'),
-    dataURL = filteredImage.toDataURL();
+      dataURL = filteredImage.toDataURL();
 
     photoTakenEncoded(dataURL);
 
@@ -38,10 +38,10 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
     // This blog post helped me solve how to keep the aspect ratio of the canvas the same as the image https://prcode.co.uk/2018/04/20/keeping-an-images-ratio-on-resize-in-javascript/
 
     let widthOnePercent = dimensions.width / 100,
-    heightOnePercent = dimensions.height / 100,
-    imageCurrentWidth = document.getElementById('decorateCanvas').clientWidth,
-    imageCurrentPercent = imageCurrentWidth / widthOnePercent,
-    imageNewHeight = heightOnePercent * imageCurrentPercent;
+      heightOnePercent = dimensions.height / 100,
+      imageCurrentWidth = document.getElementById('decorateCanvas').clientWidth,
+      imageCurrentPercent = imageCurrentWidth / widthOnePercent,
+      imageNewHeight = heightOnePercent * imageCurrentPercent;
 
     console.log(imageCurrentWidth);
 
@@ -51,7 +51,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
     });
     console.log(dimensions)
 
-    
+
   }, [canvas]);
 
 
@@ -62,7 +62,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
         // should the image be resized to fit the container?
         backgroundImageStretch: false,
         scaleX: canvas.width / photoTaken.width,
-        scaleY: canvas.height / photoTaken.height 
+        scaleY: canvas.height / photoTaken.height
       })
     )
   }
@@ -95,19 +95,10 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
         <div className="ie-bar">
           <div className="label">Address:</div>
           <div className="combo">
-            <input readOnly value="http://itsasecret"></input>
+            <input readOnly value="http://purrybooth.com"></input>
           </div>
         </div>
         <div className="container-inner">
-          <p>Let's Decorate:</p>
-          <button
-            type="button"
-            className="btn"
-            onClick={() => {
-              clearCanvas()
-            }}>
-            Let's Share!
-          </button>
           <div id="decorateCanvas">
             <canvas id="my-fabric-canvas" width="500" height="500" />
           </div>
@@ -139,27 +130,38 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
           </div>
         </div>
         <div className="container-inner decoration-container">
-        <img
-              className="purrybooth-logo"
-              src="images/logo.png"
-              alt="purrybooth-logo"
-            />
-          <p>Let's decorate:</p>
+          <img
+            className="purrybooth-logo"
+            src="images/logo.png"
+            alt="purrybooth-logo"
+          />
+          <p>Let's decorate (scroll for more):</p>
           <div id="decoration-container">
-          {decorations.map((decoration, i) => {
-      console.log("Entered");
-      let decorationUrl = 'images/' + decoration + '.png',
-          decorationAlt = decoration.replace(/-/g, ' ');
-      return (
-      <img
-      className="decoration"
-      src={decorationUrl}
-      alt={decorationAlt}
-      onClick={e => decorateImage(e.target.src)}
-    ></img>
-    )})}
+            {decorations.map((decoration, i) => {
+              console.log("Entered");
+              let decorationUrl = 'images/' + decoration + '.png',
+                decorationAlt = decoration.replace(/-/g, ' ');
+              return (
+                <img
+                  className="decoration"
+                  src={decorationUrl}
+                  alt={decorationAlt}
+                  key={decorationAlt}
+                  onClick={e => decorateImage(e.target.src)}
+                ></img>
+              )
+            })}
           </div>
-          
+
+          <button
+            type="button"
+            className="btn"
+            onClick={() => {
+              clearCanvas()
+            }}>
+            Lets Share »
+          </button>
+
 
         </div>
         <div className="statusbar">

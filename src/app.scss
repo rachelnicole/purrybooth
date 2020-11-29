@@ -69,6 +69,8 @@ img.purrybooth-logo {
 }
 
 div#decoration-container {
+  height: 300px;
+  overflow: scroll;
   display: grid;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
