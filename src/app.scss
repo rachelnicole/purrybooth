@@ -78,3 +78,13 @@ div#decoration-container {
   grid-template-columns: repeat(3, .75fr);
   align-items: center;
 }
+
+.container-inner.decoration-container {
+  max-width: 400px;
+}
+
+button.btn.remove {
+  font-size: 12px;
+  height: 25px !important;
+  padding: 0 10px !important;
+}

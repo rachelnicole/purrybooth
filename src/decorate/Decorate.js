@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import { useSpring, animated } from 'react-spring'
 import { fabric } from "fabric"
 import decorations from './images'
@@ -31,9 +31,18 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
   }
 
+  const keyPress = useCallback((event) => {
+    if(event.keyCode === 68) {
+      //Do whatever when esc is pressed
+      canvas.remove(canvas.getActiveObject());
+    }
+  }, []);
+
   React.useEffect(() => {
     canvas = new fabric.Canvas("my-fabric-canvas");
     canvas.enableRetinaScaling = false;
+
+    document.addEventListener("keydown", keyPress, false);
 
     // This blog post helped me solve how to keep the aspect ratio of the canvas the same as the image https://prcode.co.uk/2018/04/20/keeping-an-images-ratio-on-resize-in-javascript/
 
@@ -50,7 +59,6 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
       height: imageNewHeight
     });
     console.log(dimensions)
-
 
   }, [canvas]);
 
@@ -75,8 +83,9 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
       canvas.add(oImg)
     );
 
+
   return (
-    <animated.div style={opacity} className="decorate-page">
+    <animated.div style={opacity} className="decorate-page" >
       <div className="main-container">
         <div className="title">
           <div className="pull-right">
@@ -135,7 +144,16 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
             src="images/logo.png"
             alt="purrybooth-logo"
           />
-          <p>Let's decorate! Click to add to canvas & scroll for more:</p>
+          <p>Let's decorate! Click stickers to add to canvas & scroll for more. Once sticker is on the photo you can click on it to resize, rotate, and drag it around to place it where you'd like. To remove a sticker, make sure it's highlighted and either press d on your keyboard or use this button: </p>
+          <button
+          type="button"
+          className="btn remove"
+          onClick={() => {
+            canvas.remove(canvas.getActiveObject());
+          }}
+          >
+            Remove selected sticker
+          </button>
           <div id="decoration-container">
             {decorations.map((decoration, i) => {
               console.log("Entered");
