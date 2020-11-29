@@ -135,7 +135,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
             src="images/logo.png"
             alt="purrybooth-logo"
           />
-          <p>Let's decorate (scroll for more):</p>
+          <p>Let's decorate! Click to add to canvas & scroll for more:</p>
           <div id="decoration-container">
             {decorations.map((decoration, i) => {
               console.log("Entered");

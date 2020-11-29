@@ -16,9 +16,9 @@ const Landing = ( {stage, setStage} ) => {
         <h1><div className="icon-my-computer"></div>{stage}　プリクラ</h1>
       </div>
       <ul className="toolbar">
-        <li><u>F</u>ile</li>
-        <li><u>E</u>dit</li>
-        <li><u>V</u>iew</li>
+        <li><u>A</u>bout</li>
+        <li><u>C</u>redit</li>
+        <li><u>G</u>itHub</li>
         <li><u>H</u>elp</li>
       </ul>
       <div className="ie-bar">
@@ -51,12 +51,6 @@ const Landing = ( {stage, setStage} ) => {
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
-        <ul className="toolbar">
-          <li><u>F</u>ile</li>
-          <li><u>E</u>dit</li>
-          <li><u>V</u>iew</li>
-          <li><u>H</u>elp</li>
-        </ul>
         <div className="ie-bar">
           <div className="label">Address:</div>
           <div className="combo">
