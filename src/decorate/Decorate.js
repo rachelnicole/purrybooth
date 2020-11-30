@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react'
+import React, { useCallback } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { fabric } from "fabric"
 import decorations from './images'
@@ -9,6 +9,8 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
   // Set up a persistent canvas
   let canvas;
+  let canvasContainer;
+  let images;
 
 
 
@@ -32,11 +34,64 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
   }
 
   const keyPress = useCallback((event) => {
-    if(event.keyCode === 68) {
+    if (event.keyCode === 68) {
       //Do whatever when esc is pressed
       canvas.remove(canvas.getActiveObject());
     }
   }, []);
+
+  let handleDragStart = (e) => {
+
+    [].forEach.call(images, function (img) {
+      img.classList.remove('img_dragging');
+    });
+    e.target.classList.add('img_dragging');
+  }
+
+  let handleDragOver = (e) => {
+    if (e.preventDefault) {
+      e.preventDefault();
+    }
+
+    e.dataTransfer.dropEffect = 'copy';
+    return false;
+  }
+
+  let handleDragEnter = (e) => {
+    canvasContainer.classList.add('over');
+  }
+
+  let handleDragEnd = (e) => {
+    // this/e.target is the source node.
+    [].forEach.call(images, function (img) {
+      img.classList.remove('img_dragging');
+    });
+  }
+
+  let handleDragLeave = (e) => {
+    canvasContainer.classList.remove('over');
+  }
+
+  let handleDrop = (e) => {
+    if (e.stopPropagation) {
+      e.stopPropagation(); // stops the browser from redirecting.
+    }
+
+    var img = document.querySelector('#decoration-container img.img_dragging').src;
+
+    fabric.util.loadImage(img, function (img) {
+      var droppedImage = new fabric.Image(img, {
+          left: e.layerX,
+          top: e.layerY,
+          width: img.width,
+          height: img.height,
+      });
+      canvas.add(droppedImage);
+      canvas.renderAll();
+  });
+
+    return false;
+  }
 
   React.useEffect(() => {
     canvas = new fabric.Canvas("my-fabric-canvas");
@@ -44,34 +99,47 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
     document.addEventListener("keydown", keyPress, false);
 
-    // This blog post helped me solve how to keep the aspect ratio of the canvas the same as the image https://prcode.co.uk/2018/04/20/keeping-an-images-ratio-on-resize-in-javascript/
+    images = window.document.querySelectorAll('#decoration-container img');
+    [].forEach.call(images, function (img) {
+      img.addEventListener('dragstart', handleDragStart, false);
+      img.addEventListener('dragend', handleDragEnd, false);
+  });
 
+    canvasContainer = document.getElementById('decorateCanvas');
+    canvasContainer.addEventListener('dragenter', handleDragEnter, false);
+    canvasContainer.addEventListener('dragover', handleDragOver, false);
+    canvasContainer.addEventListener('dragleave', handleDragLeave, false);
+    canvasContainer.addEventListener('drop', handleDrop, false);
+
+
+    // This blog post helped me solve how to keep the aspect ratio of the canvas the same as the image https://prcode.co.uk/2018/04/20/keeping-an-images-ratio-on-resize-in-javascript/
     let widthOnePercent = dimensions.width / 100,
       heightOnePercent = dimensions.height / 100,
       imageCurrentWidth = document.getElementById('decorateCanvas').clientWidth,
       imageCurrentPercent = imageCurrentWidth / widthOnePercent,
       imageNewHeight = heightOnePercent * imageCurrentPercent;
 
-    console.log(imageCurrentWidth);
-
     canvas.setDimensions({
       width: imageCurrentWidth,
       height: imageNewHeight
     });
-    console.log(dimensions)
+
+
 
   }, [canvas]);
 
 
   const addBackground = (photoTaken) => {
-    console.log(photoTaken)
-    fabric.Image.fromURL(photoTaken, (photoTaken) =>
+  
+
+    fabric.Image.fromURL(photoTaken, (photoTaken) => {
       canvas.setBackgroundImage(photoTaken, canvas.renderAll.bind(canvas), {
         // should the image be resized to fit the container?
         backgroundImageStretch: false,
         scaleX: canvas.width / photoTaken.width,
         scaleY: canvas.height / photoTaken.height
       })
+    }
     )
   }
 
@@ -144,19 +212,19 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
             src="images/logo.png"
             alt="purrybooth-logo"
           />
-          <p>Let's decorate! Click stickers to add to canvas & scroll for more. Once sticker is on the photo you can click on it to resize, rotate, and drag it around to place it where you'd like. To remove a sticker, make sure it's highlighted and either press d on your keyboard or use this button: </p>
+          <p>Let's decorate! Click stickers to add to canvas & scroll down for more. Once sticker is on the photo you can click on it to resize, rotate, and drag it around to place it where you'd like. To remove a sticker, make sure it's highlighted and either press d on your keyboard or use this button: </p>
           <button
-          type="button"
-          className="btn remove"
-          onClick={() => {
-            canvas.remove(canvas.getActiveObject());
-          }}
+            type="button"
+            className="btn remove"
+            onClick={() => {
+              canvas.remove(canvas.getActiveObject());
+            }}
           >
             Remove selected sticker
           </button>
           <div id="decoration-container">
             {decorations.map((decoration, i) => {
-              console.log("Entered");
+              
               let decorationUrl = 'images/' + decoration + '.png',
                 decorationAlt = decoration.replace(/-/g, ' ');
               return (
@@ -165,6 +233,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
                   src={decorationUrl}
                   alt={decorationAlt}
                   key={decorationAlt}
+                  draggable={true}
                   onClick={e => decorateImage(e.target.src)}
                 ></img>
               )
