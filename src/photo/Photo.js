@@ -22,7 +22,7 @@ const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
   }, [webcamRef, setImgSrc, photoTakenEncoded]);
 
   const calculateImage = () => {
-    const imageUploaded = document.querySelector('.photoPreview');
+    const imageUploaded = document.querySelector('.photoPreviewWebcam');
 
     const image = {
         width: imageUploaded.naturalWidth,
@@ -54,15 +54,23 @@ const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
             <input readOnly value="http://itsasecret"></input>
           </div>
         </div>
-        <div className="container-inner">
-          <p>this is the Photo page</p>
-
+        <div className="container-inner webcam-main">
+          <div className="webcamWrapper">
           <Webcam
             audio={false}
             ref={webcamRef}
             videoConstraints={videoConstraints}
             screenshotFormat="image/jpeg"
+            className="webcamBlock"
           />
+          {imgSrc && (
+            <img
+              className="photoPreviewWebcam"
+              src={imgSrc}
+              alt="photobooth snapshot"
+            />
+          )}
+          </div>
           <button onClick={capture}>Capture photo</button>
         </div>
         <div className="statusbar">
@@ -97,14 +105,6 @@ const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
               src="images/logo.png"
               alt="purrybooth-logo"
             />
-          
-          {imgSrc && (
-            <img
-              className="photoPreview"
-              src={imgSrc}
-              alt="photobooth snapshot"
-            />
-          )}
           {imgSrc &&
         <div className="photo-added">
         <p>When you're happy with your photo, go ahead and go to the filter page.</p>

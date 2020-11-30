@@ -49,6 +49,13 @@ const Upload = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
         </div>
       </div>
       <div className="container-inner">
+      {imgSrc && (
+          <img
+            src={imgSrc} 
+            alt="photobooth snapshot"
+            className="photoPreview"
+          />
+        )}
         <ImageUploader
           withIcon={false}
           onChange={onDrop}
@@ -89,14 +96,6 @@ const Upload = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
               src="images/logo.png"
               alt="purrybooth-logo"
             />
-          
-          {imgSrc && (
-          <img
-            src={imgSrc} 
-            alt="photobooth snapshot"
-            className="photoPreview"
-          />
-        )}
 
         {imgSrc &&
         <div className="photo-added">

@@ -88,3 +88,15 @@ button.btn.remove {
   height: 25px !important;
   padding: 0 10px !important;
 }
+
+.webcamWrapper {
+  display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 15px;
+grid-row-gap: 0px;
+}
+
+.webcam-main {
+  text-align: center;
+}
