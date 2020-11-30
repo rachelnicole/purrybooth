@@ -32,7 +32,7 @@ const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
   }
 
   return (
-    <animated.div style={props} className="photo-page">
+    <animated.div style={props} className="photo-page wrapper">
       <div className="main-container">
         <div className="title">
           <div className="pull-right">

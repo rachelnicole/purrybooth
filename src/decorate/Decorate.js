@@ -153,7 +153,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
 
   return (
-    <animated.div style={opacity} className="decorate-page" >
+    <animated.div style={opacity} className="decorate-page wrapper">
       <div className="main-container">
         <div className="title">
           <div className="pull-right">

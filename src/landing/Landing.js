@@ -5,7 +5,7 @@ const Landing = ( {stage, setStage} ) => {
   const props = useSpring({opacity: 1, from: {opacity: 0}});
 
   return (
-    <animated.div style={props} className="landing-page">
+    <animated.div style={props} className="landing-page wrapper">
     <div className="main-container">
       <div className="title">
         <div className="pull-right">

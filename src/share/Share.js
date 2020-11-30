@@ -5,7 +5,7 @@ const Share = ( {stage, setStage, photoTaken} ) => {
   const props = useSpring({opacity: 1, from: {opacity: 0}})
 
   return (
-    <animated.div style={props} className="share-page">
+    <animated.div style={props} className="share-page wrapper">
     <div className="main-container">
       <div className="title">
         <div className="pull-right">

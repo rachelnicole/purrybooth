@@ -26,7 +26,7 @@ const Upload = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
 
 
   return (
-    <animated.div style={props} className="upload-page">
+    <animated.div style={props} className="upload-page wrapper">
     <div className="main-container">
       <div className="title">
         <div className="pull-right">

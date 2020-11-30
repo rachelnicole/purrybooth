@@ -17,7 +17,7 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
   }
 
   return (
-    <animated.div style={props} className="decorate-page">
+    <animated.div style={props} className="decorate-page wrapper">
       <div className="main-container">
         <div className="title">
           <div className="pull-right">
