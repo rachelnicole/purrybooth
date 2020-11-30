@@ -212,7 +212,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
             src="images/logo.png"
             alt="purrybooth-logo"
           />
-          <p>Let's decorate! Click stickers to add to canvas & scroll down for more. Once sticker is on the photo you can click on it to resize, rotate, and drag it around to place it where you'd like. To remove a sticker, make sure it's highlighted and either press d on your keyboard or use this button: </p>
+          <p>Let's decorate! Click or drag stickers to add to canvas & scroll down for more. Once sticker is on the photo you can click on it to resize, rotate, and drag it around to place it where you'd like. To remove a sticker, make sure it's highlighted and either press d on your keyboard or use this button: </p>
           <button
             type="button"
             className="btn remove"
