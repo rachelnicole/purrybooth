@@ -46,6 +46,7 @@ video {
 
 .main-container {
   width: 800px;
+  margin: 10px 0;
 }
 
 .main-container {
@@ -109,6 +110,9 @@ grid-row-gap: 0px;
   }
   button.btn.webcamBtn {
     visibility: hidden;
+  }
+  .main-container.secondary.window {
+    width: 100%;
   }
  }
 
