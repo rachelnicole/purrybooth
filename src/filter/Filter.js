@@ -1,7 +1,9 @@
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import Canvas from "../canvas/Canvas"
+import { datadogRum } from '@datadog/browser-rum';
 
+datadogRum.addUserAction('<NAME>', '<JSON_OBJECT>');
 
 const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFilter }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } })
@@ -14,6 +16,13 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
 
   const effectPipeline = (e) => {
     setFilter(e.target.value)
+
+    datadogRum.addUserAction('filter', {
+      filter: {
+          filterName: e.target.value,
+      },
+    });
+
   }
 
   return (
