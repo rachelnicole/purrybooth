@@ -83,6 +83,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
     datadogRum.addUserAction('decorate', {
       decorate: {
         decoration: img,
+        type, dragged
       },
     });
 
@@ -159,6 +160,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
       datadogRum.addUserAction('decorate', {
         decorate: {
           decoration: url,
+          type: click
         },
       });
     }
