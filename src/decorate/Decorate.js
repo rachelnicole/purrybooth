@@ -67,7 +67,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
   }
 
   let getFileName = (path) => {
-    return path.replace(/^.*[\\]/, '');
+    return path.match(/([^/]+)\.[\w\d]+$/)[1];
   }
 
   let handleDragLeave = (e) => {
