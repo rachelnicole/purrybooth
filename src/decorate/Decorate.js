@@ -66,6 +66,10 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
     });
   }
 
+  let getFileName = (path) => {
+    return path.replace(/^.*[\\]/, '');
+  }
+
   let handleDragLeave = (e) => {
     canvasContainer.classList.remove('over');
   }
@@ -77,10 +81,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
     var img = document.querySelector('#decoration-container img.img_dragging').src;
 
-    getFileName = (path) => {
-      return path.replace(/^.*[\\\/]/, '');
-    }
-    let imgSelect = getFileName(url);
+    let imgSelect = getFileName(img);
     
     datadogRum.addUserAction('decorate', {
       decorate: {
@@ -158,9 +159,6 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
   // These two functions are equivalent, just sharing how to arrow-syntax for fun
   const decorateImage = (url) =>
     fabric.Image.fromURL(url, (oImg) => {
-      getFileName = (path) => {
-        return path.replace(/^.*[\\\/]/, '');
-      }
       let imageSelect = getFileName(url);
     
       canvas.add(oImg);
