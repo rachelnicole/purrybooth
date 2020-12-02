@@ -13,9 +13,6 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
   let canvasContainer;
   let images;
 
-
-
-
   const clearCanvas = () => {
 
     canvas.discardActiveObject().renderAll();
@@ -80,10 +77,15 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
     var img = document.querySelector('#decoration-container img.img_dragging').src;
 
+    getFileName = (path) => {
+      return path.replace(/^.*[\\\/]/, '');
+    }
+    let imgSelect = getFileName(url);
+    
     datadogRum.addUserAction('decorate', {
       decorate: {
-        decoration: img,
-        type, dragged
+        decoration: imgSelect,
+        type: 'dragged'
       },
     });
 
@@ -156,15 +158,20 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
   // These two functions are equivalent, just sharing how to arrow-syntax for fun
   const decorateImage = (url) =>
     fabric.Image.fromURL(url, (oImg) => {
+      getFileName = (path) => {
+        return path.replace(/^.*[\\\/]/, '');
+      }
+      let imageSelect = getFileName(url);
+    
       canvas.add(oImg);
       datadogRum.addUserAction('decorate', {
         decorate: {
-          decoration: url,
-          type: click
+          decoration: imageSelect,
+          type: 'click'
         },
       });
     }
-  );
+    );
 
 
   return (
@@ -185,9 +192,9 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
           <li><u>H</u>elp</li>
         </ul>
         <div className="ie-bar">
-          <div className="label">Address:</div>
+          <label htmlFor="url" className="label">Address:</label>
           <div className="combo">
-            <input readOnly value="http://purrybooth.com"></input>
+            <input id="url" readOnly value="http://purrybooth.com"></input>
           </div>
         </div>
         <div className="container-inner">
@@ -216,9 +223,9 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
           <li><u>H</u>elp</li>
         </ul>
         <div className="ie-bar">
-          <div className="label">Address:</div>
+          <label htmlFor="url-second" className="label">Address:</label>
           <div className="combo">
-            <input readOnly value="http://itsasecret"></input>
+            <input id="url-second" readOnly value="http://purrybooth.com"></input>
           </div>
         </div>
         <div className="container-inner decoration-container">

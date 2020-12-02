@@ -22,9 +22,9 @@ const Mode = ( { stage, setStage } ) => {
         <li><u>H</u>elp</li>
       </ul>
       <div className="ie-bar">
-        <div className="label">Address:</div>
+      <label htmlFor="url" className="label">Address:</label>
         <div className="combo">
-          <input readOnly value="http://itsasecret"></input>
+          <input id="url" readOnly value="http://purrybooth.com"></input>
         </div>
       </div>
       <div className="container-inner">
@@ -66,9 +66,9 @@ const Mode = ( { stage, setStage } ) => {
           <li><u>H</u>elp</li>
         </ul>
         <div className="ie-bar">
-          <div className="label">Address:</div>
+        <label htmlFor="url-second" className="label">Address:</label>
           <div className="combo">
-            <input readOnly value="http://purrybooth.com"></input>
+          <input id="url-second" readOnly value="http://purrybooth.com"></input>
           </div>
         </div>
         <div className="container-inner mode-container">

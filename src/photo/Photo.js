@@ -25,8 +25,8 @@ const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
     const imageUploaded = document.querySelector('.photoPreviewWebcam');
 
     const image = {
-        width: imageUploaded.naturalWidth,
-        height: imageUploaded.naturalHeight
+      width: imageUploaded.naturalWidth,
+      height: imageUploaded.naturalHeight
     };
     setDimensions(image);
   }
@@ -49,27 +49,27 @@ const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
           <li><u>H</u>elp</li>
         </ul>
         <div className="ie-bar">
-          <div className="label">Address:</div>
+          <label htmlFor="url" className="label">Address:</label>
           <div className="combo">
-            <input readOnly value="http://itsasecret"></input>
+            <input id="url" readOnly value="http://purrybooth.com"></input>
           </div>
         </div>
         <div className="container-inner webcam-main">
           <div className="webcamWrapper">
-          <Webcam
-            audio={false}
-            ref={webcamRef}
-            videoConstraints={videoConstraints}
-            screenshotFormat="image/jpeg"
-            className="webcamBlock"
-          />
-          {imgSrc && (
-            <img
-              className="photoPreviewWebcam"
-              src={imgSrc}
-              alt="photobooth snapshot"
+            <Webcam
+              audio={false}
+              ref={webcamRef}
+              videoConstraints={videoConstraints}
+              screenshotFormat="image/jpeg"
+              className="webcamBlock"
             />
-          )}
+            {imgSrc && (
+              <img
+                className="photoPreviewWebcam"
+                src={imgSrc}
+                alt="photobooth snapshot"
+              />
+            )}
           </div>
           <button onClick={capture}>Capture photo</button>
         </div>
@@ -94,32 +94,32 @@ const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
           <li><u>H</u>elp</li>
         </ul>
         <div className="ie-bar">
-          <div className="label">Address:</div>
+          <label htmlFor="url-second" className="label">Address:</label>
           <div className="combo">
-            <input readOnly value="http://purrybooth.com"></input>
+            <input id="url-second" readOnly value="http://purrybooth.com"></input>
           </div>
         </div>
         <div className="container-inner webcam-container">
-        <img
-              className="purrybooth-logo"
-              src="images/logo.png"
-              alt="purrybooth-logo"
-            />
+          <img
+            className="purrybooth-logo"
+            src="images/logo.png"
+            alt="purrybooth-logo"
+          />
           {imgSrc &&
-        <div className="photo-added">
-        <p>When you're happy with your photo, go ahead and go to the filter page.</p>
-          <button
-            type="button"
-            className="btn"
-            onClick={() => {
-            setStage("filter")
-            calculateImage()
-            }}
-          >
-            Filters » 
+            <div className="photo-added">
+              <p>When you're happy with your photo, go ahead and go to the filter page.</p>
+              <button
+                type="button"
+                className="btn"
+                onClick={() => {
+                  setStage("filter")
+                  calculateImage()
+                }}
+              >
+                Filters »
         </button>
-        </div>
-      }
+            </div>
+          }
 
         </div>
         <div className="statusbar">

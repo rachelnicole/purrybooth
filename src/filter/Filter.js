@@ -17,7 +17,7 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
 
     datadogRum.addUserAction('filter', {
       filter: {
-          filterName: e.target.value,
+        filterName: e.target.value,
       },
     });
 
@@ -41,9 +41,9 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
           <li><u>H</u>elp</li>
         </ul>
         <div className="ie-bar">
-          <div className="label">Address:</div>
+          <label htmlFor="url" className="label">Address:</label>
           <div className="combo">
-            <input readOnly value="http://itsasecret"></input>
+            <input id="url" readOnly value="http://purrybooth.com"></input>
           </div>
         </div>
         <div className="container-inner">
@@ -71,9 +71,9 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
           <li><u>H</u>elp</li>
         </ul>
         <div className="ie-bar">
-          <div className="label">Address:</div>
+          <label htmlFor="url-second" className="label">Address:</label>
           <div className="combo">
-            <input readOnly value="http://purrybooth.com"></input>
+            <input id="url-second" readOnly value="http://purrybooth.com"></input>
           </div>
         </div>
         <div className="container-inner landing-container">
@@ -114,7 +114,7 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
             }}>
             Decorate »
         </button>
-        
+
         </div>
         <div className="statusbar">
           <div className="left">3 object(s)</div>
