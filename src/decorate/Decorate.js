@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { fabric } from "fabric"
 import decorations from './images'
+import { datadogRum } from '@datadog/browser-rum';
 
 const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }) => {
 
@@ -79,16 +80,22 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
     var img = document.querySelector('#decoration-container img.img_dragging').src;
 
+    datadogRum.addUserAction('decorate', {
+      decorate: {
+        decoration: img,
+      },
+    });
+
     fabric.util.loadImage(img, function (img) {
       var droppedImage = new fabric.Image(img, {
-          left: e.layerX,
-          top: e.layerY,
-          width: img.width,
-          height: img.height,
+        left: e.layerX,
+        top: e.layerY,
+        width: img.width,
+        height: img.height,
       });
       canvas.add(droppedImage);
       canvas.renderAll();
-  });
+    });
 
     return false;
   }
@@ -103,7 +110,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
     [].forEach.call(images, function (img) {
       img.addEventListener('dragstart', handleDragStart, false);
       img.addEventListener('dragend', handleDragEnd, false);
-  });
+    });
 
     canvasContainer = document.getElementById('decorateCanvas');
     canvasContainer.addEventListener('dragenter', handleDragEnter, false);
@@ -130,7 +137,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
 
   const addBackground = (photoTaken) => {
-  
+
 
     fabric.Image.fromURL(photoTaken, (photoTaken) => {
       canvas.setBackgroundImage(photoTaken, canvas.renderAll.bind(canvas), {
@@ -147,9 +154,15 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
   // These two functions are equivalent, just sharing how to arrow-syntax for fun
   const decorateImage = (url) =>
-    fabric.Image.fromURL(url, (oImg) =>
-      canvas.add(oImg)
-    );
+    fabric.Image.fromURL(url, (oImg) => {
+      canvas.add(oImg);
+      datadogRum.addUserAction('decorate', {
+        decorate: {
+          decoration: url,
+        },
+      });
+    }
+  );
 
 
   return (
@@ -224,7 +237,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
           </button>
           <div id="decoration-container">
             {decorations.map((decoration, i) => {
-              
+
               let decorationUrl = 'images/' + decoration + '.png',
                 decorationAlt = decoration.replace(/-/g, ' ');
               return (

@@ -22,9 +22,9 @@ const Landing = ( {stage, setStage} ) => {
         <li><u>H</u>elp</li>
       </ul>
       <div className="ie-bar">
-        <div className="label">Address:</div>
+        <label for="url" className="label">Address:</label>
         <div className="combo">
-          <input readOnly value="http://purrybooth.com"></input>
+          <input id="url"readOnly value="http://purrybooth.com"></input>
         </div>
       </div>
       <div className="container-inner">
@@ -52,9 +52,9 @@ const Landing = ( {stage, setStage} ) => {
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
         <div className="ie-bar">
-          <div className="label">Address:</div>
+          <label for="url-second" className="label">Address:</label>
           <div className="combo">
-            <input readOnly value="http://itsasecret"></input>
+          <input id="url-second" readOnly value="http://purrybooth.com"></input>
           </div>
         </div>
         <div className="container-inner landing-container">
