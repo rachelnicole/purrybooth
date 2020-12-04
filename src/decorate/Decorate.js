@@ -143,12 +143,33 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
     )
   }, [canvas]);
 
+  let init = (evt) => {
+    var time = new Date();
+    var locale = "en-gb";
+  }
+
   // These two functions are equivalent, just sharing how to arrow-syntax for fun
   const decorateImage = (url) =>
     fabric.Image.fromURL(url, (oImg) => {
       let imageSelect = getFileName(url);
 
       canvas.add(oImg);
+      datadogRum.addUserAction('decorate', {
+        decorate: {
+          decoration: imageSelect,
+          type: 'click'
+        },
+      });
+    }
+    );
+
+    const decorateSVG = (url) =>
+    fabric.loadSVGFromURL(url, (objects, options) => {
+      let imageSelect = getFileName(url);
+
+      var obj = fabric.util.groupSVGElements(objects, options);
+      canvas.add(obj).renderAll();
+      
       datadogRum.addUserAction('decorate', {
         decorate: {
           decoration: imageSelect,
@@ -170,12 +191,6 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
-        <div className="ie-bar">
-          <label htmlFor="url" className="label">Address:</label>
-          <div className="combo">
-            <input id="url" readOnly value="http://purrybooth.com"></input>
-          </div>
-        </div>
         <div className="container-inner">
           <div id="decorateCanvas">
             <canvas id="my-fabric-canvas" width="500" height="500" />
@@ -194,12 +209,6 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
             <button class="times"><span class="fa fa-times">x</span></button> */}
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
-        </div>
-        <div className="ie-bar">
-          <label htmlFor="url-second" className="label">Address:</label>
-          <div className="combo">
-            <input id="url-second" readOnly value="http://purrybooth.com"></input>
-          </div>
         </div>
         <div className="container-inner decoration-container">
           <img
@@ -234,6 +243,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
             }}
           ></img>
           <div id="decoration-container">
+          <img src="images/date-one.svg" onClick={e => decorateSVG(e.target.src)}></img>
             {decorations.map((decoration, i) => {
 
               let decorationUrl = 'images/' + decoration + '.png',

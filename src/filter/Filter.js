@@ -34,12 +34,6 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
-        <div className="ie-bar">
-          <label htmlFor="url" className="label">Address:</label>
-          <div className="combo">
-            <input id="url" readOnly value="http://purrybooth.com"></input>
-          </div>
-        </div>
         <div className="container-inner">
 
           <Canvas {...{ photoTaken }} {...{ filter }} className="photoPreview"></Canvas>
@@ -58,13 +52,7 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
-
-        <div className="ie-bar">
-          <label htmlFor="url-second" className="label">Address:</label>
-          <div className="combo">
-            <input id="url-second" readOnly value="http://purrybooth.com"></input>
-          </div>
-        </div>
+        
         <div className="container-inner landing-container">
           <img
             className="purrybooth-logo"

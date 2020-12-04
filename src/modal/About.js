@@ -17,8 +17,7 @@ const About = ( {toggleAbout} ) => {
           </div>
         </div>
         <div className="container-inner landing-container">
-          <p>PurryBooth was made by <a rel="noopener noreferrer"  href="http://www.twitter.com/ohhoe" target="_blank">Rachel White</a> who is a creative technologist and currently a Technical Evangelist at Datadog. You can find more of her work here: <a rel="noopener noreferrer"  href="http://www.rachelisaweso.me" target="_blank">http://www.rachelisaweso.me</a> and <a rel="noopener noreferrer"  href="http://www.imcool.online" target="_blank">http://www.imcool.online</a>. 
-          All other drawings done by <a rel="noopener noreferrer"  href="http://www.twitter.com/ohhoe" target="_blank">Rachel White</a></p>
+          <p>PurryBooth was made by me, <a rel="noopener noreferrer"  href="http://www.twitter.com/ohhoe" target="_blank">Rachel White</a>. I'm a creative technologist and currently a Technical Evangelist at Datadog. You can find more of my work here: <a rel="noopener noreferrer"  href="http://www.rachelisaweso.me" target="_blank">http://www.rachelisaweso.me</a> and <a rel="noopener noreferrer"  href="http://www.imcool.online" target="_blank">http://www.imcool.online</a>.</p>
           <div className="continue">
         <button
           type="button"

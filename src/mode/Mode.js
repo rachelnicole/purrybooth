@@ -21,12 +21,6 @@ const Mode = ( { stage, setStage, toggleAbout, toggleCredit, toggleHelp } ) => {
         <li className="gh"><a rel="noopener noreferrer"  href="https://github.com/rachelnicole/purrybooth" target="_blank"><u>G</u>itHub</a></li>
         <li onClick={() => toggleHelp(true)}><u>H</u>elp</li>
       </ul>
-      <div className="ie-bar">
-      <label htmlFor="url" className="label">Address:</label>
-        <div className="combo">
-          <input id="url" readOnly value="http://purrybooth.com"></input>
-        </div>
-      </div>
       <div className="container-inner">
         <p>Time to choose whether you'd like to upload one of your own photos, or use your webcam to take a new one. Either way, none of the photos are saved in any way shape or form. :)</p>
         <div className="continue">
@@ -60,12 +54,6 @@ const Mode = ( { stage, setStage, toggleAbout, toggleCredit, toggleHelp } ) => {
             <button class="times"><span class="fa fa-times">x</span></button> */}
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
-        </div>
-        <div className="ie-bar">
-        <label htmlFor="url-second" className="label">Address:</label>
-          <div className="combo">
-          <input id="url-second" readOnly value="http://purrybooth.com"></input>
-          </div>
         </div>
         <div className="container-inner mode-container">
         <img

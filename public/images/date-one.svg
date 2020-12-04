@@ -1,0 +1,26 @@
+<svg onload="init()" xmlns="http://www.w3.org/2000/svg"
+aria-label="Calendar" role="img"
+viewBox="0 0 200 200">
+<script type="text/javaScript">
+function init() {
+  var time = new Date();
+  var locale = "en-gb";
+
+  var DD   = time.getDate();
+  var DDD  = time.toLocaleString(locale, {weekday: "long" });
+  var MMM  = time.toLocaleString(locale, {month:   "short"}).toUpperCase();
+
+  document.getElementById("day").textContent= DD;
+  document.getElementById("month").textContent= MMM;
+  
+  // var DDDD = time.toLocaleString(locale, { weekday: "long" });
+  // var MM   = time.getMonth() + 1;
+  // var MMMM = time.toLocaleString(locale, {month: "long"});
+  // var YYYY = time.getFullYear();
+}
+</script>
+
+  <path d="M 59.292 89.587 C 44.905 75.201 36.061 55.83 33.087 35.859 C 31.615 25.97 40.617 7.26 53.506 13.704 C 60.97 17.436 64.832 26.806 66.126 34.569 C 66.423 36.356 65.132 43.286 66.302 44.575 C 66.473 44.763 68.293 38.814 68.82 38.295 C 71.393 35.763 74.322 32.506 76.553 29.51 C 80.95 23.608 101.618 18.154 107.843 23.089 C 115.771 29.373 113.832 38.451 109.442 45.662 C 101.526 58.665 88.862 64.781 78.381 75.104 C 75.342 78.099 62.814 89.971 59.171 89.971" style="stroke-width: 4px; stroke: rgb(252, 205, 255); paint-order: fill; fill: rgba(216, 216, 216, 0);"/>
+  <text id="month" font-family="sans-serif" style="fill: rgb(255, 255, 255); font-size: 34.4px; stroke-width: 1px; stroke: rgb(252, 205, 255); white-space: pre;" x="14.405" y="65.678">FEB</text>
+  <text id="day" font-family="sans-serif" transform="matrix(0.939269, 0, 0, 0.9188, -97.051834, -6.729403)" style="fill: rgb(255, 255, 255); stroke-width: 1px; stroke: rgb(252, 205, 255);font-size: 38.6px; text-anchor: middle; white-space: pre;" x="210.898" y="77.933">29</text>
+</svg>

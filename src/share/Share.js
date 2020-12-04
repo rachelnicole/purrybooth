@@ -21,12 +21,6 @@ const Share = ({ stage, setStage, photoTaken, toggleAbout, toggleCredit, toggleH
           <li className="gh"><a rel="noopener noreferrer" href="https://github.com/rachelnicole/purrybooth" target="_blank"><u>G</u>itHub</a></li>
           <li onClick={() => toggleHelp(true)}><u>H</u>elp</li>
         </ul>
-        <div className="ie-bar">
-          <label htmlFor="url" className="label">Address:</label>
-          <div className="combo">
-            <input id="url" readOnly value="http://purrybooth.com"></input>
-          </div>
-        </div>
         <div className="container-inner">
           <p>Please right click and save as image, and post with the tag #PurryBooth :)</p>
           <p>See what other people have made on <a rel="noopener noreferrer" href="https://twitter.com/search?q=%23PurryBooth&src=typed_query" target="_blank">Twitter</a> and <a rel="noopener noreferrer" href="https://www.instagram.com/explore/tags/PurryBooth/" target="_blank">Instagram</a></p>
@@ -53,12 +47,6 @@ const Share = ({ stage, setStage, photoTaken, toggleAbout, toggleCredit, toggleH
             <button class="times"><span class="fa fa-times">x</span></button> */}
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
-        </div>
-        <div className="ie-bar">
-          <label htmlFor="url-second" className="label">Address:</label>
-          <div className="combo">
-            <input id="url-second" readOnly value="http://purrybooth.com"></input>
-          </div>
         </div>
         <div className="container-inner landing-container">
           <img
