@@ -105,7 +105,9 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
   }
 
   React.useEffect(() => {
-    canvas = new fabric.Canvas("my-fabric-canvas");
+    canvas = new fabric.Canvas("my-fabric-canvas", {
+      preserveObjectStacking: true
+    });
     canvas.enableRetinaScaling = false;
 
     document.addEventListener("keydown", keyPress, false);
