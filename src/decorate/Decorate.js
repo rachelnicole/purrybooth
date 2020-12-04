@@ -210,6 +210,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
+       
         <div className="container-inner decoration-container">
           <img
             className="purrybooth-logo"
@@ -243,7 +244,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
             }}
           ></img>
           <div id="decoration-container">
-          <img src="images/date-one.svg" onClick={e => decorateSVG(e.target.src)}></img>
+
             {decorations.map((decoration, i) => {
 
               let decorationUrl = 'images/' + decoration + '.png',
