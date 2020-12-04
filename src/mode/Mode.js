@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
 
-const Mode = ( { stage, setStage } ) => {
+const Mode = ( { stage, setStage, toggleAbout, toggleCredit, toggleHelp } ) => {
   const props = useSpring({opacity: 1, from: {opacity: 0}})
 
   return (
@@ -16,10 +16,10 @@ const Mode = ( { stage, setStage } ) => {
         <h1><div className="icon-my-computer"></div> {stage}　プリクラ</h1>
       </div>
       <ul className="toolbar">
-        <li><u>F</u>ile</li>
-        <li><u>E</u>dit</li>
-        <li><u>V</u>iew</li>
-        <li><u>H</u>elp</li>
+        <li onClick={() => toggleAbout(true)}><u>A</u>bout</li>
+        <li onClick={() => toggleCredit(true)}><u>C</u>redit</li>
+        <li className="gh"><a rel="noopener noreferrer"  href="https://github.com/rachelnicole/purrybooth" target="_blank"><u>G</u>itHub</a></li>
+        <li onClick={() => toggleHelp(true)}><u>H</u>elp</li>
       </ul>
       <div className="ie-bar">
       <label htmlFor="url" className="label">Address:</label>
@@ -28,7 +28,8 @@ const Mode = ( { stage, setStage } ) => {
         </div>
       </div>
       <div className="container-inner">
-        <p>this is the Mode page</p>
+        <p>Time to choose whether you'd like to upload one of your own photos, or use your webcam to take a new one. Either way, none of the photos are saved in any way shape or form. :)</p>
+        <div className="continue">
         <button
           type="button"
           className="btn"
@@ -44,9 +45,10 @@ const Mode = ( { stage, setStage } ) => {
         >
           Use Webcam
         </button>
+        </div>
       </div>
       <div className="statusbar">
-        <div className="left">3 object(s)</div>
+      <div className="left">made by <a rel="noopener noreferrer"  href="http://www.twitter.com/ohhoe" target="_blank">ohhoe</a></div>
         <div className="right">&nbsp;</div>
       </div>
     </div>
@@ -59,12 +61,6 @@ const Mode = ( { stage, setStage } ) => {
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
-        <ul className="toolbar">
-          <li><u>F</u>ile</li>
-          <li><u>E</u>dit</li>
-          <li><u>V</u>iew</li>
-          <li><u>H</u>elp</li>
-        </ul>
         <div className="ie-bar">
         <label htmlFor="url-second" className="label">Address:</label>
           <div className="combo">
@@ -81,7 +77,7 @@ const Mode = ( { stage, setStage } ) => {
 
         </div>
         <div className="statusbar">
-          <div className="left">3 object(s)</div>
+          <div className="left">^_^</div>
           <div className="right">&nbsp;</div>
         </div>
       </div>

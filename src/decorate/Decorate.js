@@ -4,7 +4,7 @@ import { fabric } from "fabric"
 import decorations from './images'
 import { datadogRum } from '@datadog/browser-rum';
 
-const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }) => {
+const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, toggleAbout, toggleCredit, toggleHelp }) => {
 
   const opacity = useSpring({ opacity: 1, from: { opacity: 0 } });
 
@@ -82,7 +82,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
     var img = document.querySelector('#decoration-container img.img_dragging').src;
 
     let imgSelect = getFileName(img);
-    
+
     datadogRum.addUserAction('decorate', {
       decorate: {
         decoration: imgSelect,
@@ -160,7 +160,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
   const decorateImage = (url) =>
     fabric.Image.fromURL(url, (oImg) => {
       let imageSelect = getFileName(url);
-    
+
       canvas.add(oImg);
       datadogRum.addUserAction('decorate', {
         decorate: {
@@ -183,12 +183,6 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
-        <ul className="toolbar">
-          <li><u>F</u>ile</li>
-          <li><u>E</u>dit</li>
-          <li><u>V</u>iew</li>
-          <li><u>H</u>elp</li>
-        </ul>
         <div className="ie-bar">
           <label htmlFor="url" className="label">Address:</label>
           <div className="combo">
@@ -201,7 +195,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
           </div>
         </div>
         <div className="statusbar">
-          <div className="left">3 object(s)</div>
+          <div className="left">made by <a rel="noopener noreferrer" href="http://www.twitter.com/ohhoe" target="_blank">ohhoe</a></div>
           <div className="right">&nbsp;</div>
         </div>
       </div>
@@ -214,12 +208,6 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
-        <ul className="toolbar">
-          <li><u>F</u>ile</li>
-          <li><u>E</u>dit</li>
-          <li><u>V</u>iew</li>
-          <li><u>H</u>elp</li>
-        </ul>
         <div className="ie-bar">
           <label htmlFor="url-second" className="label">Address:</label>
           <div className="combo">
@@ -232,16 +220,32 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
             src="images/logo.png"
             alt="purrybooth-logo"
           />
-          <p>Let's decorate! Click or drag stickers to add to canvas & scroll down for more. Once sticker is on the photo you can click on it to resize, rotate, and drag it around to place it where you'd like. To remove a sticker, make sure it's highlighted and either press d on your keyboard or use this button: </p>
-          <button
-            type="button"
-            className="btn remove"
+          <p>Let's decorate! Click or drag stickers to add to canvas & scroll down for more. Once sticker is on the photo you can click on it to resize, rotate, and drag it around to place it where you'd like. To remove a sticker or change the order it shows in, make sure it's highlighted and select any of the following: </p>
+          <img
+            src="images/buttons/remove.png"
+            alt="remove"
+            className="toolbar remove"
             onClick={() => {
               canvas.remove(canvas.getActiveObject());
             }}
-          >
-            Remove selected sticker
-          </button>
+          ></img>
+
+          <img
+            src="images/buttons/move-to-top.png"
+            alt="move-to-top"
+            className="toolbar z-index"
+            onClick={() => {
+              canvas.bringToFront(canvas.getActiveObject());
+            }}
+          ></img>
+          <img
+            src="images/buttons/send-to-back.png"
+            alt="send to back"
+            className="toolbar z-index"
+            onClick={() => {
+              canvas.sendToBack(canvas.getActiveObject());
+            }}
+          ></img>
           <div id="decoration-container">
             {decorations.map((decoration, i) => {
 
@@ -258,6 +262,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
                 ></img>
               )
             })}
+            <p> there's more scroll in the div above :)</p>
           </div>
 
           <button
@@ -272,7 +277,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions }
 
         </div>
         <div className="statusbar">
-          <div className="left">3 object(s)</div>
+          <div className="left">^_^</div>
           <div className="right">&nbsp;</div>
         </div>
       </div>

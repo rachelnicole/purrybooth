@@ -18,6 +18,7 @@ class Canvas extends React.Component {
 
   componentDidUpdate() {
     console.log(this.props.filter)
+    console.log(this)
 
     if (this.props.filter === 'greyscale') {
       this.greyScale()

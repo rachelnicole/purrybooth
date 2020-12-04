@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
 
-const Share = ({ stage, setStage, photoTaken }) => {
+const Share = ({ stage, setStage, photoTaken, toggleAbout, toggleCredit, toggleHelp }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } })
 
   return (
@@ -16,11 +16,11 @@ const Share = ({ stage, setStage, photoTaken }) => {
           <h1><div className="icon-my-computer"></div>{stage}　プリクラ</h1>
         </div>
         <ul className="toolbar">
-          <li><u>F</u>ile</li>
-          <li><u>E</u>dit</li>
-          <li><u>V</u>iew</li>
-          <li><u>H</u>elp</li>
-        </ul>
+        <li onClick={() => toggleAbout(true)}><u>A</u>bout</li>
+        <li onClick={() => toggleCredit(true)}><u>C</u>redit</li>
+        <li className="gh"><a rel="noopener noreferrer" href="https://github.com/rachelnicole/purrybooth" target="_blank"><u>G</u>itHub</a></li>
+        <li onClick={() => toggleHelp(true)}><u>H</u>elp</li>
+      </ul>
         <div className="ie-bar">
           <label htmlFor="url" className="label">Address:</label>
           <div className="combo">
@@ -28,8 +28,9 @@ const Share = ({ stage, setStage, photoTaken }) => {
           </div>
         </div>
         <div className="container-inner">
-          <p>this is the share page</p>
-          <p>the end</p>
+          <p>Thank you for using PurryBooth! Please right click and save as image, and feel free to tag us in your posts :) #PurryBooth</p>
+          <p>See what other people have made on <a rel="noopener noreferrer" href="https://twitter.com/search?q=%23PurryBooth&src=typed_query" target="_blank">Twitter</a> and <a rel="noopener noreferrer" href="https://www.instagram.com/explore/tags/Purr/" target="_blank">Instagram</a></p>
+          <p></p>
           {photoTaken && (
             <img
               src={photoTaken}
@@ -40,7 +41,7 @@ const Share = ({ stage, setStage, photoTaken }) => {
 
         </div>
         <div className="statusbar">
-          <div className="left">3 object(s)</div>
+        <div className="left">made by <a rel="noopener noreferrer"  href="http://www.twitter.com/ohhoe" target="_blank">ohhoe</a></div>
           <div className="right">&nbsp;</div>
         </div>
       </div>
@@ -53,12 +54,6 @@ const Share = ({ stage, setStage, photoTaken }) => {
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
-        <ul className="toolbar">
-          <li><u>F</u>ile</li>
-          <li><u>E</u>dit</li>
-          <li><u>V</u>iew</li>
-          <li><u>H</u>elp</li>
-        </ul>
         <div className="ie-bar">
           <label htmlFor="url-second" className="label">Address:</label>
           <div className="combo">
@@ -75,7 +70,7 @@ const Share = ({ stage, setStage, photoTaken }) => {
 
         </div>
         <div className="statusbar">
-          <div className="left">3 object(s)</div>
+          <div className="left">^_^</div>
           <div className="right">&nbsp;</div>
         </div>
       </div>

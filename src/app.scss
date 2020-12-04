@@ -32,7 +32,6 @@ body {
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    padding: 10px;
 }
 
 
@@ -62,6 +61,7 @@ img.decoration {
 }
 
 div#decoration-container {
+  margin-top:10px;
   height: 300px;
   overflow: scroll;
   display: grid;
@@ -101,6 +101,7 @@ grid-row-gap: 0px;
     flex-direction: column-reverse;
     align-items: flex-start;
     justify-content: flex-end;
+    padding: 10px;
   }
   img.purrybooth-logo {
     display: block;
@@ -123,6 +124,7 @@ grid-row-gap: 0px;
     flex-direction: row-reverse;
     align-items: flex-start;
     justify-content: flex-end;
+    padding: 10px;
   }
   .main-container {
     margin-right: 10px;
@@ -145,6 +147,7 @@ img.purrybooth-logo {
     align-items: flex-start;
     flex-direction: row;
     justify-content: flex-start;
+    padding: 10px;
   }
   .main-container {
     margin-right: 10px;
@@ -167,6 +170,7 @@ img.purrybooth-logo {
     align-items: flex-start;
     flex-direction: row;
     justify-content: flex-start;
+    padding: 10px;
   }
   .main-container {
     margin-right: 10px;
@@ -182,3 +186,52 @@ img.purrybooth-logo {
 }
  }
 
+ .toolbar.z-index {
+  width: 150px;
+}
+
+.toolbar.remove {
+  width: 100px;
+}
+
+.toolbar {
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+  padding: 10px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.continue {
+  text-align: center;
+}
+
+.mode-page .continue button {
+  margin: 0 10px;
+}
+
+.modal.wrapper {
+  position: absolute;
+  padding-top: 50px;
+  z-index: 10000000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal p {
+  color: black;
+}
+
+.main-container.modal {
+  margin: 0 auto;
+}
+
+.gh a {
+  text-decoration: none !important;
+  color: black;
+}

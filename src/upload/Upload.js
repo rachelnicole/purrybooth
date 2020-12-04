@@ -2,7 +2,7 @@ import React from "react";
 import { useSpring, animated } from 'react-spring'
 import ImageUploader from "react-images-upload";
 
-const Upload = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
+const Upload = ({ stage, setStage, photoTakenEncoded, setDimensions, toggleAbout, toggleCredit, toggleHelp }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } });
 
 
@@ -37,10 +37,10 @@ const Upload = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
         <h1><div className="icon-my-computer"></div>{stage}　プリクラ</h1>
       </div>
       <ul className="toolbar">
-        <li><u>F</u>ile</li>
-        <li><u>E</u>dit</li>
-        <li><u>V</u>iew</li>
-        <li><u>H</u>elp</li>
+        <li onClick={() => toggleAbout(true)}><u>A</u>bout</li>
+        <li onClick={() => toggleCredit(true)}><u>C</u>redit</li>
+        <li className="gh"><a rel="noopener noreferrer" href="https://github.com/rachelnicole/purrybooth" target="_blank"><u>G</u>itHub</a></li>
+        <li onClick={() => toggleHelp(true)}><u>H</u>elp</li>
       </ul>
       <div className="ie-bar">
       <label htmlFor="url" className="label">Address:</label>
@@ -65,7 +65,7 @@ const Upload = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
         />
       </div>
       <div className="statusbar">
-        <div className="left">3 object(s)</div>
+      <div className="left">made by <a rel="noopener noreferrer" href="http://www.twitter.com/ohhoe" target="_blank">ohhoe</a></div>
         <div className="right">&nbsp;</div>
       </div>
     </div>
@@ -78,12 +78,6 @@ const Upload = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
-        <ul className="toolbar">
-          <li><u>F</u>ile</li>
-          <li><u>E</u>dit</li>
-          <li><u>V</u>iew</li>
-          <li><u>H</u>elp</li>
-        </ul>
         <div className="ie-bar">
         <label htmlFor="url-second" className="label">Address:</label>
           <div className="combo">
@@ -91,12 +85,13 @@ const Upload = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
           </div>
         </div>
         <div className="container-inner upload-container">
+  
         <img
               className="purrybooth-logo"
               src="images/logo.png"
               alt="purrybooth-logo"
             />
-
+        <p>Please choose a photo to work with, if you don't like the first you've chosen, just select another.</p>
         {imgSrc &&
         <div className="photo-added">
         <p>When you're happy with your photo, go ahead and go to the filter page.</p>
@@ -115,7 +110,7 @@ const Upload = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
 
         </div>
         <div className="statusbar">
-          <div className="left">3 object(s)</div>
+          <div className="left">^_^</div>
           <div className="right">&nbsp;</div>
         </div>
       </div>

@@ -7,7 +7,7 @@ const videoConstraints = {
   height: 1000,
 };
 
-const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
+const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions, toggleAbout, toggleCredit, toggleHelp }) => {
 
   // this is the react-spring controls for fading in on load
   const props = useSpring({ opacity: 1, from: { opacity: 0 } });
@@ -43,11 +43,11 @@ const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
           <h1><div className="icon-my-computer"></div> {stage}　プリクラ</h1>
         </div>
         <ul className="toolbar">
-          <li><u>F</u>ile</li>
-          <li><u>E</u>dit</li>
-          <li><u>V</u>iew</li>
-          <li><u>H</u>elp</li>
-        </ul>
+        <li onClick={() => toggleAbout(true)}><u>A</u>bout</li>
+        <li onClick={() => toggleCredit(true)}><u>C</u>redit</li>
+        <li className="gh"><a rel="noopener noreferrer" href="https://github.com/rachelnicole/purrybooth" target="_blank"><u>G</u>itHub</a></li>
+        <li onClick={() => toggleHelp(true)}><u>H</u>elp</li>
+      </ul>
         <div className="ie-bar">
           <label htmlFor="url" className="label">Address:</label>
           <div className="combo">
@@ -74,7 +74,7 @@ const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
           <button onClick={capture}>Capture photo</button>
         </div>
         <div className="statusbar">
-          <div className="left">3 object(s)</div>
+        <div className="left">made by <a rel="noopener noreferrer" href="http://www.twitter.com/ohhoe" target="_blank">ohhoe</a></div>
           <div className="right">&nbsp;</div>
         </div>
       </div>
@@ -87,12 +87,6 @@ const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
-        <ul className="toolbar">
-          <li><u>F</u>ile</li>
-          <li><u>E</u>dit</li>
-          <li><u>V</u>iew</li>
-          <li><u>H</u>elp</li>
-        </ul>
         <div className="ie-bar">
           <label htmlFor="url-second" className="label">Address:</label>
           <div className="combo">
@@ -105,6 +99,7 @@ const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
             src="images/logo.png"
             alt="purrybooth-logo"
           />
+          <p>Keep on taking photos until you're happy with the preview to the right of the webcam window.</p>
           {imgSrc &&
             <div className="photo-added">
               <p>When you're happy with your photo, go ahead and go to the filter page.</p>
@@ -123,7 +118,7 @@ const Photo = ({ stage, setStage, photoTakenEncoded, setDimensions }) => {
 
         </div>
         <div className="statusbar">
-          <div className="left">3 object(s)</div>
+          <div className="left">^_^</div>
           <div className="right">&nbsp;</div>
         </div>
       </div>

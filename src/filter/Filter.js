@@ -3,7 +3,7 @@ import { useSpring, animated } from 'react-spring'
 import Canvas from "../canvas/Canvas"
 import { datadogRum } from '@datadog/browser-rum';
 
-const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFilter }) => {
+const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFilter, toggleAbout, toggleCredit, toggleHelp }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } })
 
   const updateState = () => {
@@ -34,12 +34,6 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
-        <ul className="toolbar">
-          <li><u>F</u>ile</li>
-          <li><u>E</u>dit</li>
-          <li><u>V</u>iew</li>
-          <li><u>H</u>elp</li>
-        </ul>
         <div className="ie-bar">
           <label htmlFor="url" className="label">Address:</label>
           <div className="combo">
@@ -51,7 +45,7 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
           <Canvas {...{ photoTaken }} {...{ filter }} className="photoPreview"></Canvas>
         </div>
         <div className="statusbar">
-          <div className="left">3 object(s)</div>
+        <div className="left">made by <a rel="noopener noreferrer" href="http://www.twitter.com/ohhoe" target="_blank">ohhoe</a></div>
           <div className="right">&nbsp;</div>
         </div>
       </div>
@@ -64,12 +58,7 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
-        <ul className="toolbar">
-          <li><u>F</u>ile</li>
-          <li><u>E</u>dit</li>
-          <li><u>V</u>iew</li>
-          <li><u>H</u>elp</li>
-        </ul>
+
         <div className="ie-bar">
           <label htmlFor="url-second" className="label">Address:</label>
           <div className="combo">
@@ -117,7 +106,7 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
 
         </div>
         <div className="statusbar">
-          <div className="left">3 object(s)</div>
+          <div className="left">^_^</div>
           <div className="right">&nbsp;</div>
         </div>
       </div>
