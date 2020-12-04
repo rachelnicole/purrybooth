@@ -249,8 +249,8 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
                 ></img>
               )
             })}
-            <p> there's more scroll in the div above :)</p>
           </div>
+          <p> there's more images, scroll in the div above :)</p>
 
           <button
             type="button"

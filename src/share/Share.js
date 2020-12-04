@@ -28,8 +28,8 @@ const Share = ({ stage, setStage, photoTaken, toggleAbout, toggleCredit, toggleH
           </div>
         </div>
         <div className="container-inner">
-          <p>Thank you for using PurryBooth! Please right click and save as image, and feel free to tag us in your posts :) #PurryBooth</p>
-          <p>See what other people have made on <a rel="noopener noreferrer" href="https://twitter.com/search?q=%23PurryBooth&src=typed_query" target="_blank">Twitter</a> and <a rel="noopener noreferrer" href="https://www.instagram.com/explore/tags/Purr/" target="_blank">Instagram</a></p>
+          <p>Please right click and save as image, and post with the tag #PurryBooth :)</p>
+          <p>See what other people have made on <a rel="noopener noreferrer" href="https://twitter.com/search?q=%23PurryBooth&src=typed_query" target="_blank">Twitter</a> and <a rel="noopener noreferrer" href="https://www.instagram.com/explore/tags/PurryBooth/" target="_blank">Instagram</a></p>
           <p></p>
           {photoTaken && (
             <img
