@@ -105,11 +105,6 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
   }
 
   React.useEffect(() => {
-    canvas = new fabric.Canvas("my-fabric-canvas", {
-      preserveObjectStacking: true
-    });
-    canvas.enableRetinaScaling = false;
-
     document.addEventListener("keydown", keyPress, false);
 
     images = window.document.querySelectorAll('#decoration-container img');
@@ -132,19 +127,13 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
       imageCurrentPercent = imageCurrentWidth / widthOnePercent,
       imageNewHeight = heightOnePercent * imageCurrentPercent;
 
-    canvas.setDimensions({
+    canvas = new fabric.Canvas("my-fabric-canvas", {
+      preserveObjectStacking: true,
       width: imageCurrentWidth,
-      height: imageNewHeight
+      height: imageNewHeight,
+      enableRetinaScaling: false
     });
-
-
-
-  }, [canvas]);
-
-
-  const addBackground = (photoTaken) => {
-
-
+    
     fabric.Image.fromURL(photoTaken, (photoTaken) => {
       canvas.setBackgroundImage(photoTaken, canvas.renderAll.bind(canvas), {
         // should the image be resized to fit the container?
@@ -154,9 +143,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
       })
     }
     )
-  }
-
-  addBackground(photoTaken)
+  }, [canvas]);
 
   // These two functions are equivalent, just sharing how to arrow-syntax for fun
   const decorateImage = (url) =>
