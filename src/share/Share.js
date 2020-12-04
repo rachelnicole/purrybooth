@@ -16,11 +16,11 @@ const Share = ({ stage, setStage, photoTaken, toggleAbout, toggleCredit, toggleH
           <h1><div className="icon-my-computer"></div>{stage}　プリクラ</h1>
         </div>
         <ul className="toolbar">
-        <li onClick={() => toggleAbout(true)}><u>A</u>bout</li>
-        <li onClick={() => toggleCredit(true)}><u>C</u>redit</li>
-        <li className="gh"><a rel="noopener noreferrer" href="https://github.com/rachelnicole/purrybooth" target="_blank"><u>G</u>itHub</a></li>
-        <li onClick={() => toggleHelp(true)}><u>H</u>elp</li>
-      </ul>
+          <li onClick={() => toggleAbout(true)}><u>A</u>bout</li>
+          <li onClick={() => toggleCredit(true)}><u>C</u>redit</li>
+          <li className="gh"><a rel="noopener noreferrer" href="https://github.com/rachelnicole/purrybooth" target="_blank"><u>G</u>itHub</a></li>
+          <li onClick={() => toggleHelp(true)}><u>H</u>elp</li>
+        </ul>
         <div className="ie-bar">
           <label htmlFor="url" className="label">Address:</label>
           <div className="combo">

@@ -33,7 +33,7 @@ const App = () => {
       {stage === "photo" && <Photo {...{ setStage }} {...{ photoTakenEncoded }} { ...{stage} } {...{ setDimensions }} {...{toggleAbout}} {...{toggleCredit}}  {...{toggleHelp}} />}
       {stage === "filter" && <Filter {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} { ...{stage} } {...{ setFilter }} {...{ filter }} {...{toggleAbout}} {...{toggleCredit}}  {...{toggleHelp}} />}
       {stage === "decorate" && <Decorate {...{ setStage }} {...{ photoTakenEncoded }} {...{ photoTaken }} {...{ dimensions }} { ...{stage} } {...{toggleAbout}} {...{toggleCredit}}  {...{toggleHelp}} />}
-      {stage === "share" && <Share {...{ setStage }} {...{ photoTaken }} { ...{stage} } />}
+      {stage === "share" && <Share {...{ setStage }} {...{ photoTaken }} { ...{stage} }  {...{toggleAbout}} {...{toggleCredit}}  {...{toggleHelp}}/>}
     </div>
   )}
   

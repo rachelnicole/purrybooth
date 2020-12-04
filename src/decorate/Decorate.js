@@ -75,9 +75,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
   }
 
   let handleDrop = (e) => {
-    if (e.stopPropagation) {
-      e.stopPropagation(); // stops the browser from redirecting.
-    }
+    e.preventDefault();
 
     var img = document.querySelector('#decoration-container img.img_dragging').src;
 
