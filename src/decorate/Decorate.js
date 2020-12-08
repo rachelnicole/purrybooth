@@ -143,11 +143,6 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
     )
   }, [canvas]);
 
-  let init = (evt) => {
-    var time = new Date();
-    var locale = "en-gb";
-  }
-
   // These two functions are equivalent, just sharing how to arrow-syntax for fun
   const decorateImage = (url) =>
     fabric.Image.fromURL(url, (oImg) => {
