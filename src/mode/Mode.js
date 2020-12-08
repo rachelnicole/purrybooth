@@ -49,18 +49,16 @@ const Mode = ( { stage, setStage, toggleAbout, toggleCredit, toggleHelp } ) => {
     <div className="main-container secondary window">
         <div className="title">
           <div className="pull-right">
-            {/* Commented out for later in case I want to use buttons, but it doesn't seem accessible or reasonable at the current moment<button class="minimize"><span class="fa fa-minus">-</span></button>
-            <button class="expand"><span class="fa fa-square-o"></span></button>
-            <button class="times"><span class="fa fa-times">x</span></button> */}
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
         <div className="container-inner mode-container">
-        <img
+        <a href="http://www.purrybooth.com" alt="landing page"><img
               className="purrybooth-logo"
               src="images/logo.png"
               alt="purrybooth-logo"
             />
+        </a>
           
 
         </div>

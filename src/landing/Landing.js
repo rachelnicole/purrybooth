@@ -19,6 +19,7 @@ const Landing = ( {stage, setStage, toggleAbout, toggleCredit, toggleHelp} ) => 
         <li onClick={() => toggleHelp(true)}><u>H</u>elp</li>
       </ul>
       <div className="container-inner">
+        <img src="images/photos-splash.png"  alt="example photobooth photos" className="photo-splash"></img>
         <p>Purrybooth is an interactive photobooth & sticker app that is inspired by photo booths in Japan called purikura which is short for Purinto Kurabu (プリント倶楽部) or print club. They're super fun to do with friends, and you get a memory to keep afterwards. I wanted to be able to share photos with my friends while we aren't able to do the real thing in person.</p>
         <div className="continue">
         <button
@@ -38,18 +39,16 @@ const Landing = ( {stage, setStage, toggleAbout, toggleCredit, toggleHelp} ) => 
     <div className="main-container secondary window">
         <div className="title">
           <div className="pull-right">
-            {/* Commented out for later in case I want to use buttons, but it doesn't seem accessible or reasonable at the current moment<button class="minimize"><span class="fa fa-minus">-</span></button>
-            <button class="expand"><span class="fa fa-square-o"></span></button>
-            <button class="times"><span class="fa fa-times">x</span></button> */}
           </div>
           <h1><div className="icon-my-computer"></div> {stage} プリクラ</h1>
         </div>
         <div className="container-inner landing-container">
-        <img
+        <a href="http://www.purrybooth.com" alt="landing page"><img
               className="purrybooth-logo"
               src="images/logo.png"
               alt="purrybooth-logo"
             />
+        </a>
           
 
         </div>
