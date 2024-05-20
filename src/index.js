@@ -6,7 +6,7 @@ import App from './App'
 datadogRum.init({
   applicationId: process.env.REACT_APP_APP_ID,
   clientToken: process.env.REACT_APP_CLIENT_TOKEN,
-  site: 'purrybooth.com',
+  site: 'datadoghq.com',
   service: 'purrybooth',
   env: 'production',
   // Specify a version number to identify the deployed version of your application in Datadog
