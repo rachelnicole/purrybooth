@@ -15,7 +15,7 @@ const Filter = ({ stage, setStage, photoTaken, photoTakenEncoded, filter, setFil
   const effectPipeline = (e) => {
     setFilter(e.target.value)
 
-    datadogRum.addUserAction('filter', {
+    datadogRum.addAction('filter', {
       filter: {
         filterName: e.target.value,
       },

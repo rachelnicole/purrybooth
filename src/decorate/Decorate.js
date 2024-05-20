@@ -81,7 +81,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
 
     let imgSelect = getFileName(img);
 
-    datadogRum.addUserAction('decorate', {
+    datadogRum.addAction('decorate', {
       decorate: {
         decoration: imgSelect,
         type: 'dragged'
@@ -149,7 +149,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
       let imageSelect = getFileName(url);
 
       canvas.add(oImg);
-      datadogRum.addUserAction('decorate', {
+      datadogRum.addAction('decorate', {
         decorate: {
           decoration: imageSelect,
           type: 'click'
@@ -165,7 +165,7 @@ const Decorate = ({ stage, setStage, photoTaken, photoTakenEncoded, dimensions, 
       var obj = fabric.util.groupSVGElements(objects, options);
       canvas.add(obj).renderAll();
       
-      datadogRum.addUserAction('decorate', {
+      datadogRum.addAction('decorate', {
         decorate: {
           decoration: imageSelect,
           type: 'click'
