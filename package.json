@@ -22,6 +22,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.13.1",
     "react-easy-crop": "^3.2.2",
+    "react-helmet": "^6.1.0",
     "react-images-upload": "^1.2.8",
     "react-scripts": "3.0.1",
     "react-spring": "^8.0.27",
