@@ -1,5 +1,5 @@
 import React from 'react'
-import Helmet from "react-helmet";
+import {Helmet} from "react-helmet-async";
 import Landing from './landing/Landing'
 import Mode from './mode/Mode'
 import Photo from './photo/Photo'
@@ -24,18 +24,10 @@ const App = () => {
         [help, toggleHelp] = React.useState(false);
 
   return (
+    
     <div>
       <Helmet>
-      <script type="text/javascript" src="https://www.datadoghq-browser-agent.com/us1/v5/datadog-logs.js"></script>
-      <script>
-        window.DD_LOGS &&
-          window.DD_LOGS.init({
-            clientToken: 'pub03f229a335c65a8ec250d8e46edf5073',
-            site: 'datadoghq.com',
-            forwardErrorsToLogs: true,
-            sessionSampleRate: 100,
-          })
-      </script>
+        <meta name='description' content='Beginner friendly page for learning React Helmet.' />
       </Helmet>
       {about === true && <About {...{toggleAbout}} /> }
       {credit === true && <Credit {...{toggleCredit}} /> }
