@@ -1,5 +1,4 @@
 import React from 'react'
-import {Helmet} from "react-helmet-async";
 import Landing from './landing/Landing'
 import Mode from './mode/Mode'
 import Photo from './photo/Photo'
@@ -26,9 +25,6 @@ const App = () => {
   return (
     
     <div>
-      <Helmet>
-        <meta name='description' content='Beginner friendly page for learning React Helmet.' />
-      </Helmet>
       {about === true && <About {...{toggleAbout}} /> }
       {credit === true && <Credit {...{toggleCredit}} /> }
       {help === true && <Help {...{toggleHelp}} /> }
