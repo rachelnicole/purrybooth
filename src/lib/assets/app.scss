@@ -215,13 +215,7 @@ p {
 }
 
 .modal.wrapper {
-  position: absolute;
-  padding-top: 50px;
-  z-index: 10000000;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: rgba(0, 0, 0, 0.5);
+  padding: 0px !important;
 }
 
 .modal p {
