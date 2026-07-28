@@ -2,10 +2,18 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import '$lib/assets/app.scss';
 	import Modal from "$lib/components/Modal.svelte"
+	import { setContext } from 'svelte';
+
 	export const ssr = false;
 
-	let { children } = $props();
+	/** @type {import('./$types').LayoutProps} */
+	let { data, children } = $props();
+
 	let showModal = $state(false);
+
+	// Pass a function referencing our state
+	// to the context for child components to access
+	setContext('user', () => data.user);
 </script>
 
 <svelte:head>
