@@ -2,6 +2,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import '$lib/assets/app.scss';
 	import Modal from "$lib/components/Modal.svelte"
+	export const ssr = false;
 
 	let { children } = $props();
 	let showModal = $state(false);
