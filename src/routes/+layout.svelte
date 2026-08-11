@@ -2,7 +2,17 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import '$lib/assets/app.scss';
 	import Modal from "$lib/components/Modal.svelte"
+    import Button from '$lib/Button.svelte';
 	import { setContext } from 'svelte';
+    
+    import { page } from '$app/state';
+
+    // Create a reactive state object
+	let layoutState = $state({ title: 'Default Title' });
+	
+	// Expose it to all child components
+	setContext('layout-key', layoutState);
+
 
 	export const ssr = false;
 
@@ -14,6 +24,7 @@
 	// Pass a function referencing our state
 	// to the context for child components to access
 	setContext('user', () => data.user);
+
 </script>
 
 <svelte:head>
@@ -27,7 +38,7 @@
       <div class="title">
         <div class="pull-right">
         </div>
-        <h1><div class="icon-my-computer"></div>　プリクラ</h1>
+        <h1><div class="icon-my-computer"></div>{page.route.id}　プリクラ</h1>
       </div>
       <ul class="toolbar">
 
@@ -71,7 +82,7 @@
         <div class="right">&nbsp;</div>
       </div>
     </div>
-    <div class="main-container secondary window">
+<div class="main-container secondary window">
         <div class="title">
           <div class="pull-right">
           </div>
@@ -84,7 +95,13 @@
               alt="purrybooth-logo"
             />
         </a>
-          
+
+        {#snippet defaultSidebar()}
+            {layoutState.title}
+        {/snippet}
+        <!-- ...inside .main-container.secondary.window .container-inner.landing-container... -->
+         {@render (layoutState.sidebar ?? defaultSidebar)()}
+        <p></p>
 
         </div>
         <div class="statusbar">
@@ -92,6 +109,7 @@
           <div class="right">&nbsp;</div>
         </div>
       </div>
+
     </div>
 
 

@@ -1,23 +1,25 @@
+<!-- src/routes/+page.svelte -->
+<!-- src/routes/+page.svelte -->
 <script>
-	/** @type {import('./$types').PageProps} */
-	let { data } = $props();
+  import { getContext } from 'svelte';
+  import Mode from '$lib/components/Mode.svelte';
+  import Sidebar from '$lib/components/Sidebar.svelte';
+  import { photoState } from '$lib/state/photoState.svelte.js';
+
+  const layoutState = getContext('layout-key');
+
+  $effect(() => {
+      layoutState.sidebar = sidebar;
+      layoutState.title = 'Upload';
+  })
 </script>
 
-        <p>Time to choose whether you'd like to upload one of your own photos, or use your webcam to take a new one. Either way, none of the photos are saved in any way shape or form. :)</p>
-        <div class="continue">
-        <a
-          type="button"
-          class="btn"
-          href="/upload"
-        >
-          Upload Photo
-        </a>
+{#snippet sidebar()}
+  <Sidebar />
+  {#if photoState.avatar}
+    <img class="sidebar-preview" src={photoState.avatar} alt="preview" />
+  {/if}
+  {/snippet}
 
-        <button
-          type="button"
-          class="btn webcamBtn"
-          onClick={() => setStage("photo")}
-        >
-          Use Webcam
-        </button>
-        </div>
+<Mode />
+
