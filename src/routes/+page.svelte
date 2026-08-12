@@ -15,9 +15,6 @@
 
 {#snippet sidebar()}
   <Sidebar />
-  {#if photoState.avatar}
-    <img class="sidebar-preview" src={photoState.avatar} alt="preview" />
-  {/if}
   {/snippet}
 
 <Landing />

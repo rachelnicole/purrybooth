@@ -9,7 +9,7 @@
 
   $effect(() => {
       layoutState.sidebar = sidebar;
-      layoutState.title = 'Upload';
+      layoutState.title = 'Filter';
   })
 </script>
 

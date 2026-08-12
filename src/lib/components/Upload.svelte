@@ -2,28 +2,37 @@
 <script>
 	/** @type {import('./$types').PageProps} */
 	import { photoState, setAvatar } from '$lib/state/photoState.svelte.js';
+    import Button from '$lib/Button.svelte'
 
     let fileinput;
 
     const onFileSelected = (e) => {
         let image = e.target.files[0];
         let reader = new FileReader();
+        let imageUploaded = document.querySelector('.photoPreview');
+
+        let imageSize = {
+            width: imageUploaded.naturalWidth,
+            height: imageUploaded.naturalHeight
+        }
 
         reader.readAsDataURL(image);
         reader.onload = (e) => {
-            setAvatar(e.target.result);
-
+            setAvatar(e.target.result, imageSize);
         };
         
     };
+
+
+
+  let listenerItem = document.querySelector("statecheck");
+  listenerItem.addEventListener("click", statecheck);
 </script>
 
 <div id="app">
-    <h1>Upload Image</h1>
-    <p>image is: {photoState.avatar}</p>
 
     {#if photoState.avatar}
-        <img class="avatar" src={photoState.avatar} alt="d" />
+        <img class="avatar photoPreview" src={photoState.avatar} alt="d" />
     {:else}
         <img
             class="avatar"
@@ -31,22 +40,13 @@
             alt=""
         />
     {/if}
-    <img
-        class="upload"
-        src="https://static.thenounproject.com/png/625182-200.png"
-        alt=""
-        onclick={() => {
+    <button
+    class="btn"
+    onclick={() => {
             fileinput.click();
         }}
-    />
-    <div
-        class="chan"
-        onclick={() => {
-            fileinput.click();
-        }}
-    >
-        Choose Image
-    </div>
+    >Choose Images</button>
+
     <input
         style="display:none"
         type="file"
@@ -64,12 +64,6 @@
         flex-flow: column;
     }
 
-    .upload {
-        display: flex;
-        height: 50px;
-        width: 50px;
-        cursor: pointer;
-    }
     .avatar {
         max-width: 100%;
     }
