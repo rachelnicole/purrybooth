@@ -9,9 +9,12 @@
 
     // Create a reactive state object
 	let layoutState = $state({ title: 'Default Title' });
+      let currentFilter = $state({ selected: null });
+      setContext('filter', currentFilter);
 	
 	// Expose it to all child components
 	setContext('layout-key', layoutState);
+  setContext('filter', currentFilter);
 
 
 	export const ssr = false;

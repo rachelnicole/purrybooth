@@ -2,29 +2,47 @@
 <script>
 /** @type {import('./$types').PageProps} */
     import { photoState } from '$lib/state/photoState.svelte.js';
-    import { onMount } from 'svelte';
+    import { getContext, onMount } from 'svelte';
 
+
+    const filterState = getContext('filter');
     let imageSource = photoState.avatar;
-
     let canvas;
+    let filterPhoto;
 
 
 
     onMount(async () => {
+        const photon = await import('@silvia-odwyer/photon');
+        await photon.default();
 
-        canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
 
         const img = new Image();
 
         img.onload = function() {
             ctx.drawImage(img, 0, 0); // Draws at coordinates (x:0, y:0)
+            const image = photon.open_image(canvas, ctx);
         };
 
-img.src = imageSource; 
+        img.src = imageSource; 
 
-    
+         
+        filterPhoto = async (filterName) => {
+            let image = photon.open_image(canvas, ctx);
+
+            // Filter the image, the PhotonImage's raw pixels are modified
+            photon.filter(image, filterName);
+            
+            // Place the modified image back on the canvas
+            photon.putImageData(canvas, ctx, image);
+        }
+
     })
+
+    $effect(() => {
+          if (filterState.selected) filterPhoto(filterState.selected);
+      });
 </script>
 
 {#if photoState.avatar}
@@ -32,7 +50,7 @@ img.src = imageSource;
 
 asdfasdfasf
 
-<div class="decorateCanvas" bind:this={canvas}><section class="content"><canvas class="decorateCanvas" id="canvas" width="{photoState.width}" height="{photoState.height}"></canvas></section></div>
+<div class="decorateCanvas"><section class="content"><canvas bind:this={canvas} class="decorateCanvas" id="canvas" width="{photoState.width}" height="{photoState.height}"></canvas></section></div>
     {:else}
         please go back and upload an image
 {/if}
