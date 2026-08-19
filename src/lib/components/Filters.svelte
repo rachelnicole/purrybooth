@@ -1,7 +1,7 @@
 <!-- src/lib/components/Filters.svelte -->
 <script>
 /** @type {import('./$types').PageProps} */
-    import { photoState } from '$lib/state/photoState.svelte.js';
+    import { photoState, updateAvatar } from '$lib/state/photoState.svelte.js';
     import { getContext, onMount } from 'svelte';
 
 
@@ -29,8 +29,11 @@
         img.src = imageSource; 
          
         filterPhoto = async (filterName) => {
-            ctx.drawImage(img, 0, 0);
             let image = photon.open_image(canvas, ctx);
+            const filteredImage = document.getElementById('canvas'),
+            dataURL = filteredImage.toDataURL();
+
+            ctx.drawImage(img, 0, 0);
 
             if (filterName === 'greyscale') {
                 photon.grayscale(image);
@@ -44,6 +47,8 @@
             else {
                 photon.filter(image, filterName);
             }
+
+            updateAvatar(dataURL);
             
             // Place the modified image back on the canvas
             photon.putImageData(canvas, ctx, image);
@@ -58,9 +63,6 @@
 
 {#if photoState.avatar}
         
-
-asdfasdfasf
-
 <div class="decorateCanvas"><section class="content"><canvas bind:this={canvas} class="decorateCanvas" id="canvas" width="{photoState.width}" height="{photoState.height}"></canvas></section></div>
     {:else}
         please go back and upload an image

@@ -38,7 +38,9 @@
   <option value="perfume">Perfume</option>
   <option value="serenity">Serenity</option>
 </select>
-<p>Once you're happy, let's head to the decorate page!</p><button type="button" class="btn">Decorate »</button>
+<p>Once you're happy, let's head to the decorate page!</p>
+
+<a href="/decorate">  decorate</a>
   {/snippet}
 
 <Filters />

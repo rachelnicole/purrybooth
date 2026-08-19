@@ -18,3 +18,8 @@ export function setAvatar(dataUrl, imageSize) {
     photoState.height = imageSize.height;
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(photoState));
 }
+
+export function updateAvatar(dataUrl) {
+    photoState.avatar = dataUrl;
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(photoState));
+}
