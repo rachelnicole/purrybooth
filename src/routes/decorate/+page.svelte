@@ -4,7 +4,7 @@
   import Decorate from '$lib/components/Decorate.svelte';
   import Sidebar from '$lib/components/Sidebar.svelte';
   import Button from '$lib/Button.svelte';
-  import { photoState } from '$lib/state/photoState.svelte.js';
+  import { photoState, setAvatar, updateAvatar } from '$lib/state/photoState.svelte.js';
   import * as fabric from "fabric";
   import { onMount } from 'svelte';
 
@@ -14,6 +14,17 @@ onMount(() => {
       imageCurrentWidth = document.getElementById('my-fabric-canvas').clientWidth,
       imageCurrentPercent = imageCurrentWidth / widthOnePercent,
       imageNewHeight = heightOnePercent * imageCurrentPercent;
+
+
+    images = window.document.querySelectorAll('#decoration-container img');
+    [].forEach.call(images, function (img) {
+      img.addEventListener('dragstart', handleDragStart, false);
+      img.addEventListener('dragend', handleDragEnd, false);
+        img.addEventListener('dragleave', handleDragLeave, false);
+    img.addEventListener('drop', handleDrop, false);
+    });
+
+
 
   canvas = new fabric.Canvas('my-fabric-canvas', {
     preserveObjectStacking: true,
@@ -37,6 +48,7 @@ onMount(() => {
 });
   
 });
+
 
   const layoutState = getContext('layout-key');
 
@@ -111,19 +123,22 @@ onMount(() => {
 
   const clearCanvas = () => {
 
-    canvas.discardActiveObject().renderAll();
+    console.log('hi');
+
+    canvas.discardActiveObject();
+    canvas.renderAll();
 
     updateState();
 
   }
 
   const updateState = () => {
-    const filteredImage = document.getElementById('my-fabric-canvas'),
-      dataURL = filteredImage.toDataURL();
+      const dataURL = canvas.toDataURL({
+        format: 'png',
+        quality: 1,
+    });
 
-    photoTakenEncoded(dataURL);
-
-    setStage("share");
+    updateAvatar(dataURL);
 
   }
 
@@ -132,15 +147,16 @@ onMount(() => {
       //Do whatever when esc is pressed
       canvas.remove(canvas.getActiveObject());
     }
+    if (event.key === "Delete") {
+        canvas.remove(canvas.getActiveObject());
+    }
   };
 
   let handleDragStart = (e) => {
-
-    [].forEach.call(images, function (img) {
-      img.classList.remove('img_dragging');
-    });
-    e.target.classList.add('img_dragging');
-  }
+  const images = document.querySelectorAll('#decoration-container img.decoration');
+  images.forEach((img) => img.classList.remove('img_dragging'));
+  e.target.classList.add('img_dragging');
+}
 
   let handleDragOver = (e) => {
     if (e.preventDefault) {
@@ -155,12 +171,10 @@ onMount(() => {
     canvasContainer.classList.add('over');
   }
 
-  let handleDragEnd = (e) => {
-    // this/e.target is the source node.
-    [].forEach.call(images, function (img) {
-      img.classList.remove('img_dragging');
-    });
-  }
+let handleDragEnd = (e) => {
+  const images = document.querySelectorAll('#decoration-container img.decoration');
+  images.forEach((img) => img.classList.remove('img_dragging'));
+}
 
   let getFileName = (path) => {
     return path.match(/([^/]+)\.[\w\d]+$/)[1];
@@ -170,35 +184,51 @@ onMount(() => {
     canvasContainer.classList.remove('over');
   }
 
-  let handleDrop = (e) => {
-    e.preventDefault();
+let handleDrop = (e) => {
+  e.preventDefault();
 
-    var img = document.querySelector('#decoration-container img.img_dragging').src;
+  var img = document.querySelector('#decoration-container img.img_dragging').src;
 
-    let imgSelect = getFileName(img);
+  let imgSelect = getFileName(img);
 
-    fabric.util.loadImage(img).then((img) => {
-  var droppedImage = new fabric.Image(img, {
-    left: e.layerX,
-    top: e.layerY,
-    width: img.width,
-    height: img.height,
+  const canvasEl = document.getElementById('my-fabric-canvas');
+  const rect = canvasEl.getBoundingClientRect();
+  const dropX = e.clientX - rect.left;
+  const dropY = e.clientY - rect.top;
+
+  fabric.util.loadImage(img).then((img) => {
+    var droppedImage = new fabric.Image(img, {
+      left: dropX,
+      top: dropY,
+      width: img.width,
+      height: img.height,
+      originX: 'center',
+      originY: 'center',
+    });
+    canvas.add(droppedImage);
+    canvas.setActiveObject(droppedImage);
+    canvas.renderAll();
   });
-  canvas.add(droppedImage);
-  canvas.renderAll();
-});
 
-    return false;
-  }
+  return false;
+}
 
   // These two functions are equivalent, just sharing how to arrow-syntax for fun
   const decorateImage = (url) =>
   fabric.Image.fromURL(url).then((oImg) => {
-    console.log(url);
-    let imageSelect = getFileName(url);
+  let imageSelect = getFileName(url);
 
-    canvas.add(oImg);
+  oImg.set({
+    left: canvas.getWidth() / 2,
+    top: canvas.getHeight() / 2,
+    originX: 'center',
+    originY: 'center',
   });
+
+  canvas.add(oImg);
+  canvas.setActiveObject(oImg);
+  canvas.renderAll();
+});
 
     const decorateSVG = (url) =>
     fabric.loadSVGFromURL(url, (objects, options) => {
@@ -234,7 +264,7 @@ onMount(() => {
             alt="move-to-top"
             class="toolbar z-index"
             onclick={() => {
-              canvas.bringToFront(canvas.getActiveObject());
+              canvas.bringObjectToFront(canvas.getActiveObject());
             }}
           >
           <img
@@ -242,13 +272,13 @@ onMount(() => {
             alt="send to back"
             class="toolbar z-index"
             onclick={() => {
-              canvas.sendToBack(canvas.getActiveObject());
+              canvas.sendObjectToBack(canvas.getActiveObject());
             }}
           >
           <div id="decoration-container">
 
               {#each decorations as item}
-                    <img class="decoration" src="images/{item}.png" alt={item.replace(/-/g, ' ')} draggable={true} onclick={e => decorateImage(e.target.src)}>
+                    <img class="decoration" src="images/{item}.png" alt={item.replace(/-/g, ' ')} draggable={true} onclick={e => decorateImage(e.target.src)} ondragstart={handleDragStart} ondragend={handleDragEnd}>
                 {/each}
 
           </div>
@@ -257,14 +287,22 @@ onMount(() => {
           <button
             type="button"
             class="btn"
-            onClick={() => {
+            onclick={() => {
               clearCanvas()
             }}>
-            Lets Share »
+            <a href="/share" >Lets Share »</a>
           </button>
 
   {/snippet}
 
 
-<Decorate />
+<div
+  bind:this={canvasContainer}
+  ondrop={handleDrop}
+  ondragover={handleDragOver}
+  ondragenter={handleDragEnter}
+  ondragleave={handleDragLeave}
+>
+  <Decorate />
+</div>
 
