@@ -3,30 +3,30 @@
 	/** @type {import('./$types').PageProps} */
 	import { photoState, setAvatar } from '$lib/state/photoState.svelte.js';
     import Button from '$lib/Button.svelte'
+    import { onMount } from 'svelte';
 
     let fileinput;
 
     const onFileSelected = (e) => {
-        let image = e.target.files[0];
-        let reader = new FileReader();
-        let imageUploaded = document.querySelector('.photoPreview');
+    let image = e.target.files[0];
+    let reader = new FileReader();
 
-        let imageSize = {
-            width: imageUploaded.naturalWidth,
-            height: imageUploaded.naturalHeight
-        }
-
-        reader.readAsDataURL(image);
-        reader.onload = (e) => {
-            setAvatar(e.target.result, imageSize);
+    reader.readAsDataURL(image);
+    reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+            setAvatar(e.target.result, { width: img.naturalWidth, height: img.naturalHeight });
         };
-        
+        img.src = e.target.result;
     };
+};
 
 
 
-  let listenerItem = document.querySelector("statecheck");
+  onMount(() => {
+    let listenerItem = document.querySelector("statecheck");
   listenerItem.addEventListener("click", statecheck);
+  })
 </script>
 
 <div id="app">
