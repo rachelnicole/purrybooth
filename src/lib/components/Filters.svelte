@@ -9,6 +9,7 @@
     let imageSource = photoState.avatar;
     let canvas;
     let filterPhoto;
+    let { data } = $props();
 
 
 
@@ -16,7 +17,7 @@
         const photon = await import('@silvia-odwyer/photon');
         await photon.default();
 
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
         const img = new Image();
 
@@ -26,13 +27,23 @@
         };
 
         img.src = imageSource; 
-
          
         filterPhoto = async (filterName) => {
+            ctx.drawImage(img, 0, 0);
             let image = photon.open_image(canvas, ctx);
 
-            // Filter the image, the PhotonImage's raw pixels are modified
-            photon.filter(image, filterName);
+            if (filterName === 'greyscale') {
+                photon.grayscale(image);
+            }
+            else if (filterName === 'threeDee') {
+                photon.offset_red(image, 30)
+            } 
+            else if (filterName === 'none') {
+                ctx.drawImage(img, 0, 0);
+            }
+            else {
+                photon.filter(image, filterName);
+            }
             
             // Place the modified image back on the canvas
             photon.putImageData(canvas, ctx, image);
