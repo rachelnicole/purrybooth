@@ -19,12 +19,14 @@
 		"vite": "^8.0.16"
 	},
 	"dependencies": {
+		"@datadog/browser-rum": "^7.9.0",
 		"@silvia-odwyer/photon": "^0.3.3",
 		"fabric": "^7.4.0"
 	},
 	"allowScripts": {
 		"@parcel/watcher@2.6.0": true,
 		"fsevents@2.3.3": true,
-		"fabric@7.4.0": true
+		"fabric@7.4.0": true,
+		"canvas@3.2.3": true
 	}
 }

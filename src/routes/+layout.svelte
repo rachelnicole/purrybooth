@@ -1,9 +1,10 @@
 <script>
+  import { datadogRum } from '@datadog/browser-rum';
 	import favicon from '$lib/assets/favicon.svg';
 	import '$lib/assets/app.scss';
 	import Modal from "$lib/components/Modal.svelte"
   import Button from '$lib/Button.svelte';
-	import { setContext } from 'svelte';
+	import { onMount, setContext } from 'svelte';
   import { page } from '$app/state';
   import { goto } from '$app/navigation';
   import { photoState } from '$lib/state/photoState.svelte';
@@ -36,6 +37,22 @@
 	// Pass a function referencing our state
 	// to the context for child components to access
 	setContext('user', () => data.user);
+
+  onMount(() => {
+     datadogRum.init({
+    applicationId: 'ea4da33d-6f50-4f68-b1ea-0be01d934147',
+    clientToken: 'pubfabcd32628d45ab27fcbfb1f0c2e52f2',
+    site: 'datadoghq.com',
+    service: 'purrybooth',
+    env: 'prod',				// e.g. 'prod', 'staging-1', 'dev'
+    version: '2.0',	// e.g. '1.0.0'
+    sessionSampleRate: 100,			// capture 100% of sessions
+    sessionReplaySampleRate: 20,	// capture 20% of sessions with replay
+    trackResources: true,			// Enable Resource tracking
+    trackUserInteractions: true,	// Enable Action tracking
+    trackLongTasks: true,			// Enable Long Tasks tracking
+});
+  });
 
 </script>
 
