@@ -63,7 +63,7 @@
 
 {#if photoState.avatar}
         
-<div class="decorateCanvas"><section class="content"><canvas bind:this={canvas} class="decorateCanvas" id="canvas" width="{photoState.width}" height="{photoState.height}"></canvas></section></div>
+<div class="decorateCanvas"><section class="content"><canvas bind:this={canvas} class="decorateCanvas" id="canvas" width="{photoState.width}" height="{photoState.height}" data-dd-privacy="hidden"></canvas></section></div>
     {:else}
         please go back and upload an image
 {/if}

@@ -65,7 +65,7 @@ const videoConstraints = {
 
 <div class="webcamWrapper camera">
   <video autoplay playsinline bind:this={video} id="video" class="webcamBlock">Video stream not available.</video>
-  <img bind:this={photo} id="photo" class="photoPreviewWebcam" src="" alt="The screen capture will appear in this box." />
+  <img bind:this={photo} id="photo" class="photoPreviewWebcam" src="" alt="The screen capture will appear in this box." data-dd-privacy="hidden"/>
 </div>
   <button id="start-button" onclick={(e) => { e.preventDefault(); takePicture(); }}>Capture photo</button>
 

@@ -17,7 +17,7 @@
 	<div class="modal wrapper">
     <div class="main-container modal">
         <div class="title">
-          <h1><div class="icon-my-computer"></div>About プリクラ</h1>
+          <h1><div class="icon-my-computer"></div> プリクラ</h1>
         </div>
         <div class="ie-bar">
           <label htmlFor="url-second" class="label">Address:</label>
@@ -28,6 +28,7 @@
         <div class="container-inner why-container">
 		{@render children?.()}
 		<!-- svelte-ignore a11y_autofocus -->
+		 <br>
 		 <button
           type="button"
           class="btn"

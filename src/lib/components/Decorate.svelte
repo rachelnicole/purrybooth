@@ -29,4 +29,4 @@
 </script>
 
         
-<div class="decorateCanvas"><section class="content"><canvas bind:this={canvas} class="decorateCanvas" id="my-fabric-canvas"></canvas></section></div>
+<div class="decorateCanvas"><section class="content"><canvas bind:this={canvas} class="decorateCanvas" id="my-fabric-canvas" data-dd-privacy="hidden"></canvas></section></div>

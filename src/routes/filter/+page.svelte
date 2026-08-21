@@ -4,9 +4,19 @@
   import Filters from '$lib/components/Filters.svelte';
   import Sidebar from '$lib/components/Sidebar.svelte';
   import { photoState } from '$lib/state/photoState.svelte.js';
+    import { datadogRum } from '@datadog/browser-rum';
 
   const layoutState = getContext('layout-key'),
         filterState = getContext('filter');
+
+  const effectPipeline = () => {
+    datadogRum.addAction('filter', {
+      filter: {
+        filterName: filterState.selected,
+      },
+    });
+
+  }
 
 
   $effect(() => {
@@ -19,7 +29,7 @@
 {#snippet sidebar()}
   <Sidebar />
  <p>Let's add some filters to your photo:</p>
- <select bind:value={filterState.selected}>
+ <select onchange={effectPipeline} bind:value={filterState.selected}>
   <option value="none">No Filter</option>
   <option value="greyscale">GreyScale</option>
   <option value="threeDee">3D Glasses</option>

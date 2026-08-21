@@ -26,7 +26,7 @@
 <div id="app">
 
     {#if photoState.avatar}
-        <img class="avatar photoPreview" src={photoState.avatar} alt="d" />
+        <img class="avatar photoPreview" src={photoState.avatar} alt="d" data-dd-privacy="hidden"/>
     {:else}
     {/if}
 
