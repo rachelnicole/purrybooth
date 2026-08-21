@@ -14,7 +14,18 @@
 	onclose={() => (showModal = false)}
 	onclick={(e) => { if (e.target === dialog) dialog.close(); }}
 >
-	<div>
+	<div class="modal wrapper">
+    <div class="main-container modal">
+        <div class="title">
+          <h1><div class="icon-my-computer"></div>About プリクラ</h1>
+        </div>
+        <div class="ie-bar">
+          <label htmlFor="url-second" class="label">Address:</label>
+          <div class="combo">
+          
+          </div>
+        </div>
+        <div class="container-inner why-container">
 		{@render children?.()}
 		<!-- svelte-ignore a11y_autofocus -->
 		 <button
@@ -25,7 +36,18 @@
         >
           close popup
         </button>
-	</div>
+	 
+          <div class="continue">
+ 
+        </div>
+        
+        </div>
+        <div class="statusbar">
+          <div class="left">^_^</div>
+          <div class="right">&nbsp;</div>
+        </div>
+      </div>
+    </div>
 </dialog>
 
 <style>

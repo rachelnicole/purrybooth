@@ -2,9 +2,9 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import '$lib/assets/app.scss';
 	import Modal from "$lib/components/Modal.svelte"
-    import Button from '$lib/Button.svelte';
+  import Button from '$lib/Button.svelte';
 	import { setContext } from 'svelte';
-    import { page } from '$app/state';
+  import { page } from '$app/state';
   import { goto } from '$app/navigation';
   import { photoState } from '$lib/state/photoState.svelte';
 
@@ -29,7 +29,9 @@
     // }
 });
 
-	let showModal = $state(false);
+	 let showAboutModal = $state(false);
+  let showCreditModal = $state(false);
+  let showHelpModal = $state(false);
 
 	// Pass a function referencing our state
 	// to the context for child components to access
@@ -53,36 +55,21 @@
       <ul class="toolbar">
 
 		<li onclick={() => (showModal = true)}><u>A</u>bout</li>
-		<Modal bind:showModal>
-		<div class="modal wrapper">
-    <div class="main-container modal">
-        <div class="title">
-          <h1><div class="icon-my-computer"></div>About プリクラ</h1>
-        </div>
-        <div class="ie-bar">
-          <label htmlFor="url-second" class="label">Address:</label>
-          <div class="combo">
-          
-          </div>
-        </div>
-        <div class="container-inner why-container">
-          <p>PurryBooth was made by me, <a rel="noopener noreferrer"  href="http://www.twitter.com/ohhoe" target="_blank">Rachel White</a>. I'm a creative technologist and currently a Technical Evangelist at Datadog. You can find more of my work here: <a rel="noopener noreferrer"  href="http://www.rachelisaweso.me" target="_blank">http://www.rachelisaweso.me</a> and <a rel="noopener noreferrer"  href="http://www.imcool.online" target="_blank">http://www.imcool.online</a>.</p>
-          <div class="continue">
- 
-        </div>
-        
-        </div>
-        <div class="statusbar">
-          <div class="left">^_^</div>
-          <div class="right">&nbsp;</div>
-        </div>
-      </div>
-    </div>
+		<Modal bind:showAboutModal>
+      <p>PurryBooth was made by me, <a rel="noopener noreferrer"  href="http://www.twitter.com/ohhoe" target="_blank">Rachel White</a>. I'm a creative technologist and currently a Technical Evangelist at Datadog. You can find more of my work here: <a rel="noopener noreferrer"  href="http://www.rachelisaweso.me" target="_blank">http://www.rachelisaweso.me</a> and <a rel="noopener noreferrer"  href="http://www.imcool.online" target="_blank">http://www.imcool.online</a>.</p>
 		</Modal>
 
-        <li><u>C</u>redit</li>
+        <li onclick={() => (showModal = true)}><u>C</u>redit</li>
+        <Modal bind:showCreditModal>
+          <p>Logo by Rachelle Viola <a rel="noopener noreferrer" href="https://rachelleviola.com/" target="_blank">Rachelle Viola</a>.</p><p>Some stickers and frames illustrated by Jewels Lei <a rel="noopener noreferrer" href="http://www.instagram.com/crimebird" target="_blank">http://www.instagram.com/crimebird</a></p>
+        </Modal>
         <li class="gh"><a rel="noopener noreferrer" href="https://github.com/rachelnicole/purrybooth" target="_blank"><u>G</u>itHub</a></li>
-        <li><u>H</u>elp</li>
+        <li onclick={() => (showModal = true)}><u>H</u>elp</li>
+        <Modal bind:showHelpModal>
+          If you have any questions please feel free to reach out to me on twitter at @ohhoe or via email at loveless /at/ gmail
+
+
+        </Modal>
       </ul>
       <div class="container-inner">
         {@render children()}
