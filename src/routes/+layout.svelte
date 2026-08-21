@@ -67,12 +67,12 @@
       </div>
       <ul class="toolbar">
 
-		<li onclick={() => (showModal = true)}><u>A</u>bout</li>
+		<li onclick={() => (showAboutModal = true)}><u>A</u>bout</li>
 		<Modal bind:showAboutModal>
       <p>PurryBooth was made by me, <a rel="noopener noreferrer"  href="http://www.twitter.com/ohhoe" target="_blank">Rachel White</a>. I'm a creative technologist and currently a Technical Evangelist at Datadog. You can find more of my work here: <a rel="noopener noreferrer"  href="http://www.rachelisaweso.me" target="_blank">http://www.rachelisaweso.me</a> and <a rel="noopener noreferrer"  href="http://www.imcool.online" target="_blank">http://www.imcool.online</a>.</p>
 		</Modal>
 
-        <li onclick={() => (showModal = true)}><u>C</u>redit</li>
+        <li onclick={() => (showCreditModal = true)}><u>C</u>redit</li>
         <Modal bind:showCreditModal>
           <p>Logo by Rachelle Viola <a rel="noopener noreferrer" href="https://rachelleviola.com/" target="_blank">Rachelle Viola</a>.</p><p>Some stickers and frames illustrated by Jewels Lei <a rel="noopener noreferrer" href="http://www.instagram.com/crimebird" target="_blank">http://www.instagram.com/crimebird</a></p>
         </Modal>
