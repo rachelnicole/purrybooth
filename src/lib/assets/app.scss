@@ -73,6 +73,10 @@ div#decoration-container {
   align-items: center;
 }
 
+a.nav-link {
+  font-size: 2rem;
+}
+
 .btn.remove {
   font-size: 12px;
   height: 25px !important;
@@ -94,6 +98,46 @@ grid-row-gap: 0px;
 .canvas-container {
   margin: 0 auto;
 }
+
+.sparkle-divider {
+  display: inline;
+  font-size: 18px;
+  /* 1. Create a wide gradient containing your desired colors */
+  background: linear-gradient(
+    to right, 
+    #EF4F91,
+    #FFF0B7, 
+    #4D1B7B, 
+    #C79DD8
+  );
+  
+  /* 2. Stretch the background size so it has room to move */
+  background-size: 200% auto;
+  
+  /* 3. Clip the background strictly to the text letters */
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  /* 4. Hide the original font color to reveal the background underneath */
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  
+  /* 5. Attach the keyframe animation loop */
+  animation: shiftGradient 4s linear infinite;
+}
+
+@keyframes shiftGradient {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+
+
+
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 320px) { 
@@ -208,6 +252,9 @@ p {
 
 .continue {
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mode-page .continue .btn {

@@ -8,17 +8,17 @@
         <div class="continue">
         <a
           type="button"
-          class="btn"
+          class="btn nav-link"
           href="/upload"
         >
           Upload Photo
         </a>
-
-        <button
+        <div class="sparkle-divider" aria-hidden="true">⋆˙⟡ ⋆.˚ ⊹₊⟡ ⋆</div>
+        <a
           type="button"
-          class="btn webcamBtn"
-          onClick={() => setStage("photo")}
+          class="btn nav-link"
+          href="/webcam"
         >
-          Use Webcam
-        </button>
+          Take Photo
+      </a>
         </div>

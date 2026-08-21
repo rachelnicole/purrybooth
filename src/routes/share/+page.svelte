@@ -11,14 +11,14 @@
 
   $effect(() => {
       layoutState.sidebar = sidebar;
-      layoutState.title = 'Filter';
+      layoutState.title = 'share';
 
   })
 </script>
 
 {#snippet sidebar()}
   <Sidebar />
- Sidebar
+ 
   {/snippet}
 
 <Share />

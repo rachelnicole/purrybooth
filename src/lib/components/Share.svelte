@@ -13,6 +13,8 @@
 
 
 </script>
+
+<p>Please right click and save as image, and post with the tag #PurryBooth :)</p>
         
 <img src="{imageSource}">
 

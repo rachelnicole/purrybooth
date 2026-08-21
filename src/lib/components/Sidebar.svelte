@@ -4,5 +4,5 @@
   let { label = "I'm a sidebar" } = $props();
 </script>
 
-<p>{label}</p>
+
 

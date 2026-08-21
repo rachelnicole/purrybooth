@@ -11,7 +11,7 @@
 
   $effect(() => {
       layoutState.sidebar = sidebar;
-      layoutState.title = 'Filter';
+      layoutState.title = 'filter';
 
   })
 </script>
@@ -40,7 +40,7 @@
 </select>
 <p>Once you're happy, let's head to the decorate page!</p>
 
-<a href="/decorate">  decorate</a>
+<a class="nav-link" href="/decorate">Decorate »</a>
   {/snippet}
 
 <Filters />

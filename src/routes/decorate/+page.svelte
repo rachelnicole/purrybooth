@@ -9,6 +9,7 @@
   import { onMount } from 'svelte';
 
 onMount(() => {
+  if (!photoState.avatar) return;
   let widthOnePercent = photoState.width / 100,
       heightOnePercent = photoState.height / 100,
       imageCurrentWidth = document.getElementById('my-fabric-canvas').clientWidth,
@@ -46,7 +47,12 @@ onMount(() => {
   canvas.backgroundImage = photoTaken;
   canvas.renderAll();
 });
-  
+  window.addEventListener('keydown', keyPress);
+
+  return () => {
+    window.removeEventListener('keydown', keyPress);
+  };
+
 });
 
 
@@ -134,8 +140,8 @@ onMount(() => {
 
   const updateState = () => {
       const dataURL = canvas.toDataURL({
-        format: 'png',
-        quality: 1,
+        format: 'jpeg',
+        quality: 0.8,
     });
 
     updateAvatar(dataURL);
@@ -147,7 +153,12 @@ onMount(() => {
       //Do whatever when esc is pressed
       canvas.remove(canvas.getActiveObject());
     }
+    if (event.key === "Backspace") {
+      console.log('delete');
+        canvas.remove(canvas.getActiveObject());
+    }
     if (event.key === "Delete") {
+      console.log('delete');
         canvas.remove(canvas.getActiveObject());
     }
   };
@@ -242,7 +253,7 @@ let handleDrop = (e) => {
 
   $effect(() => {
       layoutState.sidebar = sidebar;
-      layoutState.title = 'Upload';
+      layoutState.title = 'decorate';
       
   })
 </script>
@@ -284,14 +295,8 @@ let handleDrop = (e) => {
           </div>
           <p> there's more stickers and frames, scroll in the div above :)</p>
 
-          <button
-            type="button"
-            class="btn"
-            onclick={() => {
-              clearCanvas()
-            }}>
-            <a href="/share" >Lets Share »</a>
-          </button>
+            <a class="nav-link" onclick={() => {clearCanvas()}} href="/share" >Lets Share »</a>
+
 
   {/snippet}
 

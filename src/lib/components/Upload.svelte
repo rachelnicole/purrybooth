@@ -21,12 +21,6 @@
     };
 };
 
-
-
-  onMount(() => {
-    let listenerItem = document.querySelector("statecheck");
-  listenerItem.addEventListener("click", statecheck);
-  })
 </script>
 
 <div id="app">
@@ -34,18 +28,15 @@
     {#if photoState.avatar}
         <img class="avatar photoPreview" src={photoState.avatar} alt="d" />
     {:else}
-        <img
-            class="avatar"
-            src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
-            alt=""
-        />
     {/if}
+
+    <p>Max file size: 5mb, accepted: jpg|gif|png</p>
     <button
     class="btn"
     onclick={() => {
             fileinput.click();
         }}
-    >Choose Images</button>
+    >Choose Image</button>
 
     <input
         style="display:none"

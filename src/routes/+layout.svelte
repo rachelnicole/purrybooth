@@ -4,22 +4,30 @@
 	import Modal from "$lib/components/Modal.svelte"
     import Button from '$lib/Button.svelte';
 	import { setContext } from 'svelte';
-    
     import { page } from '$app/state';
+  import { goto } from '$app/navigation';
+  import { photoState } from '$lib/state/photoState.svelte';
 
     // Create a reactive state object
-	let layoutState = $state({ title: 'Default Title' });
-      let currentFilter = $state({ selected: null });
+	let layoutState = $state({ title: 'landing' });
+  let currentFilter = $state({ selected: null });
 	
 	// Expose it to all child components
 	setContext('layout-key', layoutState);
   setContext('filter', currentFilter);
 
 
+
 	export const ssr = false;
 
 	/** @type {import('./$types').LayoutProps} */
 	let { data, children } = $props();
+
+  $effect(() => {
+    // if (page.route.id !== '/' && !photoState.avatar) {
+    //     goto('/mode');
+    // }
+});
 
 	let showModal = $state(false);
 
@@ -35,12 +43,12 @@
 
 
 
-<div class="landing-page wrapper">
+<div class="{layoutState.title}-page wrapper">
     <div class="main-container">
       <div class="title">
         <div class="pull-right">
         </div>
-        <h1><div class="icon-my-computer"></div>{page.route.id}　プリクラ</h1>
+        <h1><div class="icon-my-computer"></div>{layoutState.title}　プリクラ</h1>
       </div>
       <ul class="toolbar">
 
@@ -57,7 +65,7 @@
           
           </div>
         </div>
-        <div class="container-inner landing-container">
+        <div class="container-inner why-container">
           <p>PurryBooth was made by me, <a rel="noopener noreferrer"  href="http://www.twitter.com/ohhoe" target="_blank">Rachel White</a>. I'm a creative technologist and currently a Technical Evangelist at Datadog. You can find more of my work here: <a rel="noopener noreferrer"  href="http://www.rachelisaweso.me" target="_blank">http://www.rachelisaweso.me</a> and <a rel="noopener noreferrer"  href="http://www.imcool.online" target="_blank">http://www.imcool.online</a>.</p>
           <div class="continue">
  
@@ -99,7 +107,7 @@
         </a>
 
         {#snippet defaultSidebar()}
-            {layoutState.title}
+            
         {/snippet}
         <!-- ...inside .main-container.secondary.window .container-inner.landing-container... -->
          {@render (layoutState.sidebar ?? defaultSidebar)()}

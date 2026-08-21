@@ -10,7 +10,7 @@
 
   $effect(() => {
       layoutState.sidebar = sidebar;
-      layoutState.title = 'Upload';
+      layoutState.title = 'upload';
   })
 </script>
 
@@ -19,7 +19,7 @@
   <p>Please choose a photo to work with, if you don't like the first you've chosen, just select another.</p>
   {#if photoState.avatar}
     <div class="photo-added"><p>When you're happy with your photo, go ahead and go to the filter page.</p>
-    <a href="/filter">  proceed</a>
+    <a class="nav-link" href="/filter">Filters »</a>
     </div>
   {/if}
   {/snippet}

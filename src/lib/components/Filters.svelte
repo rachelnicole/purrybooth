@@ -14,6 +14,7 @@
 
 
     onMount(async () => {
+        if (!canvas || !imageSource) return;
         const photon = await import('@silvia-odwyer/photon');
         await photon.default();
 
@@ -29,11 +30,9 @@
         img.src = imageSource; 
          
         filterPhoto = async (filterName) => {
-            let image = photon.open_image(canvas, ctx);
-            const filteredImage = document.getElementById('canvas'),
-            dataURL = filteredImage.toDataURL();
-
             ctx.drawImage(img, 0, 0);
+
+            let image = photon.open_image(canvas, ctx);
 
             if (filterName === 'greyscale') {
                 photon.grayscale(image);
@@ -47,17 +46,18 @@
             else {
                 photon.filter(image, filterName);
             }
-
-            updateAvatar(dataURL);
             
             // Place the modified image back on the canvas
             photon.putImageData(canvas, ctx, image);
+
+            const dataURL = document.getElementById('canvas').toDataURL("image/jpeg", 0.8);
+            updateAvatar(dataURL);
         }
 
     })
 
     $effect(() => {
-          if (filterState.selected) filterPhoto(filterState.selected);
+          if (filterState.selected && typeof filterPhoto === 'function') filterPhoto(filterState.selected);
       });
 </script>
 
