@@ -7,6 +7,7 @@
   import { photoState, setAvatar, updateAvatar } from '$lib/state/photoState.svelte.js';
   import * as fabric from "fabric";
   import { onMount } from 'svelte';
+  import { datadogRum } from '@datadog/browser-rum';
 
 onMount(() => {
   if (!photoState.avatar) return;
@@ -202,6 +203,13 @@ let handleDrop = (e) => {
 
   let imgSelect = getFileName(img);
 
+  datadogRum.addAction('decorate', {
+      decorate: {
+        decoration: imgSelect,
+        type: 'dragged'
+      },
+    });
+
   const canvasEl = document.getElementById('my-fabric-canvas');
   const rect = canvasEl.getBoundingClientRect();
   const dropX = e.clientX - rect.left;
@@ -229,6 +237,13 @@ let handleDrop = (e) => {
   fabric.Image.fromURL(url).then((oImg) => {
   let imageSelect = getFileName(url);
 
+  datadogRum.addAction('decorate', {
+        decorate: {
+          decoration: imageSelect,
+          type: 'click'
+        },
+      });
+
   oImg.set({
     left: canvas.getWidth() / 2,
     top: canvas.getHeight() / 2,
@@ -247,6 +262,13 @@ let handleDrop = (e) => {
 
       var obj = fabric.util.groupSVGElements(objects, options);
       canvas.add(obj).renderAll();
+
+      datadogRum.addAction('decorate', {
+        decorate: {
+          decoration: imageSelect,
+          type: 'click'
+        },
+      });
       
     }
     );
