@@ -16,7 +16,12 @@
 
 {#snippet sidebar()}
   <Sidebar />
-  <p>Take a photo with your webcam to get started.</p>
+  <p>Keep on taking photos until you're happy with the preview to the right of the webcam window.</p>
+  {#if photoState.avatar}
+    <div class="photo-added"><p>When you're happy with your photo, go ahead and go to the filter page.</p>
+    <a class="nav-link" href="/filter">Filters »</a>
+    </div>
+  {/if}
 {/snippet}
 
 <Webcam />
