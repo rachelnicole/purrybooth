@@ -17,10 +17,6 @@
 	setContext('layout-key', layoutState);
   setContext('filter', currentFilter);
 
-
-
-	export const ssr = false;
-
 	/** @type {import('./$types').LayoutProps} */
 	let { data, children } = $props();
 
